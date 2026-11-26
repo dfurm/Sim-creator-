@@ -1,11 +1,13 @@
 {
-  "$comment": "Sidecar metadata for S02, kept alongside (not inside) spec/manifests/S02.json because the manifest schema forbids additional properties (SPEC_ISSUES SI-02). Codes and short paraphrased labels only; no standard text reproduced. Nothing here is verified or reviewed.",
-  "metadataVersion": "0.2.0-proto",
+  "$comment": "Sidecar metadata for S02, kept alongside (not inside) spec/manifests/S02.json because the manifest schema forbids additional properties (SPEC_ISSUES SI-02). Codes and short paraphrased labels only; no standard text reproduced. Nothing here is verified or reviewed. NCSE 2026 codes supplied by the product owner in Run 2B (not fetched from the standard).",
+  "metadataVersion": "0.2.0-proto+2B",
   "simulationId": "S02",
   "manifestRef": "spec/manifests/S02.json@0.1.0",
   "modelVersion": "0.2.0",
   "fidelity": {
-    "specFCodes": ["F1"],
+    "specFCodes": [
+      "F1"
+    ],
     "modelForm": "algebraic-analytical (1-D steady incompressible continuity)",
     "solutionMethod": "closed-form evaluation",
     "dataDependency": "none beyond one stipulated constant (water density 1000 kg/m³)",
@@ -18,10 +20,19 @@
       "bloom": "Understand",
       "evidenceType": "prediction recorded before reveal + short written explanation",
       "eaStage1": [
-        { "code": "1.1", "label": "Science and engineering fundamentals", "mappingStatus": "proposed" }
+        {
+          "code": "1.1",
+          "label": "Science and engineering fundamentals",
+          "mappingStatus": "proposed"
+        }
       ],
       "ncse2026": [
-        { "code": null, "label": null, "mappingStatus": "proposed", "verification_status": "needs-SME-review", "note": "NCSE 2026 ETP- identifiers could not be retrieved (engineersaustralia.org.au unreachable from the build environment). Not guessed." }
+        {
+          "code": "ETP-TK1",
+          "label": "Sciences and engineering fundamentals",
+          "mappingStatus": "proposed",
+          "verification_status": "unverified"
+        }
       ]
     },
     {
@@ -30,11 +41,30 @@
       "bloom": "Apply",
       "evidenceType": "committed numerical prediction compared with calculated ratio (v₂ factor 4 on halving D₂)",
       "eaStage1": [
-        { "code": "1.1", "label": "Science and engineering fundamentals", "mappingStatus": "proposed" },
-        { "code": "1.2", "label": "Mathematics and numerical reasoning", "mappingStatus": "proposed" }
+        {
+          "code": "1.1",
+          "label": "Science and engineering fundamentals",
+          "mappingStatus": "proposed"
+        },
+        {
+          "code": "1.2",
+          "label": "Mathematics and numerical reasoning",
+          "mappingStatus": "proposed"
+        }
       ],
       "ncse2026": [
-        { "code": null, "label": null, "mappingStatus": "proposed", "verification_status": "needs-SME-review", "note": "See explore activity." }
+        {
+          "code": "ETP-TK1",
+          "label": "Sciences and engineering fundamentals",
+          "mappingStatus": "proposed",
+          "verification_status": "unverified"
+        },
+        {
+          "code": "ETP-TK2",
+          "label": "Mathematics, numerical analysis and computing",
+          "mappingStatus": "proposed",
+          "verification_status": "unverified"
+        }
       ]
     },
     {
@@ -43,34 +73,120 @@
       "bloom": "Apply",
       "evidenceType": "design record: target, feasible bores, selected bore with forward check, one rejected interpretation, condition that would change the answer",
       "eaStage1": [
-        { "code": "2.1", "label": "Established methods for engineering problems", "mappingStatus": "proposed" },
-        { "code": "2.3", "label": "Systematic synthesis and design", "mappingStatus": "proposed" },
-        { "code": "3.2", "label": "Effective technical communication", "mappingStatus": "proposed" }
+        {
+          "code": "2.1",
+          "label": "Established methods for engineering problems",
+          "mappingStatus": "proposed"
+        },
+        {
+          "code": "2.3",
+          "label": "Systematic synthesis and design",
+          "mappingStatus": "proposed"
+        },
+        {
+          "code": "3.2",
+          "label": "Effective technical communication",
+          "mappingStatus": "proposed"
+        }
       ],
       "ncse2026": [
-        { "code": null, "label": null, "mappingStatus": "proposed", "verification_status": "needs-SME-review", "note": "See explore activity." }
+        {
+          "code": "ETP-SD1",
+          "label": "Synthesis and design",
+          "mappingStatus": "proposed",
+          "verification_status": "unverified"
+        },
+        {
+          "code": "ETP-IPS1",
+          "label": "Justify simplifying assumptions; predict performance",
+          "mappingStatus": "proposed",
+          "verification_status": "unverified"
+        }
       ]
     }
   ],
   "equations": [
-    { "id": "S02.EQ1", "text": "A = πD²/4", "latex": "A = \\frac{\\pi D^2}{4}", "specRef": "EQ-S02", "verification_status": "unverified" },
-    { "id": "S02.EQ2", "text": "v = Q/A", "latex": "v = \\frac{Q}{A}", "specRef": "EQ-S02", "verification_status": "unverified" },
-    { "id": "S02.EQ3", "text": "ṁ = ρQ", "latex": "\\dot m = \\rho Q", "specRef": "EQ-S02", "verification_status": "unverified" },
-    { "id": "S02.EQ4", "text": "D_min = √(4Q/(π v_max))", "latex": "D_{\\min} = \\sqrt{\\frac{4Q}{\\pi v_{\\max}}}", "specRef": "spec/simulations/S02.md §D", "verification_status": "unverified" }
+    {
+      "id": "S02.EQ1",
+      "text": "A = πD²/4",
+      "latex": "A = \\frac{\\pi D^2}{4}",
+      "specRef": "EQ-S02",
+      "verification_status": "unverified"
+    },
+    {
+      "id": "S02.EQ2",
+      "text": "v = Q/A",
+      "latex": "v = \\frac{Q}{A}",
+      "specRef": "EQ-S02",
+      "verification_status": "unverified"
+    },
+    {
+      "id": "S02.EQ3",
+      "text": "ṁ = ρQ",
+      "latex": "\\dot m = \\rho Q",
+      "specRef": "EQ-S02",
+      "verification_status": "unverified"
+    },
+    {
+      "id": "S02.EQ4",
+      "text": "D_min = √(4Q/(π v_max))",
+      "latex": "D_{\\min} = \\sqrt{\\frac{4Q}{\\pi v_{\\max}}}",
+      "specRef": "spec/simulations/S02.md §D",
+      "verification_status": "unverified"
+    }
   ],
   "coefficients": [
-    { "id": "rho", "value": 1000, "unit": "kg/m³", "basis": "stipulated by spec §C (teaching constant, not a property lookup)", "verification_status": "unverified" }
+    {
+      "id": "rho",
+      "value": 1000,
+      "unit": "kg/m³",
+      "basis": "stipulated by spec §C (teaching constant, not a property lookup)",
+      "verification_status": "unverified"
+    }
   ],
   "references": [
-    { "id": "DOE", "citation": "US DOE Fundamentals Handbook, Thermodynamics, Heat Transfer, and Fluid Flow, vol. 3, DOE-HDBK-1012/3-92", "specRef": "spec/research/REFERENCES.md", "verification_status": "unverified" }
+    {
+      "id": "DOE",
+      "citation": "US DOE Fundamentals Handbook, Thermodynamics, Heat Transfer, and Fluid Flow, vol. 3, DOE-HDBK-1012/3-92",
+      "specRef": "spec/research/REFERENCES.md",
+      "verification_status": "unverified"
+    }
   ],
   "applicabilityRules": [
-    { "id": "S02.A1.steady-incompressible", "verification_status": "unverified" },
-    { "id": "S02.A2.full-branch-free-pipe", "verification_status": "unverified" },
-    { "id": "S02.A3.mean-velocity-only", "verification_status": "unverified" },
-    { "id": "S02.A4.fixed-throughput", "verification_status": "unverified" },
-    { "id": "S02.I1.pressure-not-modelled", "verification_status": "unverified" },
-    { "id": "S02.G1.expansion-geometry", "verification_status": "unverified" },
-    { "id": "S02.D1.no-feasible-bore", "verification_status": "unverified" }
+    {
+      "id": "S02.A1.steady-incompressible",
+      "verification_status": "needs-SME-review",
+      "decision": "accepted as provisional by product owner (Run 2B brief)"
+    },
+    {
+      "id": "S02.A2.full-branch-free-pipe",
+      "verification_status": "needs-SME-review",
+      "decision": "accepted as provisional by product owner (Run 2B brief)"
+    },
+    {
+      "id": "S02.A3.mean-velocity-only",
+      "verification_status": "needs-SME-review",
+      "decision": "accepted as provisional by product owner (Run 2B brief)"
+    },
+    {
+      "id": "S02.A4.fixed-throughput",
+      "verification_status": "needs-SME-review",
+      "decision": "accepted as provisional by product owner (Run 2B brief)"
+    },
+    {
+      "id": "S02.I1.pressure-not-modelled",
+      "verification_status": "needs-SME-review",
+      "decision": "accepted as provisional by product owner (Run 2B brief)"
+    },
+    {
+      "id": "S02.G1.expansion-geometry",
+      "verification_status": "needs-SME-review",
+      "decision": "accepted as provisional by product owner (Run 2B brief)"
+    },
+    {
+      "id": "S02.D1.no-feasible-bore",
+      "verification_status": "needs-SME-review",
+      "decision": "accepted as provisional by product owner (Run 2B brief)"
+    }
   ]
 }

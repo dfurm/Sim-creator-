@@ -33,6 +33,8 @@ export interface NumericInputSpec {
   id: string; label: string; unit: string;
   min: number; max: number; default: number; step: number;
   alternative: string; source: 'manifest' | 'app-extension';
+  /** Where the range came from (free text). */
+  description?: string;
   /** Physical domain beyond the teaching range, e.g. strictly positive. */
   exclusiveMin?: number;
 }
@@ -319,6 +321,9 @@ export class AlgebraicBlock implements EducationalBlock {
         lines.push(['output', id, q.value === null ? '' : String(q.value), q.unit, q.status, q.origin, q.rules.join(' '),
           reason, this.def.simulationId, this.def.modelVersion, String(r.revision)]);
       }
+      for (const [key, value] of Object.entries(this.learning)) {
+        lines.push(['learning', key, '', '', '', 'recorded', '', JSON.stringify(value), this.def.simulationId, this.def.modelVersion, String(r.revision)]);
+      }
       rows = lines.length - 1;
       text = lines.map((l) => l.map(csvField).join(',')).join('\r\n') + '\r\n';
     }
@@ -332,6 +337,7 @@ export class AlgebraicBlock implements EducationalBlock {
       revision: r.revision, runId: this.runId, unitSystem: 'SI',
       inputs: this.def.inputs.map((s) => ({ id: s.id, value: this.inputs[s.id], unit: s.kind === 'number' ? s.unit : null })),
       outputs: r.outputs, checks: r.checks, extras: r.extras,
+      learning: this.learning,
     };
   }
 

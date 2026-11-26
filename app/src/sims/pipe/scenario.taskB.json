@@ -1,0 +1,107 @@
+{
+ "schemaVersion": "1.0.0",
+ "scenarioVersion": "0.2.0",
+ "simulationId": "S04",
+ "modelVersion": "0.2.0",
+ "variant": "composite.contraction-run",
+ "scenarioId": "pipe.task-b.ideal-vs-lossy",
+ "initialInputs": {
+  "Q": 0.001,
+  "D1": 0.05,
+  "D2": 0.025,
+  "dz": 0,
+  "L": 10,
+  "eps": 0,
+  "rho": 1000,
+  "mu": 0.001,
+  "p1": 101325,
+  "K": 0.3
+ },
+ "visibleInputs": [
+  "Q",
+  "D1",
+  "D2",
+  "dz",
+  "L",
+  "eps",
+  "rho",
+  "mu",
+  "p1",
+  "K"
+ ],
+ "lockedInputs": [
+  "Q",
+  "D1",
+  "D2",
+  "dz",
+  "L",
+  "eps",
+  "rho",
+  "mu",
+  "p1",
+  "K"
+ ],
+ "restrictedRanges": {},
+ "visibleOutputs": [
+  "v1",
+  "v2",
+  "Re1",
+  "Re2",
+  "regime",
+  "rel_rough",
+  "darcy_f",
+  "h_K",
+  "h_f",
+  "p2",
+  "p3",
+  "p2_ideal",
+  "p3_ideal",
+  "H1",
+  "H2",
+  "H3",
+  "residual"
+ ],
+ "hiddenUntil": {
+  "p3": "predict-b",
+  "h_K": "predict-b",
+  "h_f": "predict-b",
+  "darcy_f": "predict-b",
+  "H3": "predict-b",
+  "residual": "predict-b"
+ },
+ "objectives": [
+  "Compare ideal and lossy predictions for the same pipe and account for the difference with the head balance."
+ ],
+ "overlays": [
+  {
+   "anchor": "S04/loss_head",
+   "text": "Where does the missing head go?"
+  }
+ ],
+ "predictions": [
+  "predict-b"
+ ],
+ "tasks": [
+  "Predict how much lower the lossy p₃ is than the ideal p₃, in metres of head.",
+  "Reveal and use the head budget to account for the difference.",
+  "Answer the assessment items."
+ ],
+ "criteria": [
+  {
+   "op": "predictionRecorded",
+   "prompt": "predict-b"
+  },
+  {
+   "op": "explanationRecorded",
+   "prompt": "explain-b"
+  }
+ ],
+ "capture": [
+  "prediction",
+  "inputs",
+  "outputs",
+  "validity",
+  "explanation",
+  "assessment"
+ ]
+}

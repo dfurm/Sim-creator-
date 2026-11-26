@@ -319,7 +319,7 @@ export function App() {
               <summary>Curriculum mapping (proposed, not reviewed)</summary>
               <ul>
                 {metadata.activities.map((a) => (
-                  <li key={a.id}><code>{a.id}</code> · Bloom: {a.bloom} · EA Stage 1: {a.eaStage1.map((m) => `${m.code} ${m.label}`).join('; ')} · NCSE 2026: pending SME review · Evidence: {a.evidenceType}</li>
+                  <li key={a.id}><code>{a.id}</code> · Bloom: {a.bloom} · EA Stage 1: {a.eaStage1.map((m) => `${m.code} ${m.label}`).join('; ')} · NCSE 2026: {a.ncse2026.map((m) => `${m.code} ${m.label}`).join('; ')} · Evidence: {a.evidenceType}</li>
                 ))}
               </ul>
               <p>Fidelity: {metadata.fidelity.specFCodes.join(', ')} · {metadata.fidelity.modelForm} · {metadata.fidelity.solutionMethod} · data: {metadata.fidelity.dataDependency}. All equations and references: unverified.</p>

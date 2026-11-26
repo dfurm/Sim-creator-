@@ -45,6 +45,9 @@ const AREA: Dimension = [0, 2, 0, 0, 0, 0, 0];
 const VELOCITY: Dimension = [0, 1, -1, 0, 0, 0, 0];
 const MASS_FLOW: Dimension = [1, 0, -1, 0, 0, 0, 0];
 const DENSITY: Dimension = [1, -3, 0, 0, 0, 0, 0];
+const PRESSURE: Dimension = [1, -1, -2, 0, 0, 0, 0];
+const DYN_VISC: Dimension = [1, -1, -1, 0, 0, 0, 0];
+const KIN_VISC: Dimension = [0, 2, -1, 0, 0, 0, 0];
 
 /** Registry of units used by the Phase 2 blocks. SI units have factor 1, offset 0. */
 export const UNITS: Readonly<Record<string, UnitDef>> = {
@@ -59,6 +62,15 @@ export const UNITS: Readonly<Record<string, UnitDef>> = {
   'm/s': u('m/s', VELOCITY),
   'kg/s': u('kg/s', MASS_FLOW),
   'kg/m³': u('kg/m³', DENSITY),
+  'g/L': u('g/L', DENSITY),
+  'cm/s': u('cm/s', VELOCITY, 1e-2),
+  'Pa': u('Pa', PRESSURE),
+  'kPa': u('kPa', PRESSURE, 1e3),
+  'Pa·s': u('Pa·s', DYN_VISC),
+  'mPa·s': u('mPa·s', DYN_VISC, 1e-3),
+  'm²/s': u('m²/s', KIN_VISC),
+  /** Categorical/text output (manifest unit "text"); dimensionless by convention. */
+  'text': u('text', DIMENSIONLESS),
   's': u('s', TIME),
   'K': u('K', [0, 0, 0, 1, 0, 0, 0]),
   '°C': u('°C', [0, 0, 0, 1, 0, 0, 0], 1, 273.15),

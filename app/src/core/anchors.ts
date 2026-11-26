@@ -26,9 +26,11 @@ export interface AnchorSpec {
 
 export class AnchorRegistry {
   private readonly map = new Map<string, AnchorSpec>();
-  constructor(readonly simulationId: string, specs: readonly AnchorSpec[]) {
+  /** `memberIds` lets a composite lesson reuse anchors of the blocks it calls (e.g. S07, S08). */
+  constructor(readonly simulationId: string, specs: readonly AnchorSpec[], readonly memberIds: readonly string[] = []) {
+    const prefixes = [simulationId, ...memberIds].map((p) => `${p}/`);
     for (const s of specs) {
-      if (!ANCHOR_RE.test(s.id) || !s.id.startsWith(`${simulationId}/`)) {
+      if (!ANCHOR_RE.test(s.id) || !prefixes.some((p) => s.id.startsWith(p))) {
         throw new Error(`Anchor ${s.id} is not a valid ${simulationId} anchor`);
       }
       if (this.map.has(s.id)) throw new Error(`Duplicate anchor ${s.id}`);
