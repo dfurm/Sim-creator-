@@ -1,0 +1,130 @@
+{
+  "id": "S07",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Reynolds number and competing scales",
+    "subject": "Fluids",
+    "objectives": [
+      "Choose D for a target Re under each constraint. Transfer to a stirred tank and identify the new characteristic velocity/length before using any correlation."
+    ],
+    "fidelity": [
+      "F1"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S07.starter",
+  "inputs": [
+    {
+      "id": "rho",
+      "label": "Density ρ",
+      "unit": "kg/m³",
+      "min": 500.0,
+      "max": 1500.0,
+      "default": 1000.0,
+      "step": 1.0,
+      "alternative": "g/L",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "v",
+      "label": "Mean speed v",
+      "unit": "m/s",
+      "min": 0.0,
+      "max": 3.0,
+      "default": 0.1,
+      "step": 0.01,
+      "alternative": "cm/s",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "D",
+      "label": "Characteristic length D",
+      "unit": "m",
+      "min": 0.005,
+      "max": 0.1,
+      "default": 0.02,
+      "step": 0.001,
+      "alternative": "mm",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "mu",
+      "label": "Dynamic viscosity μ",
+      "unit": "Pa·s",
+      "min": 0.0005,
+      "max": 0.05,
+      "default": 0.001,
+      "step": 0.0001,
+      "alternative": "mPa·s",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "Q",
+      "label": "Flow in fixed-Q mode Q",
+      "unit": "m³/s",
+      "min": 0.0,
+      "max": 0.003,
+      "default": 3.1416e-05,
+      "step": 1e-06,
+      "alternative": "L/min",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "Re",
+      "unit": "1"
+    },
+    {
+      "id": "nu",
+      "unit": "m²/s"
+    },
+    {
+      "id": "velocity",
+      "unit": "m/s"
+    },
+    {
+      "id": "throughput",
+      "unit": "m³/s"
+    },
+    {
+      "id": "regime_screen",
+      "unit": "text"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S07",
+    "anchors": [
+      "characteristic_length",
+      "viscous_scale",
+      "inertial_scale"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S07.investigate",
+    "activity.S07.challenge"
+  ],
+  "applicabilityRules": [
+    "S07.assumptions.section-I"
+  ],
+  "references": [
+    "DOE",
+    "BL"
+  ],
+  "verification": [
+    "S07.fixtures.section-M"
+  ]
+}

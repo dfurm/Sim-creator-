@@ -1,0 +1,149 @@
+{
+  "id": "S28",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Uncertainty and sensitivity in flow measurement",
+    "subject": "Mathematics",
+    "objectives": [
+      "Allocate a metrology budget between bore and speed so uQ/Q≤specified target. Distinguish repeatability, calibration bias and assumed correlation. Check Monte Carlo sampling error by changing seed and N."
+    ],
+    "fidelity": [
+      "F2",
+      "F4"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S28.starter",
+  "inputs": [
+    {
+      "id": "D",
+      "label": "Mean diameter D",
+      "unit": "m",
+      "min": 0.01,
+      "max": 0.1,
+      "default": 0.05,
+      "step": 0.001,
+      "alternative": "mm",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "v",
+      "label": "Mean velocity v",
+      "unit": "m/s",
+      "min": 0.1,
+      "max": 2.0,
+      "default": 1.0,
+      "step": 0.01,
+      "alternative": "cm/s",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "uD",
+      "label": "Standard diameter uncertainty uD",
+      "unit": "m",
+      "min": 0.0,
+      "max": 0.005,
+      "default": 0.001,
+      "step": 0.0001,
+      "alternative": "mm",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "uv",
+      "label": "Standard speed uncertainty uv",
+      "unit": "m/s",
+      "min": 0.0,
+      "max": 0.2,
+      "default": 0.02,
+      "step": 0.001,
+      "alternative": "cm/s",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "r",
+      "label": "Correlation coefficient r",
+      "unit": "1",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0,
+      "step": 0.05,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "N",
+      "label": "Monte Carlo draws N",
+      "unit": "count",
+      "min": 1000.0,
+      "max": 50000.0,
+      "default": 10000.0,
+      "step": 1000.0,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "stepper + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "flow",
+      "unit": "m³/s"
+    },
+    {
+      "id": "u_flow",
+      "unit": "m³/s"
+    },
+    {
+      "id": "relative_u",
+      "unit": "1"
+    },
+    {
+      "id": "dQdD",
+      "unit": "m²/s"
+    },
+    {
+      "id": "dQdv",
+      "unit": "m²"
+    },
+    {
+      "id": "covariance_term",
+      "unit": "m⁶/s²"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S28",
+    "anchors": [
+      "covariance_term",
+      "diameter_probe",
+      "velocity_probe"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S28.investigate",
+    "activity.S28.challenge"
+  ],
+  "applicabilityRules": [
+    "S28.assumptions.section-I"
+  ],
+  "references": [
+    "GUM",
+    "STAT",
+    "MC"
+  ],
+  "verification": [
+    "S28.fixtures.section-M"
+  ]
+}

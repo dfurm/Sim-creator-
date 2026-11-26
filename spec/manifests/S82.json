@@ -1,0 +1,82 @@
+{
+  "id": "S82",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Constant-rate filtration and terminal pressure",
+    "subject": "Equipment design",
+    "objectives": [
+      "Choose area to meet a batch deadline below the supplied pressure ceiling."
+    ],
+    "fidelity": [
+      "F2"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S82.starter",
+  "inputs": [
+    {
+      "id": "J",
+      "label": "Specified flux J",
+      "unit": "m/s",
+      "min": 1e-05,
+      "max": 0.001,
+      "default": 0.0001,
+      "step": 1e-05,
+      "alternative": "cm/s",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "lim",
+      "label": "Pressure ceiling Δpₘ",
+      "unit": "Pa",
+      "min": 1000.0,
+      "max": 100000.0,
+      "default": 10000.0,
+      "step": 1000.0,
+      "alternative": "kPa",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "initial_drop",
+      "unit": "Pa"
+    },
+    {
+      "id": "pressure_slope",
+      "unit": "Pa/s"
+    },
+    {
+      "id": "deadline",
+      "unit": "s"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S82",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S82.investigate",
+    "activity.S82.challenge"
+  ],
+  "applicabilityRules": [
+    "S82.assumptions.section-I"
+  ],
+  "references": [
+    "PERRY",
+    "FILTER"
+  ],
+  "verification": [
+    "S82.fixtures.section-M"
+  ]
+}

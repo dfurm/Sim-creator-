@@ -1,0 +1,142 @@
+{
+  "id": "S12",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Cylindrical insulation and critical radius",
+    "subject": "Heat transfer",
+    "objectives": [
+      "Bracket on each side of rc, report all thicknesses for a target magnitude; impose any space cap after solving. At zero driving force no unique insulation design."
+    ],
+    "fidelity": [
+      "F2"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S12.starter",
+  "inputs": [
+    {
+      "id": "ri",
+      "label": "Inner insulation radius rᵢ",
+      "unit": "m",
+      "min": 0.001,
+      "max": 0.03,
+      "default": 0.005,
+      "step": 0.001,
+      "alternative": "mm",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "d",
+      "label": "Insulation thickness d",
+      "unit": "m",
+      "min": 0.0,
+      "max": 0.1,
+      "default": 0.005,
+      "step": 0.001,
+      "alternative": "mm",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "k",
+      "label": "Conductivity k",
+      "unit": "W/(m·K)",
+      "min": 0.02,
+      "max": 0.5,
+      "default": 0.1,
+      "step": 0.01,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "h",
+      "label": "Outside coefficient h",
+      "unit": "W/(m²·K)",
+      "min": 2.0,
+      "max": 50.0,
+      "default": 10.0,
+      "step": 0.5,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "Ti",
+      "label": "Inner surface Tᵢ",
+      "unit": "K",
+      "min": 280.0,
+      "max": 400.0,
+      "default": 350.0,
+      "step": 1.0,
+      "alternative": "°C",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "Ta",
+      "label": "Ambient T∞",
+      "unit": "K",
+      "min": 270.0,
+      "max": 330.0,
+      "default": 300.0,
+      "step": 1.0,
+      "alternative": "°C",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "outer_radius",
+      "unit": "m"
+    },
+    {
+      "id": "critical_radius",
+      "unit": "m"
+    },
+    {
+      "id": "resistance",
+      "unit": "K/W"
+    },
+    {
+      "id": "heat_rate",
+      "unit": "W"
+    },
+    {
+      "id": "surface_temperature",
+      "unit": "K"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S12",
+    "anchors": [
+      "critical_radius",
+      "outer_surface",
+      "bare_reference"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S12.investigate",
+    "activity.S12.challenge"
+  ],
+  "applicabilityRules": [
+    "S12.assumptions.section-I"
+  ],
+  "references": [
+    "HEAT"
+  ],
+  "verification": [
+    "S12.fixtures.section-M"
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "id": "S56",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Batch kinetics, selectivity and yield",
+    "subject": "Reaction engineering",
+    "objectives": [
+      "Choose harvest time for maximum intermediate and report sensitivity to k₂."
+    ],
+    "fidelity": [
+      "F2",
+      "F4"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S56.starter",
+  "inputs": [
+    {
+      "id": "k1",
+      "label": "First rate k₁",
+      "unit": "1/s",
+      "min": 0.001,
+      "max": 0.1,
+      "default": 0.01,
+      "step": 0.001,
+      "alternative": "1/min",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "k2",
+      "label": "Second rate k₂",
+      "unit": "1/s",
+      "min": 0.001,
+      "max": 0.1,
+      "default": 0.01,
+      "step": 0.001,
+      "alternative": "1/min",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "t",
+      "label": "Batch time t",
+      "unit": "s",
+      "min": 0.0,
+      "max": 500.0,
+      "default": 100.0,
+      "step": 1.0,
+      "alternative": "min",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "A",
+      "unit": "mol/m³"
+    },
+    {
+      "id": "B",
+      "unit": "mol/m³"
+    },
+    {
+      "id": "C",
+      "unit": "mol/m³"
+    },
+    {
+      "id": "peak_time",
+      "unit": "s"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S56",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {
+    "A": 1,
+    "B": 0,
+    "C": 0
+  },
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S56.investigate",
+    "activity.S56.challenge"
+  ],
+  "applicabilityRules": [
+    "S56.assumptions.section-I"
+  ],
+  "references": [
+    "FOG"
+  ],
+  "verification": [
+    "S56.fixtures.section-M"
+  ]
+}

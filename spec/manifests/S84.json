@@ -1,0 +1,96 @@
+{
+  "id": "S84",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Mixing time, heat production and scale evidence",
+    "subject": "Bioprocess",
+    "objectives": [
+      "Compare scaled tanks using mixing time, cooling margin and independent oxygen transfer rather than one criterion."
+    ],
+    "fidelity": [
+      "F2",
+      "F6"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S84.starter",
+  "inputs": [
+    {
+      "id": "tau",
+      "label": "Tracer decay time τₘ",
+      "unit": "s",
+      "min": 1.0,
+      "max": 100.0,
+      "default": 10.0,
+      "step": 1.0,
+      "alternative": "min",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "q",
+      "label": "Heat generation Q𝗀",
+      "unit": "W",
+      "min": 0.0,
+      "max": 500.0,
+      "default": 100.0,
+      "step": 1.0,
+      "alternative": "kW",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "UA",
+      "label": "Cooling conductance UA",
+      "unit": "W/K",
+      "min": 5.0,
+      "max": 100.0,
+      "default": 20.0,
+      "step": 1.0,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "mixing_time",
+      "unit": "s"
+    },
+    {
+      "id": "steady_temperature_rise",
+      "unit": "K"
+    },
+    {
+      "id": "heat_load",
+      "unit": "W"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S84",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S84.investigate",
+    "activity.S84.challenge"
+  ],
+  "applicabilityRules": [
+    "S84.assumptions.section-I"
+  ],
+  "references": [
+    "BIO",
+    "HEAT"
+  ],
+  "verification": [
+    "S84.fixtures.section-M"
+  ]
+}

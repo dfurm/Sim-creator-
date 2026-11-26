@@ -1,0 +1,96 @@
+{
+  "id": "S60",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Packed absorber height and diameter",
+    "subject": "Equipment design",
+    "objectives": [
+      "Compare diameter/height options for an assumed HTU; require new Kya before claiming velocity optimisation."
+    ],
+    "fidelity": [
+      "F3",
+      "F4"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S60.starter",
+  "inputs": [
+    {
+      "id": "yin",
+      "label": "Inlet mole fraction yᵢ",
+      "unit": "1",
+      "min": 0.002,
+      "max": 0.05,
+      "default": 0.02,
+      "step": 0.001,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "yout",
+      "label": "Outlet mole fraction yₒ",
+      "unit": "1",
+      "min": 0.001,
+      "max": 0.02,
+      "default": 0.005,
+      "step": 0.001,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "u",
+      "label": "Design superficial speed u",
+      "unit": "m/s",
+      "min": 0.2,
+      "max": 2.0,
+      "default": 1.0,
+      "step": 0.1,
+      "alternative": "cm/s",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "NTU",
+      "unit": "1"
+    },
+    {
+      "id": "height",
+      "unit": "m"
+    },
+    {
+      "id": "diameter",
+      "unit": "m"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S60",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S60.investigate",
+    "activity.S60.challenge"
+  ],
+  "applicabilityRules": [
+    "S60.assumptions.section-I"
+  ],
+  "references": [
+    "PERRY",
+    "SEP"
+  ],
+  "verification": [
+    "S60.fixtures.section-M"
+  ]
+}

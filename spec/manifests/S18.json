@@ -1,0 +1,134 @@
+{
+  "id": "S18",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Dynamic tank mass and level balance",
+    "subject": "Balances",
+    "objectives": [
+      "Find capacity required over a pulsed feed sequence; or determine gravity equilibrium (Qin/CdAo)²/(2g) and check vessel limits. Compare level-only vs separate outlet data."
+    ],
+    "fidelity": [
+      "F1",
+      "F4"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S18.starter",
+  "inputs": [
+    {
+      "id": "A",
+      "label": "Tank cross section A",
+      "unit": "m²",
+      "min": 0.05,
+      "max": 1.0,
+      "default": 0.2,
+      "step": 0.01,
+      "alternative": "cm²",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "h0",
+      "label": "Initial level h₀",
+      "unit": "m",
+      "min": 0.0,
+      "max": 2.0,
+      "default": 0.5,
+      "step": 0.01,
+      "alternative": "mm",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "Qi",
+      "label": "Inlet Qᵢ",
+      "unit": "m³/s",
+      "min": 0.0,
+      "max": 0.005,
+      "default": 0.002,
+      "step": 0.0001,
+      "alternative": "L/min",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "Qo",
+      "label": "Pumped outlet Qₒ",
+      "unit": "m³/s",
+      "min": 0.0,
+      "max": 0.005,
+      "default": 0.001,
+      "step": 0.0001,
+      "alternative": "L/min",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "t",
+      "label": "Run time t",
+      "unit": "s",
+      "min": 0.0,
+      "max": 300.0,
+      "default": 60.0,
+      "step": 1.0,
+      "alternative": "min",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "level",
+      "unit": "m"
+    },
+    {
+      "id": "volume",
+      "unit": "m³"
+    },
+    {
+      "id": "outlet_rate",
+      "unit": "m³/s"
+    },
+    {
+      "id": "event_time",
+      "unit": "s"
+    },
+    {
+      "id": "volume_residual",
+      "unit": "m³"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S18",
+    "anchors": [
+      "tank_level",
+      "outlet_rate",
+      "capacity_limit"
+    ]
+  },
+  "initialState": {
+    "level": 0.5
+  },
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S18.investigate",
+    "activity.S18.challenge"
+  ],
+  "applicabilityRules": [
+    "S18.assumptions.section-I"
+  ],
+  "references": [
+    "DOE",
+    "FNC",
+    "MEB"
+  ],
+  "verification": [
+    "S18.fixtures.section-M"
+  ]
+}

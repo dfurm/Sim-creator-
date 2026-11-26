@@ -1,0 +1,95 @@
+{
+  "id": "S81",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Turbulent velocity profiles and wall stress",
+    "subject": "Fluids",
+    "objectives": [
+      "Explain why two profiles passing through zero at the wall imply different reliability for shear."
+    ],
+    "fidelity": [
+      "F3"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S81.starter",
+  "inputs": [
+    {
+      "id": "n",
+      "label": "Profile exponent n",
+      "unit": "1",
+      "min": 5.0,
+      "max": 10.0,
+      "default": 7.0,
+      "step": 1.0,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "s",
+      "label": "Radius fraction r/R",
+      "unit": "1",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.5,
+      "step": 0.01,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "dp",
+      "label": "Measured drop Δp",
+      "unit": "Pa",
+      "min": 0.0,
+      "max": 20000.0,
+      "default": 1000.0,
+      "step": 10.0,
+      "alternative": "kPa",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "velocity_ratio",
+      "unit": "1"
+    },
+    {
+      "id": "mean_ratio",
+      "unit": "1"
+    },
+    {
+      "id": "wall_shear",
+      "unit": "Pa"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S81",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S81.investigate",
+    "activity.S81.challenge"
+  ],
+  "applicabilityRules": [
+    "S81.assumptions.section-I"
+  ],
+  "references": [
+    "DOE",
+    "BL"
+  ],
+  "verification": [
+    "S81.fixtures.section-M"
+  ]
+}

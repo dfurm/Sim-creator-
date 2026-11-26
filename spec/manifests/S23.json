@@ -1,0 +1,133 @@
+{
+  "id": "S23",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "McCabe–Thiele design and reflux",
+    "subject": "Separations",
+    "objectives": [
+      "Compare reflux vs stages at same purity and feed. No energy/cost ranking until latent heat/feed rate/utility prices supplied. Stage efficiency and flooding require additional models/data."
+    ],
+    "fidelity": [
+      "F2",
+      "F4"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S23.starter",
+  "inputs": [
+    {
+      "id": "alpha",
+      "label": "Relative volatility α",
+      "unit": "1",
+      "min": 1.1,
+      "max": 4.0,
+      "default": 2.0,
+      "step": 0.1,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "xd",
+      "label": "Distillate fraction xD",
+      "unit": "1",
+      "min": 0.55,
+      "max": 0.98,
+      "default": 0.8,
+      "step": 0.01,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "zf",
+      "label": "Feed fraction zF",
+      "unit": "1",
+      "min": 0.2,
+      "max": 0.8,
+      "default": 0.5,
+      "step": 0.01,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "xb",
+      "label": "Bottom fraction xB",
+      "unit": "1",
+      "min": 0.02,
+      "max": 0.45,
+      "default": 0.2,
+      "step": 0.01,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "R",
+      "label": "Reflux ratio R",
+      "unit": "1",
+      "min": 0.1,
+      "max": 15.0,
+      "default": 3.0,
+      "step": 0.1,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "minimum_reflux",
+      "unit": "1"
+    },
+    {
+      "id": "stage_count",
+      "unit": "count"
+    },
+    {
+      "id": "feed_stage",
+      "unit": "count"
+    },
+    {
+      "id": "last_x",
+      "unit": "1"
+    },
+    {
+      "id": "design_status",
+      "unit": "text"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S23",
+    "anchors": [
+      "feed_stage",
+      "rectifying_line",
+      "stripping_line",
+      "equilibrium_curve"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S23.investigate",
+    "activity.S23.challenge"
+  ],
+  "applicabilityRules": [
+    "S23.assumptions.section-I"
+  ],
+  "references": [
+    "SEP",
+    "MCC",
+    "TRAY"
+  ],
+  "verification": [
+    "S23.fixtures.section-M"
+  ]
+}

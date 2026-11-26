@@ -1,0 +1,126 @@
+{
+  "id": "S17",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Diffusive flux and transient concentration",
+    "subject": "Mass transfer",
+    "objectives": [
+      "Choose steady barrier thickness to limit flux, then explain why using that relation for breakthrough time is unjustified."
+    ],
+    "fidelity": [
+      "F1",
+      "F2"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S17.starter",
+  "inputs": [
+    {
+      "id": "D",
+      "label": "Diffusivity D",
+      "unit": "m²/s",
+      "min": 1e-10,
+      "max": 1e-08,
+      "default": 1e-09,
+      "step": 1e-10,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "L",
+      "label": "Steady slab thickness L",
+      "unit": "m",
+      "min": 0.0001,
+      "max": 0.01,
+      "default": 0.001,
+      "step": 0.0001,
+      "alternative": "mm",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "C1",
+      "label": "Left or surface concentration C₁",
+      "unit": "mol/m³",
+      "min": 0.0,
+      "max": 200.0,
+      "default": 100.0,
+      "step": 1.0,
+      "alternative": "mmol/L",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "C2",
+      "label": "Right or initial concentration C₂",
+      "unit": "mol/m³",
+      "min": 0.0,
+      "max": 200.0,
+      "default": 0.0,
+      "step": 1.0,
+      "alternative": "mmol/L",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "t",
+      "label": "Transient time t",
+      "unit": "s",
+      "min": 0.0,
+      "max": 1000.0,
+      "default": 100.0,
+      "step": 1.0,
+      "alternative": "min",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "steady_flux",
+      "unit": "mol/(m² s)"
+    },
+    {
+      "id": "penetration_scale",
+      "unit": "m"
+    },
+    {
+      "id": "probe_concentration",
+      "unit": "mol/m³"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S17",
+    "anchors": [
+      "concentration_profile",
+      "surface_boundary",
+      "penetration_cursor"
+    ]
+  },
+  "initialState": {
+    "concentration": 0
+  },
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S17.investigate",
+    "activity.S17.challenge"
+  ],
+  "applicabilityRules": [
+    "S17.assumptions.section-I"
+  ],
+  "references": [
+    "MIT",
+    "HEAT",
+    "DIFF"
+  ],
+  "verification": [
+    "S17.fixtures.section-M"
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "id": "S47",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Valve travel, installed characteristics and sizing",
+    "subject": "Equipment design",
+    "objectives": [
+      "Select conductance and operating travel range subject to authority; compare EXP02."
+    ],
+    "fidelity": [
+      "F3"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S47.starter",
+  "inputs": [
+    {
+      "id": "x",
+      "label": "Travel x",
+      "unit": "1",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.5,
+      "step": 0.01,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "R",
+      "label": "Rangeability R",
+      "unit": "1",
+      "min": 10.0,
+      "max": 100.0,
+      "default": 25.0,
+      "step": 1.0,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "b",
+      "label": "Line coefficient b",
+      "unit": "Pa·s²/m⁶",
+      "min": 0.0,
+      "max": 10000000000.0,
+      "default": 1000000000.0,
+      "step": 100000000.0,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "conductance",
+      "unit": "m³/(s√Pa)"
+    },
+    {
+      "id": "installed_flow",
+      "unit": "m³/s"
+    },
+    {
+      "id": "valve_drop",
+      "unit": "Pa"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S47",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S47.investigate",
+    "activity.S47.challenge"
+  ],
+  "applicabilityRules": [
+    "S47.assumptions.section-I"
+  ],
+  "references": [
+    "DOE",
+    "PERRY",
+    "IEC"
+  ],
+  "verification": [
+    "S47.fixtures.section-M"
+  ]
+}

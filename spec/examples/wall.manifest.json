@@ -1,0 +1,162 @@
+{
+  "id": "S11",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Fourier conduction through a composite wall",
+    "subject": "Heat transfer",
+    "objectives": [
+      "Separate material conductivity from layer resistance."
+    ],
+    "fidelity": [
+      "F2"
+    ]
+  },
+  "variant": "composite-steady",
+  "model": "thermal.planar.series",
+  "inputs": [
+    {
+      "id": "L1",
+      "label": "Layer one thickness L₁",
+      "unit": "m",
+      "min": 0.005,
+      "max": 0.2,
+      "default": 0.05,
+      "step": 0.001,
+      "alternative": "mm",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "k1",
+      "label": "Layer one conductivity k₁",
+      "unit": "W/(m·K)",
+      "min": 0.05,
+      "max": 10.0,
+      "default": 1.0,
+      "step": 0.05,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "L2",
+      "label": "Layer two thickness L₂",
+      "unit": "m",
+      "min": 0.005,
+      "max": 0.2,
+      "default": 0.05,
+      "step": 0.001,
+      "alternative": "mm",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "k2",
+      "label": "Layer two conductivity k₂",
+      "unit": "W/(m·K)",
+      "min": 0.05,
+      "max": 10.0,
+      "default": 0.5,
+      "step": 0.05,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "Rc",
+      "label": "Contact resistance R″c",
+      "unit": "m²·K/W",
+      "min": 0.0,
+      "max": 0.1,
+      "default": 0.0,
+      "step": 0.001,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "Th",
+      "label": "Left face temperature Tₕ",
+      "unit": "K",
+      "min": 273.0,
+      "max": 393.0,
+      "default": 333.0,
+      "step": 1.0,
+      "alternative": "°C",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "Tc",
+      "label": "Right face temperature T𝒸",
+      "unit": "K",
+      "min": 273.0,
+      "max": 393.0,
+      "default": 303.0,
+      "step": 1.0,
+      "alternative": "°C",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "resistance_area",
+      "unit": "m² K/W"
+    },
+    {
+      "id": "heat_flux",
+      "unit": "W/m²"
+    },
+    {
+      "id": "heat_rate",
+      "unit": "W"
+    },
+    {
+      "id": "interface_left",
+      "unit": "K"
+    },
+    {
+      "id": "interface_right",
+      "unit": "K"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "planar-layers",
+    "anchors": [
+      "material_layer_1",
+      "material_layer_2",
+      "contact_interface",
+      "heat_flux"
+    ]
+  },
+  "initialState": {},
+  "scenario": "examples/wall.scenario.json",
+  "activities": [
+    "wall.predict-thickness"
+  ],
+  "applicabilityRules": [
+    "geometry.planar",
+    "bc.fixedFaces",
+    "property.constant",
+    "phase.single",
+    "contact.nonnegative"
+  ],
+  "references": [
+    "HEAT"
+  ],
+  "verification": [
+    "S11-default",
+    "S11-zero-drive",
+    "S11-order-reversal",
+    "S11-contact-jump"
+  ]
+}

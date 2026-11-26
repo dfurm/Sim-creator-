@@ -1,0 +1,83 @@
+{
+  "id": "S36",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Sensible heating, latent duty and continuous energy balance",
+    "subject": "Balances",
+    "objectives": [
+      "Size ideal utility duty for throughput and target vapour fraction."
+    ],
+    "fidelity": [
+      "F2"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S36.starter",
+  "inputs": [
+    {
+      "id": "m",
+      "label": "Batch mass m",
+      "unit": "kg",
+      "min": 0.1,
+      "max": 10.0,
+      "default": 1.0,
+      "step": 0.1,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "E",
+      "label": "Added energy E",
+      "unit": "J",
+      "min": 0.0,
+      "max": 2000000.0,
+      "default": 520000.0,
+      "step": 10000.0,
+      "alternative": "kJ",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "temperature",
+      "unit": "K"
+    },
+    {
+      "id": "vapour_fraction",
+      "unit": "1"
+    },
+    {
+      "id": "specific_duty",
+      "unit": "J/kg"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S36",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S36.investigate",
+    "activity.S36.challenge"
+  ],
+  "applicabilityRules": [
+    "S36.assumptions.section-I"
+  ],
+  "references": [
+    "HEAT",
+    "THERMO",
+    "MEB"
+  ],
+  "verification": [
+    "S36.fixtures.section-M"
+  ]
+}

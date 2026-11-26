@@ -1,0 +1,82 @@
+{
+  "id": "S71",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Chemostat and washout",
+    "subject": "Bioprocess",
+    "objectives": [
+      "Explain which branch applies after a dilution disturbance."
+    ],
+    "fidelity": [
+      "F2"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S71.starter",
+  "inputs": [
+    {
+      "id": "d",
+      "label": "Scaled dilution D/μmax",
+      "unit": "1",
+      "min": 0.0,
+      "max": 1.2,
+      "default": 0.25,
+      "step": 0.01,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "s",
+      "label": "Feed Sᵢ/Ks",
+      "unit": "1",
+      "min": 0.1,
+      "max": 10.0,
+      "default": 2.0,
+      "step": 0.1,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "scaled_substrate",
+      "unit": "1"
+    },
+    {
+      "id": "scaled_biomass",
+      "unit": "1"
+    },
+    {
+      "id": "washout_threshold",
+      "unit": "1"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S71",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S71.investigate",
+    "activity.S71.challenge"
+  ],
+  "applicabilityRules": [
+    "S71.assumptions.section-I"
+  ],
+  "references": [
+    "BIO",
+    "MONOD"
+  ],
+  "verification": [
+    "S71.fixtures.section-M"
+  ]
+}

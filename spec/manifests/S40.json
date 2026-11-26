@@ -1,0 +1,80 @@
+{
+  "id": "S40",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Chemical equilibrium and extent",
+    "subject": "Thermodynamics",
+    "objectives": [
+      "Change temperature for conversion target and explain when activities are needed."
+    ],
+    "fidelity": [
+      "F2",
+      "F4"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S40.starter",
+  "inputs": [
+    {
+      "id": "K",
+      "label": "Reference equilibrium K",
+      "unit": "1",
+      "min": 0.1,
+      "max": 10.0,
+      "default": 1.0,
+      "step": 0.1,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "T",
+      "label": "Temperature T",
+      "unit": "K",
+      "min": 280.0,
+      "max": 360.0,
+      "default": 300.0,
+      "step": 1.0,
+      "alternative": "°C",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "equilibrium_extent",
+      "unit": "1"
+    },
+    {
+      "id": "K_adjusted",
+      "unit": "1"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S40",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S40.investigate",
+    "activity.S40.challenge"
+  ],
+  "applicabilityRules": [
+    "S40.assumptions.section-I"
+  ],
+  "references": [
+    "THERMO",
+    "FOG",
+    "PHASE"
+  ],
+  "verification": [
+    "S40.fixtures.section-M"
+  ]
+}

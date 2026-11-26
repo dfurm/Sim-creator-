@@ -1,0 +1,359 @@
+{
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "modelVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "scenario": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "scenarioId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scenarioVersion": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "simulationId": {
+          "type": "string",
+          "pattern": "^S[0-9]{2,}$"
+        },
+        "modelVersion": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "variant": {
+          "type": "string",
+          "minLength": 1
+        },
+        "initialInputs": {
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "number",
+              "boolean",
+              "string"
+            ]
+          }
+        },
+        "visibleInputs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "lockedInputs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "restrictedRanges": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "min": {
+                "type": "number"
+              },
+              "max": {
+                "type": "number"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "min",
+              "max"
+            ]
+          }
+        },
+        "visibleOutputs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "hiddenUntil": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "objectives": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "overlays": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "anchor": {
+                "type": "string",
+                "minLength": 1
+              },
+              "text": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "anchor",
+              "text"
+            ]
+          }
+        },
+        "predictions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "tasks": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "criteria": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "op": {
+                    "const": "predictionRecorded"
+                  },
+                  "prompt": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "op",
+                  "prompt"
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "op": {
+                    "const": "explanationRecorded"
+                  },
+                  "prompt": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "op",
+                  "prompt"
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "op": {
+                    "const": "outputWithin"
+                  },
+                  "output": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "min": {
+                    "type": "number"
+                  },
+                  "max": {
+                    "type": "number"
+                  },
+                  "unit": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "op",
+                  "output",
+                  "min",
+                  "max",
+                  "unit"
+                ]
+              }
+            ]
+          }
+        },
+        "capture": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "scenarioId",
+        "scenarioVersion",
+        "simulationId",
+        "modelVersion",
+        "variant",
+        "initialInputs",
+        "visibleInputs",
+        "lockedInputs",
+        "restrictedRanges",
+        "visibleOutputs",
+        "hiddenUntil",
+        "objectives",
+        "overlays",
+        "predictions",
+        "tasks",
+        "criteria",
+        "capture"
+      ],
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "runId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "timeSI": {
+      "type": "number"
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "number",
+          "boolean",
+          "string"
+        ]
+      }
+    },
+    "states": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number"
+      }
+    },
+    "solverVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rng": {
+      "type": "object",
+      "properties": {
+        "algorithm": {
+          "type": "string",
+          "minLength": 1
+        },
+        "state": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4294967295
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "algorithm",
+        "state"
+      ]
+    },
+    "assetVersions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "pendingEvents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "at": {
+            "type": "number"
+          },
+          "patch": {
+            "type": "object",
+            "additionalProperties": {
+              "type": [
+                "number",
+                "boolean",
+                "string"
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "at",
+          "patch"
+        ]
+      }
+    },
+    "externalDataHashes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "history": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "learning": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "modelVersion",
+    "scenario",
+    "revision",
+    "runId",
+    "timeSI",
+    "inputs",
+    "states",
+    "solverVersion",
+    "rng",
+    "assetVersions",
+    "pendingEvents",
+    "externalDataHashes",
+    "history",
+    "learning"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

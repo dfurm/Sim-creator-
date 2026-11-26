@@ -1,0 +1,286 @@
+﻿simulation,id,label,unit,min,max,default,step,alternative,scale,widget,role
+S01,b,Initial flow b,m³/s,0.0,0.01,0.002,0.0001,L/min,linear,slider + numeric,editable in active mode
+S01,m,Ramp slope m,m³/s²,-0.0001,0.0001,2e-05,1e-06,same,linear,slider + numeric,editable in active mode
+S01,t,End time t,s,0.0,100.0,50.0,1.0,min,linear,slider + numeric,editable in active mode
+S01,a,Start time a,s,0.0,100.0,0.0,1.0,min,linear,slider + numeric,editable in active mode
+S02,Q,Volumetric flow Q,m³/s,0.0,0.003,0.001,1e-05,L/min,linear,slider + numeric,editable in active mode
+S02,D1,Upstream bore D₁,m,0.01,0.1,0.05,0.001,mm,linear,slider + numeric,editable in active mode
+S02,D2,Downstream bore D₂,m,0.01,0.1,0.025,0.001,mm,linear,slider + numeric,editable in active mode
+S03,rho,Liquid density ρ,kg/m³,500.0,1500.0,1000.0,1.0,g/L,linear,slider + numeric,editable in active mode
+S03,h,Tap depth h,m,0.0,5.0,2.0,0.01,mm,linear,slider + numeric,editable in active mode
+S03,ps,Absolute surface pressure pₛ,Pa,80000.0,250000.0,101325.0,1.0,kPa,linear,slider + numeric,editable in active mode
+S04,Q,Volume flow Q,m³/s,0.0,0.002,0.001,1e-05,L/min,linear,slider + numeric,editable in active mode
+S04,D1,Inlet bore D₁,m,0.02,0.1,0.05,0.001,mm,linear,slider + numeric,editable in active mode
+S04,D2,Outlet bore D₂,m,0.015,0.1,0.025,0.001,mm,linear,slider + numeric,editable in active mode
+S04,dz,Outlet elevation z₂,m,-2.0,2.0,0.0,0.01,mm,linear,slider + numeric,editable in active mode
+S04,p1,Inlet absolute pressure p₁,Pa,80000.0,200000.0,101325.0,1.0,kPa,linear,slider + numeric,editable in active mode
+S04,K,Loss coefficient K,1,0.0,10.0,0.0,0.1,same,linear,slider + numeric,editable in active mode
+S04,hp,Added pump head hₚ,m,0.0,5.0,0.0,0.01,mm,linear,slider + numeric,editable in active mode
+S05,Q,Volume flow Q,m³/s,0.0,0.0001,1e-05,1e-06,L/min,linear,slider + numeric,editable in active mode
+S05,R,Tube radius R,m,0.003,0.025,0.01,0.0001,mm,linear,slider + numeric,editable in active mode
+S05,mu,Dynamic viscosity μ,Pa·s,0.001,0.05,0.001,0.0001,mPa·s,linear,slider + numeric,editable in active mode
+S05,s,Radial fraction r/R,1,0.0,1.0,0.5,0.01,same,linear,slider + numeric,editable in active mode
+S06,U,Free-stream speed U,m/s,0.2,15.0,2.0,0.1,cm/s,linear,slider + numeric,editable in active mode
+S06,nu,Kinematic viscosity ν,m²/s,8e-06,3e-05,1.5e-05,1e-06,same,linear,slider + numeric,editable in active mode
+S06,x,Probe location x,m,0.01,1.0,0.3,0.01,mm,linear,slider + numeric,editable in active mode
+S06,L,Plate length L,m,0.1,1.0,0.5,0.01,mm,linear,slider + numeric,editable in active mode
+S06,Pr,Prandtl number Pr,1,0.6,10.0,0.7,0.1,same,linear,slider + numeric,editable in active mode
+S07,rho,Density ρ,kg/m³,500.0,1500.0,1000.0,1.0,g/L,linear,slider + numeric,editable in active mode
+S07,v,Mean speed v,m/s,0.0,3.0,0.1,0.01,cm/s,linear,slider + numeric,editable in active mode
+S07,D,Characteristic length D,m,0.005,0.1,0.02,0.001,mm,linear,slider + numeric,editable in active mode
+S07,mu,Dynamic viscosity μ,Pa·s,0.0005,0.05,0.001,0.0001,mPa·s,linear,slider + numeric,editable in active mode
+S07,Q,Flow in fixed-Q mode Q,m³/s,0.0,0.003,3.1416e-05,1e-06,L/min,linear,slider + numeric,editable in active mode
+S08,Q,Flow Q,m³/s,0.0,0.01,0.001,1e-05,L/min,linear,slider + numeric,editable in active mode
+S08,D,Inside diameter D,m,0.01,0.1,0.05,0.001,mm,linear,slider + numeric,editable in active mode
+S08,L,Pipe length L,m,1.0,100.0,10.0,0.1,mm,linear,slider + numeric,editable in active mode
+S08,eps,Absolute roughness ε,m,0.0,0.001,0.0,1e-06,mm,linear,slider + numeric,editable in active mode
+S09,H0,Reference shutoff H₀,m,1.0,30.0,10.0,0.1,mm,linear,slider + numeric,editable in active mode
+S09,a,Pump curvature a,s²/m⁵,100000.0,10000000.0,1000000.0,10000.0,same,linear,slider + numeric,editable in active mode
+S09,b,System curvature b,s²/m⁵,100000.0,10000000.0,1000000.0,10000.0,same,linear,slider + numeric,editable in active mode
+S09,Hz,Static lift H𝓏,m,0.0,20.0,2.0,0.1,mm,linear,slider + numeric,editable in active mode
+S09,s,Speed ratio s,1,0.4,1.2,1.0,0.01,same,linear,slider + numeric,editable in active mode
+S09,eta,Assumed efficiency η,1,0.2,0.85,0.6,0.01,same,linear,slider + numeric,editable in active mode
+S10,Q,Required flow Q,m³/s,0.0001,0.005,0.001,0.0001,L/min,linear,slider + numeric,editable in active mode
+S10,L,Pipe length L,m,1.0,150.0,20.0,1.0,mm,linear,slider + numeric,editable in active mode
+S10,dz,Static lift Δz,m,0.0,10.0,2.0,0.1,mm,linear,slider + numeric,editable in active mode
+S10,f,Assumed Darcy factor f,1,0.01,0.06,0.02,0.001,same,linear,slider + numeric,editable in active mode
+S10,K,Minor loss sum ΣK,1,0.0,20.0,2.0,0.1,same,linear,slider + numeric,editable in active mode
+S10,eta,Pump efficiency η,1,0.3,0.9,0.6,0.01,same,linear,slider + numeric,editable in active mode
+S10,vmax,Velocity ceiling vₘ,m/s,0.5,4.0,2.0,0.1,cm/s,linear,slider + numeric,editable in active mode
+S11,L1,Layer one thickness L₁,m,0.005,0.2,0.05,0.001,mm,linear,slider + numeric,editable in active mode
+S11,k1,Layer one conductivity k₁,W/(m·K),0.05,10.0,1.0,0.05,same,linear,slider + numeric,editable in active mode
+S11,L2,Layer two thickness L₂,m,0.005,0.2,0.05,0.001,mm,linear,slider + numeric,editable in active mode
+S11,k2,Layer two conductivity k₂,W/(m·K),0.05,10.0,0.5,0.05,same,linear,slider + numeric,editable in active mode
+S11,Rc,Contact resistance R″c,m²·K/W,0.0,0.1,0.0,0.001,same,linear,slider + numeric,editable in active mode
+S11,Th,Left face temperature Tₕ,K,273.0,393.0,333.0,1.0,°C,linear,slider + numeric,editable in active mode
+S11,Tc,Right face temperature T𝒸,K,273.0,393.0,303.0,1.0,°C,linear,slider + numeric,editable in active mode
+S12,ri,Inner insulation radius rᵢ,m,0.001,0.03,0.005,0.001,mm,linear,slider + numeric,editable in active mode
+S12,d,Insulation thickness d,m,0.0,0.1,0.005,0.001,mm,linear,slider + numeric,editable in active mode
+S12,k,Conductivity k,W/(m·K),0.02,0.5,0.1,0.01,same,linear,slider + numeric,editable in active mode
+S12,h,Outside coefficient h,W/(m²·K),2.0,50.0,10.0,0.5,same,linear,slider + numeric,editable in active mode
+S12,Ti,Inner surface Tᵢ,K,280.0,400.0,350.0,1.0,°C,linear,slider + numeric,editable in active mode
+S12,Ta,Ambient T∞,K,270.0,330.0,300.0,1.0,°C,linear,slider + numeric,editable in active mode
+S13,L,Half-thickness L,m,0.001,0.05,0.005,0.001,mm,linear,slider + numeric,editable in active mode
+S13,h,Convection coefficient h,W/(m²·K),5.0,500.0,50.0,1.0,same,linear,slider + numeric,editable in active mode
+S13,k,Solid conductivity k,W/(m·K),0.1,100.0,10.0,0.1,same,linear,slider + numeric,editable in active mode
+S13,Ti,Initial temperature Tᵢ,K,273.0,393.0,350.0,1.0,°C,linear,slider + numeric,editable in active mode
+S13,Ta,Bath temperature T∞,K,273.0,393.0,300.0,1.0,°C,linear,slider + numeric,editable in active mode
+S13,t,Elapsed time t,s,0.0,2000.0,200.0,1.0,min,linear,slider + numeric,editable in active mode
+S14,U,Free-stream velocity U,m/s,0.2,15.0,2.0,0.1,cm/s,linear,slider + numeric,editable in active mode
+S14,L,Heated plate length L,m,0.05,1.0,0.3,0.01,mm,linear,slider + numeric,editable in active mode
+S14,Pr,Teaching-fluid Pr,1,0.6,10.0,0.7,0.1,same,linear,slider + numeric,editable in active mode
+S14,Tw,Plate temperature Tw,K,280.0,350.0,310.0,1.0,°C,linear,slider + numeric,editable in active mode
+S14,Ta,Free stream T∞,K,280.0,350.0,300.0,1.0,°C,linear,slider + numeric,editable in active mode
+S15,Ch,Hot capacity rate Cₕ,W/K,100.0,5000.0,1000.0,10.0,same,linear,slider + numeric,editable in active mode
+S15,Cc,Cold capacity rate C𝒸,W/K,100.0,5000.0,1000.0,10.0,same,linear,slider + numeric,editable in active mode
+S15,U,Overall coefficient U,W/(m²·K),50.0,2000.0,500.0,10.0,same,linear,slider + numeric,editable in active mode
+S15,A,Area A,m²,0.1,20.0,2.0,0.1,cm²,linear,slider + numeric,editable in active mode
+S15,Thi,Hot inlet Tₕᵢ,K,310.0,390.0,350.0,1.0,°C,linear,slider + numeric,editable in active mode
+S15,Tci,Cold inlet T𝒸ᵢ,K,273.0,330.0,300.0,1.0,°C,linear,slider + numeric,editable in active mode
+S16,Qd,Required duty Q̇,W,0.0,90000.0,25000.0,100.0,kW,linear,slider + numeric,editable in active mode
+S16,Ch,Hot capacity rate Cₕ,W/K,100.0,5000.0,1000.0,10.0,same,linear,slider + numeric,editable in active mode
+S16,Cc,Cold capacity rate C𝒸,W/K,100.0,5000.0,1000.0,10.0,same,linear,slider + numeric,editable in active mode
+S16,U,Clean overall U,W/(m²·K),50.0,2000.0,500.0,10.0,same,linear,slider + numeric,editable in active mode
+S16,Rf,Fouling resistance R″f,m²·K/W,0.0,0.005,0.0,0.0001,same,linear,slider + numeric,editable in active mode
+S16,Amax,Available surface Aₘ,m²,0.1,50.0,10.0,0.1,cm²,linear,slider + numeric,editable in active mode
+S17,D,Diffusivity D,m²/s,1e-10,1e-08,1e-09,1e-10,same,linear,slider + numeric,editable in active mode
+S17,L,Steady slab thickness L,m,0.0001,0.01,0.001,0.0001,mm,linear,slider + numeric,editable in active mode
+S17,C1,Left or surface concentration C₁,mol/m³,0.0,200.0,100.0,1.0,mmol/L,linear,slider + numeric,editable in active mode
+S17,C2,Right or initial concentration C₂,mol/m³,0.0,200.0,0.0,1.0,mmol/L,linear,slider + numeric,editable in active mode
+S17,t,Transient time t,s,0.0,1000.0,100.0,1.0,min,linear,slider + numeric,editable in active mode
+S18,A,Tank cross section A,m²,0.05,1.0,0.2,0.01,cm²,linear,slider + numeric,editable in active mode
+S18,h0,Initial level h₀,m,0.0,2.0,0.5,0.01,mm,linear,slider + numeric,editable in active mode
+S18,Qi,Inlet Qᵢ,m³/s,0.0,0.005,0.002,0.0001,L/min,linear,slider + numeric,editable in active mode
+S18,Qo,Pumped outlet Qₒ,m³/s,0.0,0.005,0.001,0.0001,L/min,linear,slider + numeric,editable in active mode
+S18,t,Run time t,s,0.0,300.0,60.0,1.0,min,linear,slider + numeric,editable in active mode
+S19,V,Working volume V,m³,0.001,0.2,0.01,0.001,L,linear,slider + numeric,editable in active mode
+S19,Q,Equal throughflow Q,m³/s,1e-05,0.002,0.0001,1e-05,L/min,linear,slider + numeric,editable in active mode
+S19,k,First-order constant k,1/s,0.0,0.1,0.01,0.001,1/min,linear,slider + numeric,editable in active mode
+S19,Cin,Feed Cᵢₙ,mol/m³,0.0,100.0,100.0,1.0,mmol/L,linear,slider + numeric,editable in active mode
+S19,C0,Initial C₀,mol/m³,0.0,100.0,0.0,1.0,mmol/L,linear,slider + numeric,editable in active mode
+S19,t,Time t,s,0.0,1000.0,50.0,1.0,min,linear,slider + numeric,editable in active mode
+S20,Q,Feed flow Q,m³/s,0.0001,0.01,0.001,0.0001,L/min,linear,slider + numeric,editable in active mode
+S20,k,Rate constant k,1/s,0.001,0.1,0.01,0.001,1/min,linear,slider + numeric,editable in active mode
+S20,V,Performance volume V,m³,0.001,1.0,0.1,0.001,L,linear,slider + numeric,editable in active mode
+S20,X,Design conversion X,1,0.0,0.999,0.5,0.001,same,linear,slider + numeric,editable in active mode
+S21,kr,First-order reference kᵣ,1/s,0.001,0.1,0.01,0.001,1/min,linear,slider + numeric,editable in active mode
+S21,Ea,Activation energy Eₐ,J/mol,10000.0,100000.0,50000.0,1000.0,kJ/mol,linear,slider + numeric,editable in active mode
+S21,Tr,Reference temperature Tᵣ,K,280.0,360.0,300.0,1.0,°C,linear,slider + numeric,editable in active mode
+S21,T,Operating temperature T,K,280.0,360.0,310.0,1.0,°C,linear,slider + numeric,editable in active mode
+S22,x,Liquid A fraction xₐ,1,0.0,1.0,0.5,0.01,same,linear,slider + numeric,editable in active mode
+S22,y,Vapour A fraction yₐ,1,0.0,1.0,0.5,0.01,same,linear,slider + numeric,editable in active mode
+S23,alpha,Relative volatility α,1,1.1,4.0,2.0,0.1,same,linear,slider + numeric,editable in active mode
+S23,xd,Distillate fraction xD,1,0.55,0.98,0.8,0.01,same,linear,slider + numeric,editable in active mode
+S23,zf,Feed fraction zF,1,0.2,0.8,0.5,0.01,same,linear,slider + numeric,editable in active mode
+S23,xb,Bottom fraction xB,1,0.02,0.45,0.2,0.01,same,linear,slider + numeric,editable in active mode
+S23,R,Reflux ratio R,1,0.1,15.0,3.0,0.1,same,linear,slider + numeric,editable in active mode
+S24,A,Filter area A,m²,0.005,0.5,0.01,0.001,cm²,linear,slider + numeric,editable in active mode
+S24,dp,Pressure difference Δp,Pa,10000.0,200000.0,100000.0,1000.0,kPa,linear,slider + numeric,editable in active mode
+S24,Rm,Medium resistance Rₘ,1/m,1000000000.0,1000000000000.0,10000000000.0,1000000000.0,same,linear,slider + numeric,editable in active mode
+S24,alpha,Specific cake resistance α,m/kg,1000000000.0,1000000000000.0,10000000000.0,1000000000.0,same,linear,slider + numeric,editable in active mode
+S24,c,Cake solids per filtrate c,kg/m³,0.0,100.0,10.0,1.0,g/L,linear,slider + numeric,editable in active mode
+S24,t,Cycle time t,s,0.0,3600.0,150.0,1.0,min,linear,slider + numeric,editable in active mode
+S24,Vtar,Filtrate target Vₜ,m³,0.001,0.2,0.01,0.001,L,linear,slider + numeric,editable in active mode
+S25,Kc,Controller gain K𝒸,1,0.0,10.0,2.0,0.1,same,linear,slider + numeric,editable in active mode
+S25,Ti,Integral time Tᵢ,s,0.5,50.0,5.0,0.1,min,linear,slider + numeric,editable in active mode
+S25,Td,Derivative time T𝒹,s,0.0,5.0,0.0,0.1,min,linear,slider + numeric,editable in active mode
+S25,r,Setpoint r,1,0.0,1.5,0.5,0.01,same,linear,slider + numeric,editable in active mode
+S25,d,Load disturbance d,1,-0.5,0.5,0.0,0.01,same,linear,slider + numeric,editable in active mode
+S26,lam,Decay rate λ,1/s,0.1,10.0,1.0,0.1,1/min,linear,slider + numeric,editable in active mode
+S26,dt,Time step Δt,s,0.01,4.0,0.5,0.01,min,linear,slider + numeric,editable in active mode
+S26,T,End time T,s,1.0,20.0,2.0,0.1,min,linear,slider + numeric,editable in active mode
+S27,n,Training points n,count,4.0,60.0,8.0,1.0,same,linear,stepper + numeric,editable in active mode
+S27,sig,Noise standard deviation σ,1,0.0,0.5,0.1,0.01,same,linear,slider + numeric,editable in active mode
+S27,seed,Dataset seed s,count,1.0,9999.0,17.0,1.0,same,linear,stepper + numeric,editable in active mode
+S27,xp,Prediction position x*,1,-1.0,2.0,0.5,0.01,same,linear,slider + numeric,editable in active mode
+S28,D,Mean diameter D,m,0.01,0.1,0.05,0.001,mm,linear,slider + numeric,editable in active mode
+S28,v,Mean velocity v,m/s,0.1,2.0,1.0,0.01,cm/s,linear,slider + numeric,editable in active mode
+S28,uD,Standard diameter uncertainty uD,m,0.0,0.005,0.001,0.0001,mm,linear,slider + numeric,editable in active mode
+S28,uv,Standard speed uncertainty uv,m/s,0.0,0.2,0.02,0.001,cm/s,linear,slider + numeric,editable in active mode
+S28,r,Correlation coefficient r,1,-1.0,1.0,0.0,0.05,same,linear,slider + numeric,editable in active mode
+S28,N,Monte Carlo draws N,count,1000.0,50000.0,10000.0,1000.0,same,linear,stepper + numeric,editable in active mode
+S29,x,Scaled abscissa x,1,0.1,5.0,2.0,0.1,same,linear,slider + numeric,editable in active mode
+S29,n,Power n,1,-3.0,3.0,2.0,0.1,same,linear,slider + numeric,editable in active mode
+S30,s,Target s,1,-1.0,9.0,4.0,0.1,same,linear,slider + numeric,editable in active mode
+S30,x,Newton starting point x,1,-5.0,5.0,1.0,0.1,same,linear,slider + numeric,editable in active mode
+S31,D,Length scale D,m,0.01,1.0,0.1,0.01,mm,linear,slider + numeric,editable in active mode
+S31,U,Speed U,m/s,0.1,5.0,1.0,0.1,cm/s,linear,slider + numeric,editable in active mode
+S32,qv,Generation qᵥ,W/m³,0.0,200.0,80.0,1.0,same,linear,slider + numeric,editable in active mode
+S32,N,Equal mesh intervals N,count,4.0,100.0,10.0,2.0,same,linear,stepper + numeric,editable in active mode
+S33,F1,First mass feed F₁,kg/s,0.0,5.0,1.0,0.1,kg/h,linear,slider + numeric,editable in active mode
+S33,F2,Second mass feed F₂,kg/s,0.0,5.0,3.0,0.1,kg/h,linear,slider + numeric,editable in active mode
+S33,x1,First solute fraction x₁,1,0.0,1.0,0.8,0.01,same,linear,slider + numeric,editable in active mode
+S33,x2,Second solute fraction x₂,1,0.0,1.0,0.0,0.01,same,linear,slider + numeric,editable in active mode
+S34,p,Purge fraction p,1,0.0,1.0,0.2,0.01,same,linear,slider + numeric,editable in active mode
+S34,X,Single-pass conversion X,1,0.0,0.95,0.5,0.01,same,linear,slider + numeric,editable in active mode
+S34,b,Bypass fraction b,1,0.0,1.0,0.2,0.01,same,linear,slider + numeric,editable in active mode
+S35,b,Desired extent rate ξB,mol/s,0.0,1.0,0.4,0.01,same,linear,slider + numeric,editable in active mode
+S35,c,Side extent rate ξC,mol/s,0.0,1.0,0.1,0.01,same,linear,slider + numeric,editable in active mode
+S36,m,Batch mass m,kg,0.1,10.0,1.0,0.1,same,linear,slider + numeric,editable in active mode
+S36,E,Added energy E,J,0.0,2000000.0,520000.0,10000.0,kJ,linear,slider + numeric,editable in active mode
+S37,Tr,Reduced temperature Tᵣ,1,0.8,2.0,1.0,0.01,same,linear,slider + numeric,editable in active mode
+S37,vr,Reduced molar volume vᵣ,1,0.4,6.0,1.0,0.01,same,linear,slider + numeric,editable in active mode
+S38,r,Volume ratio V₂/V₁,1,0.2,1.0,0.5,0.01,same,linear,slider + numeric,editable in active mode
+S38,n,Polytropic exponent n,1,1.0,1.67,1.4,0.01,same,linear,slider + numeric,editable in active mode
+S39,TL,Cold reservoir Tₗ,K,245.0,290.0,270.0,1.0,°C,linear,slider + numeric,editable in active mode
+S39,TH,Hot reservoir Tₕ,K,295.0,340.0,300.0,1.0,°C,linear,slider + numeric,editable in active mode
+S39,W,Input power W,W,100.0,2000.0,200.0,10.0,kW,linear,slider + numeric,editable in active mode
+S40,K,Reference equilibrium K,1,0.1,10.0,1.0,0.1,same,linear,slider + numeric,editable in active mode
+S40,T,Temperature T,K,280.0,360.0,300.0,1.0,°C,linear,slider + numeric,editable in active mode
+S41,A,Interaction parameter A,1,0.0,1.5,0.5,0.05,same,linear,slider + numeric,editable in active mode
+S41,x,Liquid mole fraction x,1,0.0,1.0,0.5,0.01,same,linear,slider + numeric,editable in active mode
+S41,z,Flash feed fraction z,1,0.0,1.0,0.5,0.01,same,linear,slider + numeric,editable in active mode
+S42,beta,Diameter ratio β,1,0.2,0.8,0.5,0.01,same,linear,slider + numeric,editable in active mode
+S42,dp,Measured differential Δp,Pa,0.0,10000.0,1000.0,10.0,kPa,linear,slider + numeric,editable in active mode
+S42,Cd,Assumed discharge coefficient Cd,1,0.4,1.0,0.95,0.01,same,linear,slider + numeric,editable in active mode
+S43,n,Flow index n,1,0.3,1.5,1.0,0.05,same,linear,slider + numeric,editable in active mode
+S43,g,Shear rate γ̇,1/s,0.1,100.0,10.0,0.1,1/min,linear,slider + numeric,editable in active mode
+S44,r,Capillary radius r,m,0.0001,0.002,0.001,0.0001,mm,linear,slider + numeric,editable in active mode
+S44,theta,Contact angle θ,rad,0.0,3.14,0.0,0.01,degrees,linear,slider + numeric,editable in active mode
+S44,sig,Surface tension σ,N/m,0.02,0.08,0.07,0.001,same,linear,slider + numeric,editable in active mode
+S45,Q,Total network flow Q,m³/s,0.0,0.01,0.002,0.0001,L/min,linear,slider + numeric,editable in active mode
+S45,ratio,Resistance ratio K₂/K₁,1,0.25,9.0,1.0,0.25,same,linear,slider + numeric,editable in active mode
+S46,ps,Surface absolute pressure pₛ,Pa,80000.0,150000.0,101325.0,1.0,kPa,linear,slider + numeric,editable in active mode
+S46,pv,Vapour pressure pᵥ,Pa,1000.0,30000.0,3000.0,100.0,kPa,linear,slider + numeric,editable in active mode
+S46,dz,Surface minus pump elevation Δz,m,-5.0,5.0,0.0,0.1,mm,linear,slider + numeric,editable in active mode
+S46,hf,Suction loss hƒ,m,0.0,8.0,1.0,0.1,mm,linear,slider + numeric,editable in active mode
+S47,x,Travel x,1,0.0,1.0,0.5,0.01,same,linear,slider + numeric,editable in active mode
+S47,R,Rangeability R,1,10.0,100.0,25.0,1.0,same,linear,slider + numeric,editable in active mode
+S47,b,Line coefficient b,Pa·s²/m⁶,0.0,10000000000.0,1000000000.0,100000000.0,same,linear,slider + numeric,editable in active mode
+S48,r,Back pressure ratio pᵦ/p₀,1,0.1,1.0,0.7,0.01,same,linear,slider + numeric,editable in active mode
+S48,A,Throat area A,m²,0.0001,0.002,0.001,0.0001,cm²,linear,slider + numeric,editable in active mode
+S49,d,Particle diameter d,m,1e-06,0.0005,1e-05,1e-06,mm,linear,slider + numeric,editable in active mode
+S49,H,Settling distance H,m,0.01,1.0,0.1,0.01,mm,linear,slider + numeric,editable in active mode
+S50,void,Void fraction ε,1,0.3,0.6,0.4,0.01,same,linear,slider + numeric,editable in active mode
+S50,U,Superficial velocity U,m/s,0.0,0.15,0.01,0.001,cm/s,linear,slider + numeric,editable in active mode
+S50,dp,Sphere diameter dₚ,m,0.0005,0.005,0.002,0.0001,mm,linear,slider + numeric,editable in active mode
+S51,ri,Sphere core radius rᵢ,m,0.005,0.05,0.01,0.001,mm,linear,slider + numeric,editable in active mode
+S51,ro,Outer radius rₒ,m,0.01,0.1,0.02,0.001,mm,linear,slider + numeric,editable in active mode
+S51,phi,Material fraction φ,1,0.0,1.0,0.5,0.01,same,linear,slider + numeric,editable in active mode
+S51,ml,Fin parameter mL,1,0.01,5.0,1.0,0.01,same,linear,slider + numeric,editable in active mode
+S52,Ts,Surface Tₛ,K,280.0,500.0,330.0,1.0,°C,linear,slider + numeric,editable in active mode
+S52,eps,Emissivity ε,1,0.0,1.0,0.8,0.01,same,linear,slider + numeric,editable in active mode
+S52,h,Effective convection h,W/(m²·K),0.0,30.0,5.0,0.5,same,linear,slider + numeric,editable in active mode
+S53,UA,Overall conductance UA,W/K,50.0,2000.0,500.0,10.0,same,linear,slider + numeric,editable in active mode
+S53,C,Cold capacity rate C,W/K,100.0,2000.0,500.0,10.0,same,linear,slider + numeric,editable in active mode
+S54,kg,Gas coefficient k𝓰,m/s,0.001,0.1,0.02,0.001,cm/s,linear,slider + numeric,editable in active mode
+S54,kl,Liquid coefficient kₗ,m/s,0.001,0.1,0.01,0.001,cm/s,linear,slider + numeric,editable in active mode
+S54,m,Equilibrium slope m,1,0.1,5.0,2.0,0.1,same,linear,slider + numeric,editable in active mode
+S55,rh,Relative humidity RH,1,0.0,1.0,0.5,0.01,same,linear,slider + numeric,editable in active mode
+S55,X,Target dry-basis moisture X,kg/kg,0.02,0.5,0.1,0.01,same,linear,slider + numeric,editable in active mode
+S56,k1,First rate k₁,1/s,0.001,0.1,0.01,0.001,1/min,linear,slider + numeric,editable in active mode
+S56,k2,Second rate k₂,1/s,0.001,0.1,0.01,0.001,1/min,linear,slider + numeric,editable in active mode
+S56,t,Batch time t,s,0.0,500.0,100.0,1.0,min,linear,slider + numeric,editable in active mode
+S57,N,Tank count N,count,1.0,10.0,2.0,1.0,same,linear,stepper + numeric,editable in active mode
+S57,tau,Mean time τ,s,5.0,200.0,50.0,1.0,min,linear,slider + numeric,editable in active mode
+S58,Da,Reference Damköhler Da,1,0.01,2.0,0.1,0.01,same,linear,slider + numeric,editable in active mode
+S58,B,Heat release group B,1,0.0,12.0,5.0,0.1,same,linear,slider + numeric,editable in active mode
+S58,H,Heat removal group H,1,0.1,4.0,1.0,0.1,same,linear,slider + numeric,editable in active mode
+S59,phi,Thiele modulus φ,1,0.01,20.0,1.0,0.01,same,linear,slider + numeric,editable in active mode
+S60,yin,Inlet mole fraction yᵢ,1,0.002,0.05,0.02,0.001,same,linear,slider + numeric,editable in active mode
+S60,yout,Outlet mole fraction yₒ,1,0.001,0.02,0.005,0.001,same,linear,slider + numeric,editable in active mode
+S60,u,Design superficial speed u,m/s,0.2,2.0,1.0,0.1,cm/s,linear,slider + numeric,editable in active mode
+S61,K,Partition coefficient K,1,0.2,10.0,2.0,0.1,same,linear,slider + numeric,editable in active mode
+S61,S,Total solvent flow S,kg/s,0.1,5.0,1.0,0.1,kg/h,linear,slider + numeric,editable in active mode
+S61,N,Stages N,count,1.0,8.0,2.0,1.0,same,linear,stepper + numeric,editable in active mode
+S62,b,Affinity b,m³/mol,0.1,10.0,1.0,0.1,same,linear,slider + numeric,editable in active mode
+S62,Cin,Inlet Cᵢ,mol/m³,0.1,10.0,1.0,0.1,mmol/L,linear,slider + numeric,editable in active mode
+S62,M,Sorbent mass M,kg,0.1,5.0,1.0,0.1,same,linear,slider + numeric,editable in active mode
+S63,tmp,Transmembrane pressure TMP,Pa,10000.0,200000.0,100000.0,1000.0,kPa,linear,slider + numeric,editable in active mode
+S63,rf,Fouling resistance Rƒ,1/m,0.0,2000000000000.0,1000000000000.0,10000000000.0,same,linear,slider + numeric,editable in active mode
+S63,Q,Permeate demand Qₚ,m³/s,1e-06,0.0001,1e-05,1e-06,L/min,linear,slider + numeric,editable in active mode
+S64,F,Feed F,kg/s,0.1,5.0,1.0,0.1,kg/h,linear,slider + numeric,editable in active mode
+S64,E,Evaporation E,kg/s,0.0,0.8,0.5,0.01,kg/h,linear,slider + numeric,editable in active mode
+S64,xf,Feed fraction xƒ,1,0.05,0.5,0.2,0.01,same,linear,slider + numeric,editable in active mode
+S64,xs,Mother liquor saturation xₛ,1,0.1,0.6,0.3,0.01,same,linear,slider + numeric,editable in active mode
+S65,vg,Settling speed v𝗀,m/s,1e-06,0.001,0.0001,1e-06,cm/s,linear,slider + numeric,editable in active mode
+S65,Sigma,Equivalent settling area Σ,m²,1.0,100.0,10.0,1.0,cm²,linear,slider + numeric,editable in active mode
+S66,tau,Time constant τ,s,1.0,50.0,10.0,1.0,min,linear,slider + numeric,editable in active mode
+S66,delay,Dead time θ,s,0.0,20.0,2.0,0.1,min,linear,slider + numeric,editable in active mode
+S66,zeta,Damping ζ,1,0.1,2.0,0.5,0.1,same,linear,slider + numeric,editable in active mode
+S66,omega,Angular frequency ω,rad/s,0.01,10.0,0.1,0.01,same,linear,slider + numeric,editable in active mode
+S67,r,Flow ratio r,1,0.0,3.0,1.0,0.1,same,linear,slider + numeric,editable in active mode
+S67,F1,Wild-stream flow F₁,kg/s,0.1,3.0,1.0,0.1,kg/h,linear,slider + numeric,editable in active mode
+S67,sp,Blend setpoint ysp,1,0.05,0.95,0.5,0.01,same,linear,slider + numeric,editable in active mode
+S68,a,Plant memory a,1,0.1,0.99,0.8,0.01,same,linear,slider + numeric,editable in active mode
+S68,N,Prediction horizon N,count,1.0,5.0,3.0,1.0,same,linear,stepper + numeric,editable in active mode
+S68,lam,Move penalty λ,1,0.0,2.0,0.1,0.1,same,linear,slider + numeric,editable in active mode
+S69,ts,Sensor lag τₛ,s,0.1,10.0,1.0,0.1,min,linear,slider + numeric,editable in active mode
+S69,ta,Actuator lag τₐ,s,0.1,10.0,2.0,0.1,min,linear,slider + numeric,editable in active mode
+S69,b,Sensor bias b,1,-0.3,0.3,0.0,0.01,same,linear,slider + numeric,editable in active mode
+S70,s,Initial scaled substrate S/Ks,1,0.1,10.0,1.0,0.1,same,linear,slider + numeric,editable in active mode
+S70,x,Initial scaled biomass X/(YKs),1,0.05,1.0,0.1,0.05,same,linear,slider + numeric,editable in active mode
+S71,d,Scaled dilution D/μmax,1,0.0,1.2,0.25,0.01,same,linear,slider + numeric,editable in active mode
+S71,s,Feed Sᵢ/Ks,1,0.1,10.0,2.0,0.1,same,linear,slider + numeric,editable in active mode
+S72,k,Transfer kLa,1/s,0.001,0.1,0.01,0.001,1/min,linear,slider + numeric,editable in active mode
+S72,r,Demand OUR,mol/(m³·s),0.0,0.005,0.001,0.0001,same,linear,slider + numeric,editable in active mode
+S73,s,Scaled substrate S/Km,1,0.0,10.0,1.0,0.1,same,linear,slider + numeric,editable in active mode
+S73,V,Maximum rate Vmax,mol/(m³·s),0.1,2.0,1.0,0.1,same,linear,slider + numeric,editable in active mode
+S74,t1,First retention time t₁,s,5.0,50.0,20.0,1.0,min,linear,slider + numeric,editable in active mode
+S74,t2,Second retention time t₂,s,5.0,60.0,28.0,1.0,min,linear,slider + numeric,editable in active mode
+S74,sig,Common peak width σ,s,0.5,8.0,2.0,0.1,min,linear,slider + numeric,editable in active mode
+S75,D,Impeller diameter D,m,0.02,0.5,0.1,0.01,mm,linear,slider + numeric,editable in active mode
+S75,N,Rotation rate N,1/s,1.0,20.0,5.0,0.5,1/min,linear,slider + numeric,editable in active mode
+S75,scale,Linear scale factor s,1,1.0,10.0,2.0,0.5,same,linear,slider + numeric,editable in active mode
+S76,duty,Thermal duty Q̇,W,1000.0,100000.0,10000.0,1000.0,kW,linear,slider + numeric,editable in active mode
+S76,dT,Water rise ΔT,K,1.0,20.0,5.0,1.0,°C,linear,slider + numeric,editable in active mode
+S76,hours,Annual operating time t,s,360000.0,28800000.0,3600000.0,360000.0,h,linear,slider + numeric,editable in active mode
+S77,N,Uniform cells N,count,10.0,200.0,50.0,10.0,same,linear,stepper + numeric,editable in active mode
+S77,C,Courant number C,1,0.1,1.5,0.8,0.1,same,linear,slider + numeric,editable in active mode
+S78,q,Initial normalised flux J₀,m/s,1e-05,0.001,0.0001,1e-05,cm/s,linear,slider + numeric,editable in active mode
+S78,cap,Specific capacity vₘ,m³/m²,0.01,1.0,0.1,0.01,same,linear,slider + numeric,editable in active mode
+S78,t,Processing time t,s,0.0,5000.0,1000.0,10.0,min,linear,slider + numeric,editable in active mode
+S79,N,Clean NTU N,1,0.0,5.0,1.0,0.05,same,linear,slider + numeric,editable in active mode
+S79,Cr,Capacity ratio Cᵣ,1,0.1,1.0,0.5,0.05,same,linear,slider + numeric,editable in active mode
+S79,beta,Fouling product Uclean Rf″,1,0.0,2.0,0.0,0.05,same,linear,slider + numeric,editable in active mode
+S80,T,Comparison temperature T₂,K,330.0,370.0,350.0,1.0,°C,linear,slider + numeric,editable in active mode
+S81,n,Profile exponent n,1,5.0,10.0,7.0,1.0,same,linear,slider + numeric,editable in active mode
+S81,s,Radius fraction r/R,1,0.0,1.0,0.5,0.01,same,linear,slider + numeric,editable in active mode
+S81,dp,Measured drop Δp,Pa,0.0,20000.0,1000.0,10.0,kPa,linear,slider + numeric,editable in active mode
+S82,J,Specified flux J,m/s,1e-05,0.001,0.0001,1e-05,cm/s,linear,slider + numeric,editable in active mode
+S82,lim,Pressure ceiling Δpₘ,Pa,1000.0,100000.0,10000.0,1000.0,kPa,linear,slider + numeric,editable in active mode
+S83,Re,Particle Reynolds number Re,1,0.0,200.0,100.0,1.0,same,linear,slider + numeric,editable in active mode
+S83,Sc,Schmidt number Sc,1,0.6,2.0,1.0,0.1,same,linear,slider + numeric,editable in active mode
+S84,tau,Tracer decay time τₘ,s,1.0,100.0,10.0,1.0,min,linear,slider + numeric,editable in active mode
+S84,q,Heat generation Q𝗀,W,0.0,500.0,100.0,1.0,kW,linear,slider + numeric,editable in active mode
+S84,UA,Cooling conductance UA,W/K,5.0,100.0,20.0,1.0,same,linear,slider + numeric,editable in active mode

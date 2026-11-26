@@ -1,0 +1,17 @@
+{
+  "specification": "0.1.0",
+  "controlled_records": 84,
+  "prototype_briefs": 28,
+  "subjects": 11,
+  "priority_criteria": 12,
+  "catalogue_rows_checked": 84,
+  "parameter_rows": 285,
+  "draft_manifests_schema_checked": 84,
+  "example_contracts_schema_checked": 4,
+  "reference_checks_passed": 30,
+  "prototype_topics_with_reference_check": 28,
+  "separate_norris_observations": 36,
+  "prerequisite_cycles": 0,
+  "external_academic_signoff": false,
+  "equipment_validation_claim": false
+}

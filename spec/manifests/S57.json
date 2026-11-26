@@ -1,0 +1,83 @@
+{
+  "id": "S57",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Tracer residence time and nonideal mixing",
+    "subject": "Reaction engineering",
+    "objectives": [
+      "Fit N and τ then test on an independent pulse; discuss sensor lag."
+    ],
+    "fidelity": [
+      "F2",
+      "F6"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S57.starter",
+  "inputs": [
+    {
+      "id": "N",
+      "label": "Tank count N",
+      "unit": "count",
+      "min": 1.0,
+      "max": 10.0,
+      "default": 2.0,
+      "step": 1.0,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "stepper + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "tau",
+      "label": "Mean time τ",
+      "unit": "s",
+      "min": 5.0,
+      "max": 200.0,
+      "default": 50.0,
+      "step": 1.0,
+      "alternative": "min",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "mean_time",
+      "unit": "s"
+    },
+    {
+      "id": "variance",
+      "unit": "s²"
+    },
+    {
+      "id": "recovery",
+      "unit": "1"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S57",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S57.investigate",
+    "activity.S57.challenge"
+  ],
+  "applicabilityRules": [
+    "S57.assumptions.section-I"
+  ],
+  "references": [
+    "FOG",
+    "FOGRTD"
+  ],
+  "verification": [
+    "S57.fixtures.section-M"
+  ]
+}

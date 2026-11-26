@@ -1,0 +1,132 @@
+{
+  "id": "S27",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Fitting an empirical correlation",
+    "subject": "Mathematics",
+    "objectives": [
+      "Choose smallest dataset and degree with acceptable held-out error; optional curved truth y=1+2x+x² demonstrates bias. Compare fit under interpolation and shifted-domain validation."
+    ],
+    "fidelity": [
+      "F4",
+      "F6"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S27.starter",
+  "inputs": [
+    {
+      "id": "n",
+      "label": "Training points n",
+      "unit": "count",
+      "min": 4.0,
+      "max": 60.0,
+      "default": 8.0,
+      "step": 1.0,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "stepper + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "sig",
+      "label": "Noise standard deviation σ",
+      "unit": "1",
+      "min": 0.0,
+      "max": 0.5,
+      "default": 0.1,
+      "step": 0.01,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "seed",
+      "label": "Dataset seed s",
+      "unit": "count",
+      "min": 1.0,
+      "max": 9999.0,
+      "default": 17.0,
+      "step": 1.0,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "stepper + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "xp",
+      "label": "Prediction position x*",
+      "unit": "1",
+      "min": -1.0,
+      "max": 2.0,
+      "default": 0.5,
+      "step": 0.01,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "intercept",
+      "unit": "1"
+    },
+    {
+      "id": "slope",
+      "unit": "1"
+    },
+    {
+      "id": "SSE",
+      "unit": "1"
+    },
+    {
+      "id": "holdout_RMSE",
+      "unit": "1"
+    },
+    {
+      "id": "CI_low",
+      "unit": "1"
+    },
+    {
+      "id": "CI_high",
+      "unit": "1"
+    },
+    {
+      "id": "PI_low",
+      "unit": "1"
+    },
+    {
+      "id": "PI_high",
+      "unit": "1"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S27",
+    "anchors": [
+      "residual_stem",
+      "training_domain",
+      "prediction_band"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S27.investigate",
+    "activity.S27.challenge"
+  ],
+  "applicabilityRules": [
+    "S27.assumptions.section-I"
+  ],
+  "references": [
+    "STAT",
+    "STRD",
+    "NORRIS",
+    "GAUSS"
+  ],
+  "verification": [
+    "S27.fixtures.section-M"
+  ]
+}

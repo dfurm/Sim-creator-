@@ -1,0 +1,113 @@
+{
+  "id": "S66",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Dynamic response and frequency domain",
+    "subject": "Control",
+    "objectives": [
+      "Fit delay and lag to a step then predict an independent sinusoidal response."
+    ],
+    "fidelity": [
+      "F2",
+      "F4"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S66.starter",
+  "inputs": [
+    {
+      "id": "tau",
+      "label": "Time constant τ",
+      "unit": "s",
+      "min": 1.0,
+      "max": 50.0,
+      "default": 10.0,
+      "step": 1.0,
+      "alternative": "min",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "delay",
+      "label": "Dead time θ",
+      "unit": "s",
+      "min": 0.0,
+      "max": 20.0,
+      "default": 2.0,
+      "step": 0.1,
+      "alternative": "min",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "zeta",
+      "label": "Damping ζ",
+      "unit": "1",
+      "min": 0.1,
+      "max": 2.0,
+      "default": 0.5,
+      "step": 0.1,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "omega",
+      "label": "Angular frequency ω",
+      "unit": "rad/s",
+      "min": 0.01,
+      "max": 10.0,
+      "default": 0.1,
+      "step": 0.01,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "magnitude",
+      "unit": "dB"
+    },
+    {
+      "id": "phase",
+      "unit": "deg"
+    },
+    {
+      "id": "step_response",
+      "unit": "1"
+    },
+    {
+      "id": "impulse_response",
+      "unit": "1/s"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S66",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S66.investigate",
+    "activity.S66.challenge"
+  ],
+  "applicabilityRules": [
+    "S66.assumptions.section-I"
+  ],
+  "references": [
+    "PID",
+    "FNC"
+  ],
+  "verification": [
+    "S66.fixtures.section-M"
+  ]
+}

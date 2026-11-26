@@ -1,0 +1,95 @@
+{
+  "id": "S79",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Shell-and-tube configuration and fouling",
+    "subject": "Equipment design",
+    "objectives": [
+      "Compare configurations at the same purchased area and a specified fouling allowance."
+    ],
+    "fidelity": [
+      "F2",
+      "F3"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S79.starter",
+  "inputs": [
+    {
+      "id": "N",
+      "label": "Clean NTU N",
+      "unit": "1",
+      "min": 0.0,
+      "max": 5.0,
+      "default": 1.0,
+      "step": 0.05,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "Cr",
+      "label": "Capacity ratio Cᵣ",
+      "unit": "1",
+      "min": 0.1,
+      "max": 1.0,
+      "default": 0.5,
+      "step": 0.05,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "beta",
+      "label": "Fouling product Uclean Rf″",
+      "unit": "1",
+      "min": 0.0,
+      "max": 2.0,
+      "default": 0.0,
+      "step": 0.05,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "effectiveness",
+      "unit": "1"
+    },
+    {
+      "id": "dirty_NTU",
+      "unit": "1"
+    },
+    {
+      "id": "duty",
+      "unit": "W"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S79",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S79.investigate",
+    "activity.S79.challenge"
+  ],
+  "applicabilityRules": [
+    "S79.assumptions.section-I"
+  ],
+  "references": [
+    "HEAT"
+  ],
+  "verification": [
+    "S79.fixtures.section-M"
+  ]
+}

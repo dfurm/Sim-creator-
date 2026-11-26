@@ -1,0 +1,95 @@
+{
+  "id": "S50",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Porous beds, pressure drop and fluidisation",
+    "subject": "Fluids",
+    "objectives": [
+      "Solve onset U by positive root, compare uncertainty in ε."
+    ],
+    "fidelity": [
+      "F3"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S50.starter",
+  "inputs": [
+    {
+      "id": "void",
+      "label": "Void fraction ε",
+      "unit": "1",
+      "min": 0.3,
+      "max": 0.6,
+      "default": 0.4,
+      "step": 0.01,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "U",
+      "label": "Superficial velocity U",
+      "unit": "m/s",
+      "min": 0.0,
+      "max": 0.15,
+      "default": 0.01,
+      "step": 0.001,
+      "alternative": "cm/s",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "dp",
+      "label": "Sphere diameter dₚ",
+      "unit": "m",
+      "min": 0.0005,
+      "max": 0.005,
+      "default": 0.002,
+      "step": 0.0001,
+      "alternative": "mm",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "gradient",
+      "unit": "Pa/m"
+    },
+    {
+      "id": "inertial_fraction",
+      "unit": "1"
+    },
+    {
+      "id": "onset_speed",
+      "unit": "m/s"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S50",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S50.investigate",
+    "activity.S50.challenge"
+  ],
+  "applicabilityRules": [
+    "S50.assumptions.section-I"
+  ],
+  "references": [
+    "ERGUN",
+    "PERRY"
+  ],
+  "verification": [
+    "S50.fixtures.section-M"
+  ]
+}

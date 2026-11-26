@@ -1,0 +1,14 @@
+# Applicability and empirical evidence
+
+Each rule stores a stable ID, variant, fact being tested, source and locator, kind (physical constraint, empirical domain, product guard, missing evidence, numerical condition), inclusive/exclusive bounds, units, reason, effect on outputs, alternative and ownership. Output eligibility is per quantity: a calculated Reynolds number can remain meaningful when a friction-factor estimate is suppressed. Formula choices and screen ranges are separately versioned. Treat unspecified geometry or boundary state as unknown. Cap numerical controls for interaction without treating those caps as a scientific domain.
+
+| Status | UI treatment | Action |
+|---|---|---|
+| Within documented applicability | Check icon, text and applicable rule list | All required known conditions pass. Explain evidence and omitted effects. |
+| Approaching a limit | Triangle and labelled condition | Show distance in physical units. Each rule carries an explicit source or author-defined buffer. |
+| Outside documented applicability | Stop marker, offending fact and consequence | Suppress affected normal output, export null plus reason; prevent assessed credit. For authorised educational extrapolation render separate dashed estimate and watermark. |
+| Cannot establish applicability | Question icon and missing fact | Block design recommendation that depends on it; show conditional calculations only with assumptions visible. |
+
+Combine controlling rules in order outside → unknown → approaching → within, retaining every individual result. Computational failure is a separate error channel. Solver convergence and model validity are independent. Example: full pipe, Newtonian fluid, sufficient development and fixed properties are separate checks; Re alone cannot establish the pipe model. In S05, screen 2000–<2300 as approaching, 2300–4000 transitional and above that outside the laminar teaching envelope. In S08 use approach band 2000–<2300 and 4000–4500 as provisional UI buffers, not physical thresholds. For S06, warn from Reₓ 4×10⁵, suppress laminar teaching prediction past 5×10⁵ unless instructor explicitly chooses comparison. Surface disturbance must be specified or labelled assumed. For S13 disclose Bi=0.1 screen, geometry, IC and face conditions. The catalogue preset may explicitly *stipulate* an ideal boundary condition; for user data, require evidence or return unknown.
+
+A comparison card reports both model names, boundary conditions, common units and inputs, curve provenance, absolute difference and relative difference where the denominator is meaningful. Preserve all invalidity flags in CSV and screenshots. Prohibit interpolation across a transition gap. Correlation coefficients without original fit range or geometry may be used in labelled synthetic exercises; numerical recommendations for an actual service require review.

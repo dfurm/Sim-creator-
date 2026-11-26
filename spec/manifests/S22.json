@@ -1,0 +1,92 @@
+{
+  "id": "S22",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Binary vapour–liquid equilibrium",
+    "subject": "Thermodynamics",
+    "objectives": [
+      "Recover liquid composition from specified vapour; optional given overall z and P derive phase fractions only inside the two-phase envelope. At pure endpoints both curves meet."
+    ],
+    "fidelity": [
+      "F1",
+      "F2"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S22.starter",
+  "inputs": [
+    {
+      "id": "x",
+      "label": "Liquid A fraction xₐ",
+      "unit": "1",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.5,
+      "step": 0.01,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "y",
+      "label": "Vapour A fraction yₐ",
+      "unit": "1",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.5,
+      "step": 0.01,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "bubble_pressure",
+      "unit": "Pa"
+    },
+    {
+      "id": "dew_pressure",
+      "unit": "Pa"
+    },
+    {
+      "id": "equilibrium_liquid",
+      "unit": "1"
+    },
+    {
+      "id": "equilibrium_vapour",
+      "unit": "1"
+    },
+    {
+      "id": "alpha",
+      "unit": "1"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S22",
+    "anchors": [
+      "equilibrium_pair",
+      "bubble_line",
+      "dew_line"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S22.investigate",
+    "activity.S22.challenge"
+  ],
+  "applicabilityRules": [
+    "S22.assumptions.section-I"
+  ],
+  "references": [
+    "SEP",
+    "THERMO"
+  ],
+  "verification": [
+    "S22.fixtures.section-M"
+  ]
+}

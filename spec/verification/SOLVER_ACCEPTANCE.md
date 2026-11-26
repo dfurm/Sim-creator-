@@ -1,0 +1,18 @@
+# Numerical workload and variant acceptance
+
+| Blocks | Kernel and computational order | Convergence, failure and graphics checks |
+|---|---|---|
+| S01–05, S07, S11, S12 forward, S19–22, S24 forward/inverse | O(1) scalar arithmetic; O(P) for P plot samples | Confirm a reference value, a limiting case and a rejected combination per brief. Keep signs and units at intermediate steps. Use 121 points for smooth 1D charts, include exact discontinuities/endpoints, resize without changing outputs. |
+| S06, S14 comparison | Similarity ODE integration O(MN) for M shooting iterations and N η steps. Cache by Pr/domain/tolerance, not x | Check f′(0)=0, f′(∞)≈1, f″(0)=.332057±.00002, θ(0)=0/θ(∞)≈1, Pr=1 identity, and δ99 against interpolation from refined solution. S14 direct mean/local law is O(1). |
+| S08 | O(log(initial bracket width / tolerance)) per root; O(P×iterations) for a Moody curve | At Q=0 f is undefined and Δp=0. Use a residual criterion and bracket-width criterion. Compare same dimensionless state in both dimensional views. |
+| S09–10 | Closed synthetic intersection O(1); discrete sizing O(B) for B bores, O(B×iterations) if friction root included | Test shutoff, negative-flow exclusion, no crossing, coincident roots and data hull. Importing a new curve invalidates cached intersections. |
+| S12 inverse | At most two monotone brackets, each O(log(1/tol)) | Report all feasible roots, tangent duplicates once, impossible target separately. Check forward heat-loss residual for each root. |
+| S13 | Uniform formula O(1); N-cell backward Euler tridiagonal solve O(N) per step and O(N) working memory | Volume-weighted energy balance includes face resistance. Compare e.g. N=40/80/160 and Δt/2 separately. Target <1% difference in centre and mean over selected test cases, then qualify against a reference plane-wall eigenfunction or independent solver. |
+| S15–16 | Direct performance and LMTD inverse O(1); design sweep O(B) | Cr→1, zero duty, both layout asymptotes, nonpositive ΔTlm arguments; confirm heat balance and re-evaluate design area with forward model. |
+| S17–18 | O(1) analytical or erfc per probe; gravity-drain event solve O(steps + bracket iterations) | Test t=0 boundary discontinuity; finite slab and half-space are different models. Localise tank-empty/full event, do not silently clip. |
+| S23 | O(stages) per R, capped at 500 stage steps; sweep O(B×stages) | Verify pinch/finite count and partial reboiler convention. Disable candidate operation past feed-pinch or invalid stage crossing. Show progress/cancel on large sweeps. |
+| S25–26 | O(n) scalar steps plus O(n) history unless downsampled in view | Fixed sample order, clipped final step and deterministic pause/replay. At refinement compare physical times, quantify divergence separately from overflow. |
+| S27 | QR O(np²), p≤3; O(P) prediction band; keep data untouched on failures | Rank deficiency and insufficient df must suppress intervals. Holdout used only for evaluation in a declared comparison; reserve separate final test if selecting degree on holdout. Check actual NIST coefficients in NORRIS_COMPARISON.md. |
+| S28 | O(1) delta method; O(N) draws and O(N log N) quantile sort | Compare variance and mean with analytical first-order scenario at small uncertainties; use multiple seeds or estimated simulation MC error, not deterministic equality with the linearised result for nonlinear Q. Test r=±1 and zero covariance. |
+
+These targets define implementation acceptance; no browser timing has yet been measured. Cases outside the scoped implementation are exposed as unavailable variants, not selectable buttons without a supported calculation.

@@ -1,0 +1,101 @@
+{
+  "id": "S69",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Sensor lag, actuator dynamics and fault diagnosis",
+    "subject": "Control",
+    "objectives": [
+      "Distinguish a stuck instrument from an actuator fault using a second measurement."
+    ],
+    "fidelity": [
+      "F4"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S69.starter",
+  "inputs": [
+    {
+      "id": "ts",
+      "label": "Sensor lag τₛ",
+      "unit": "s",
+      "min": 0.1,
+      "max": 10.0,
+      "default": 1.0,
+      "step": 0.1,
+      "alternative": "min",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "ta",
+      "label": "Actuator lag τₐ",
+      "unit": "s",
+      "min": 0.1,
+      "max": 10.0,
+      "default": 2.0,
+      "step": 0.1,
+      "alternative": "min",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "b",
+      "label": "Sensor bias b",
+      "unit": "1",
+      "min": -0.3,
+      "max": 0.3,
+      "default": 0.0,
+      "step": 0.01,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "actual_output",
+      "unit": "1"
+    },
+    {
+      "id": "measured_output",
+      "unit": "1"
+    },
+    {
+      "id": "actuator",
+      "unit": "1"
+    },
+    {
+      "id": "residual",
+      "unit": "1"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S69",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {
+    "measured": 0,
+    "actuator": 0
+  },
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S69.investigate",
+    "activity.S69.challenge"
+  ],
+  "applicabilityRules": [
+    "S69.assumptions.section-I"
+  ],
+  "references": [
+    "PID"
+  ],
+  "verification": [
+    "S69.fixtures.section-M"
+  ]
+}

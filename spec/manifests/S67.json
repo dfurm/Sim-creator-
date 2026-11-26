@@ -1,0 +1,98 @@
+{
+  "id": "S67",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Control structures and disturbance rejection",
+    "subject": "Control",
+    "objectives": [
+      "Choose the structure for a measured feed disturbance and evaluate saturation."
+    ],
+    "fidelity": [
+      "F4"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S67.starter",
+  "inputs": [
+    {
+      "id": "r",
+      "label": "Flow ratio r",
+      "unit": "1",
+      "min": 0.0,
+      "max": 3.0,
+      "default": 1.0,
+      "step": 0.1,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "F1",
+      "label": "Wild-stream flow F₁",
+      "unit": "kg/s",
+      "min": 0.1,
+      "max": 3.0,
+      "default": 1.0,
+      "step": 0.1,
+      "alternative": "kg/h",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "sp",
+      "label": "Blend setpoint ysp",
+      "unit": "1",
+      "min": 0.05,
+      "max": 0.95,
+      "default": 0.5,
+      "step": 0.01,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "ratio",
+      "unit": "1"
+    },
+    {
+      "id": "blend_fraction",
+      "unit": "1"
+    },
+    {
+      "id": "commanded_flow",
+      "unit": "kg/s"
+    },
+    {
+      "id": "actuator_flow",
+      "unit": "kg/s"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S67",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S67.investigate",
+    "activity.S67.challenge"
+  ],
+  "applicabilityRules": [
+    "S67.assumptions.section-I"
+  ],
+  "references": [
+    "PID"
+  ],
+  "verification": [
+    "S67.fixtures.section-M"
+  ]
+}

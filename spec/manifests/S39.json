@@ -1,0 +1,94 @@
+{
+  "id": "S39",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Entropy generation and refrigeration cycles",
+    "subject": "Thermodynamics",
+    "objectives": [
+      "Compare cooling and heating COP and select a feasible work target."
+    ],
+    "fidelity": [
+      "F2"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S39.starter",
+  "inputs": [
+    {
+      "id": "TL",
+      "label": "Cold reservoir Tₗ",
+      "unit": "K",
+      "min": 245.0,
+      "max": 290.0,
+      "default": 270.0,
+      "step": 1.0,
+      "alternative": "°C",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "TH",
+      "label": "Hot reservoir Tₕ",
+      "unit": "K",
+      "min": 295.0,
+      "max": 340.0,
+      "default": 300.0,
+      "step": 1.0,
+      "alternative": "°C",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "W",
+      "label": "Input power W",
+      "unit": "W",
+      "min": 100.0,
+      "max": 2000.0,
+      "default": 200.0,
+      "step": 10.0,
+      "alternative": "kW",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "COP",
+      "unit": "1"
+    },
+    {
+      "id": "COP_rev",
+      "unit": "1"
+    },
+    {
+      "id": "Sgen",
+      "unit": "W/K"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S39",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S39.investigate",
+    "activity.S39.challenge"
+  ],
+  "applicabilityRules": [
+    "S39.assumptions.section-I"
+  ],
+  "references": [
+    "THERMO"
+  ],
+  "verification": [
+    "S39.fixtures.section-M"
+  ]
+}

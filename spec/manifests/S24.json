@@ -1,0 +1,156 @@
+{
+  "id": "S24",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Cake filtration performance and filter area",
+    "subject": "Separations",
+    "objectives": [
+      "For a target volume by a deadline find minimum continuous area, round to candidate elements and forward check. Zero time and positive V is infeasible. Compare clean medium-only limit."
+    ],
+    "fidelity": [
+      "F2",
+      "F6"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S24.starter",
+  "inputs": [
+    {
+      "id": "A",
+      "label": "Filter area A",
+      "unit": "m²",
+      "min": 0.005,
+      "max": 0.5,
+      "default": 0.01,
+      "step": 0.001,
+      "alternative": "cm²",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "dp",
+      "label": "Pressure difference Δp",
+      "unit": "Pa",
+      "min": 10000.0,
+      "max": 200000.0,
+      "default": 100000.0,
+      "step": 1000.0,
+      "alternative": "kPa",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "Rm",
+      "label": "Medium resistance Rₘ",
+      "unit": "1/m",
+      "min": 1000000000.0,
+      "max": 1000000000000.0,
+      "default": 10000000000.0,
+      "step": 1000000000.0,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "alpha",
+      "label": "Specific cake resistance α",
+      "unit": "m/kg",
+      "min": 1000000000.0,
+      "max": 1000000000000.0,
+      "default": 10000000000.0,
+      "step": 1000000000.0,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "c",
+      "label": "Cake solids per filtrate c",
+      "unit": "kg/m³",
+      "min": 0.0,
+      "max": 100.0,
+      "default": 10.0,
+      "step": 1.0,
+      "alternative": "g/L",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "t",
+      "label": "Cycle time t",
+      "unit": "s",
+      "min": 0.0,
+      "max": 3600.0,
+      "default": 150.0,
+      "step": 1.0,
+      "alternative": "min",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "Vtar",
+      "label": "Filtrate target Vₜ",
+      "unit": "m³",
+      "min": 0.001,
+      "max": 0.2,
+      "default": 0.01,
+      "step": 0.001,
+      "alternative": "L",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "filtrate_volume",
+      "unit": "m³"
+    },
+    {
+      "id": "specific_volume",
+      "unit": "m"
+    },
+    {
+      "id": "flux",
+      "unit": "m/s"
+    },
+    {
+      "id": "required_area",
+      "unit": "m²"
+    },
+    {
+      "id": "dry_cake_mass",
+      "unit": "kg"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S24",
+    "anchors": [
+      "filter_cake",
+      "medium_resistance",
+      "filtrate_volume"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S24.investigate",
+    "activity.S24.challenge"
+  ],
+  "applicabilityRules": [
+    "S24.assumptions.section-I"
+  ],
+  "references": [
+    "FILTER"
+  ],
+  "verification": [
+    "S24.fixtures.section-M"
+  ]
+}

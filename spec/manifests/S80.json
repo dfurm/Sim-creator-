@@ -1,0 +1,65 @@
+{
+  "id": "S80",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Second-law limits and phase boundaries",
+    "subject": "Thermodynamics",
+    "objectives": [
+      "Infer local ΔH from two pressure points and evaluate sensitivity to narrow temperature spacing."
+    ],
+    "fidelity": [
+      "F2"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S80.starter",
+  "inputs": [
+    {
+      "id": "T",
+      "label": "Comparison temperature T₂",
+      "unit": "K",
+      "min": 330.0,
+      "max": 370.0,
+      "default": 350.0,
+      "step": 1.0,
+      "alternative": "°C",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "saturation_pressure",
+      "unit": "Pa"
+    },
+    {
+      "id": "local_slope",
+      "unit": "Pa/K"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S80",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S80.investigate",
+    "activity.S80.challenge"
+  ],
+  "applicabilityRules": [
+    "S80.assumptions.section-I"
+  ],
+  "references": [
+    "THERMO",
+    "PHASE"
+  ],
+  "verification": [
+    "S80.fixtures.section-M"
+  ]
+}

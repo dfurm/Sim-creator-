@@ -1,0 +1,82 @@
+{
+  "id": "S32",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Boundary values, finite differences and mesh refinement",
+    "subject": "Mathematics",
+    "objectives": [
+      "Choose coarsest mesh satisfying a flux or temperature error."
+    ],
+    "fidelity": [
+      "F4"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S32.starter",
+  "inputs": [
+    {
+      "id": "qv",
+      "label": "Generation qᵥ",
+      "unit": "W/m³",
+      "min": 0.0,
+      "max": 200.0,
+      "default": 80.0,
+      "step": 1.0,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "N",
+      "label": "Equal mesh intervals N",
+      "unit": "count",
+      "min": 4.0,
+      "max": 100.0,
+      "default": 10.0,
+      "step": 2.0,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "stepper + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "centre_T",
+      "unit": "K"
+    },
+    {
+      "id": "flux",
+      "unit": "W/m²"
+    },
+    {
+      "id": "error_norm",
+      "unit": "K"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S32",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S32.investigate",
+    "activity.S32.challenge"
+  ],
+  "applicabilityRules": [
+    "S32.assumptions.section-I"
+  ],
+  "references": [
+    "FNC",
+    "HEAT"
+  ],
+  "verification": [
+    "S32.fixtures.section-M"
+  ]
+}

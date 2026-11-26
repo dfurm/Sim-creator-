@@ -1,0 +1,135 @@
+{
+  "id": "S14",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Convection from a plate and the Nusselt number",
+    "subject": "Heat transfer",
+    "objectives": [
+      "Choose U to meet a target heat duty under a velocity cap. Compare whole-face and trailing-edge estimates. Transfer to internal flow and identify boundary condition data required before selecting a correlation."
+    ],
+    "fidelity": [
+      "F2"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S14.starter",
+  "inputs": [
+    {
+      "id": "U",
+      "label": "Free-stream velocity U",
+      "unit": "m/s",
+      "min": 0.2,
+      "max": 15.0,
+      "default": 2.0,
+      "step": 0.1,
+      "alternative": "cm/s",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "L",
+      "label": "Heated plate length L",
+      "unit": "m",
+      "min": 0.05,
+      "max": 1.0,
+      "default": 0.3,
+      "step": 0.01,
+      "alternative": "mm",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "Pr",
+      "label": "Teaching-fluid Pr",
+      "unit": "1",
+      "min": 0.6,
+      "max": 10.0,
+      "default": 0.7,
+      "step": 0.1,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "Tw",
+      "label": "Plate temperature Tw",
+      "unit": "K",
+      "min": 280.0,
+      "max": 350.0,
+      "default": 310.0,
+      "step": 1.0,
+      "alternative": "°C",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "Ta",
+      "label": "Free stream T∞",
+      "unit": "K",
+      "min": 280.0,
+      "max": 350.0,
+      "default": 300.0,
+      "step": 1.0,
+      "alternative": "°C",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "ReL",
+      "unit": "1"
+    },
+    {
+      "id": "Nu_local",
+      "unit": "1"
+    },
+    {
+      "id": "Nu_mean",
+      "unit": "1"
+    },
+    {
+      "id": "h_local",
+      "unit": "W/(m² K)"
+    },
+    {
+      "id": "h_mean",
+      "unit": "W/(m² K)"
+    },
+    {
+      "id": "duty",
+      "unit": "W"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S14",
+    "anchors": [
+      "heated_face",
+      "trailing_edge",
+      "local_strip"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S14.investigate",
+    "activity.S14.challenge"
+  ],
+  "applicabilityRules": [
+    "S14.assumptions.section-I"
+  ],
+  "references": [
+    "HEAT",
+    "BL",
+    "POHL"
+  ],
+  "verification": [
+    "S14.fixtures.section-M"
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "id": "S65",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Centrifuge capacity and biomass clarification",
+    "subject": "Equipment design",
+    "objectives": [
+      "Choose a candidate Σ, compare recovery vs throughput with vendor or independent calibration."
+    ],
+    "fidelity": [
+      "F2",
+      "F6"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S65.starter",
+  "inputs": [
+    {
+      "id": "vg",
+      "label": "Settling speed v𝗀",
+      "unit": "m/s",
+      "min": 1e-06,
+      "max": 0.001,
+      "default": 0.0001,
+      "step": 1e-06,
+      "alternative": "cm/s",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "Sigma",
+      "label": "Equivalent settling area Σ",
+      "unit": "m²",
+      "min": 1.0,
+      "max": 100.0,
+      "default": 10.0,
+      "step": 1.0,
+      "alternative": "cm²",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "capacity",
+      "unit": "m³/s"
+    },
+    {
+      "id": "radial_time",
+      "unit": "s"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S65",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S65.investigate",
+    "activity.S65.challenge"
+  ],
+  "applicabilityRules": [
+    "S65.assumptions.section-I"
+  ],
+  "references": [
+    "PERRY",
+    "BIO"
+  ],
+  "verification": [
+    "S65.fixtures.section-M"
+  ]
+}

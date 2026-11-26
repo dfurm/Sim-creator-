@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "1.0.0",
+  "scenarioId": "wall.predict-thickness",
+  "scenarioVersion": "0.1.0",
+  "simulationId": "S11",
+  "modelVersion": "0.1.0",
+  "variant": "composite-steady",
+  "initialInputs": {
+    "L1": 0.05,
+    "k1": 1.0,
+    "L2": 0.05,
+    "k2": 0.5,
+    "Rc": 0.0,
+    "Th": 333.0,
+    "Tc": 303.0
+  },
+  "visibleInputs": [
+    "L1",
+    "k1",
+    "L2",
+    "k2"
+  ],
+  "lockedInputs": [
+    "k1",
+    "L2",
+    "k2",
+    "Th",
+    "Tc",
+    "Rc"
+  ],
+  "restrictedRanges": {
+    "L1": {
+      "min": 0.05,
+      "max": 0.1
+    }
+  },
+  "visibleOutputs": [
+    "heat_flux",
+    "interface_left"
+  ],
+  "hiddenUntil": {
+    "heat_flux": "predict-thickness"
+  },
+  "objectives": [
+    "Predict heat flow after doubling one layer thickness."
+  ],
+  "overlays": [
+    {
+      "anchor": "material_layer_1",
+      "text": "Change this thickness while holding the material constant."
+    }
+  ],
+  "predictions": [
+    "predict-thickness"
+  ],
+  "tasks": [
+    "Double layer one thickness.",
+    "Explain the change in the total resistance."
+  ],
+  "criteria": [
+    {
+      "op": "predictionRecorded",
+      "prompt": "predict-thickness"
+    },
+    {
+      "op": "outputWithin",
+      "output": "heat_flux",
+      "min": 149.9,
+      "max": 150.1,
+      "unit": "W/m²"
+    },
+    {
+      "op": "explanationRecorded",
+      "prompt": "explain-series"
+    }
+  ],
+  "capture": [
+    "prediction",
+    "inputs",
+    "outputs",
+    "validity",
+    "explanation"
+  ]
+}

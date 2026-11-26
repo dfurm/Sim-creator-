@@ -1,0 +1,85 @@
+{
+  "id": "S70",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Growth, substrate and fermentation balances",
+    "subject": "Bioprocess",
+    "objectives": [
+      "Diagnose an apparent biomass decline caused by volume addition."
+    ],
+    "fidelity": [
+      "F4"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S70.starter",
+  "inputs": [
+    {
+      "id": "s",
+      "label": "Initial scaled substrate S/Ks",
+      "unit": "1",
+      "min": 0.1,
+      "max": 10.0,
+      "default": 1.0,
+      "step": 0.1,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "x",
+      "label": "Initial scaled biomass X/(YKs)",
+      "unit": "1",
+      "min": 0.05,
+      "max": 1.0,
+      "default": 0.1,
+      "step": 0.05,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "scaled_biomass",
+      "unit": "1"
+    },
+    {
+      "id": "scaled_substrate",
+      "unit": "1"
+    },
+    {
+      "id": "inventory_residual",
+      "unit": "1"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S70",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {
+    "s": 1,
+    "x": 0.1
+  },
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S70.investigate",
+    "activity.S70.challenge"
+  ],
+  "applicabilityRules": [
+    "S70.assumptions.section-I"
+  ],
+  "references": [
+    "BIO",
+    "MONOD"
+  ],
+  "verification": [
+    "S70.fixtures.section-M"
+  ]
+}

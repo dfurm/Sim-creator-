@@ -1,0 +1,5137 @@
+[
+  {
+    "id": "S01",
+    "title": "Rate, gradient and accumulated volume",
+    "version": "0.1.0",
+    "category": "A",
+    "fidelity": [
+      "F1"
+    ],
+    "prerequisites": [],
+    "score": 85.6,
+    "spec": "simulations/S01.md",
+    "inputs": [
+      {
+        "id": "b",
+        "label": "Initial flow b",
+        "unit": "m³/s",
+        "min": 0.0,
+        "max": 0.01,
+        "default": 0.002,
+        "step": 0.0001,
+        "alternative": "L/min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "m",
+        "label": "Ramp slope m",
+        "unit": "m³/s²",
+        "min": -0.0001,
+        "max": 0.0001,
+        "default": 2e-05,
+        "step": 1e-06,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "t",
+        "label": "End time t",
+        "unit": "s",
+        "min": 0.0,
+        "max": 100.0,
+        "default": 50.0,
+        "step": 1.0,
+        "alternative": "min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "a",
+        "label": "Start time a",
+        "unit": "s",
+        "min": 0.0,
+        "max": 100.0,
+        "default": 0.0,
+        "step": 1.0,
+        "alternative": "min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S02",
+    "title": "Continuity through a contraction",
+    "version": "0.1.0",
+    "category": "C",
+    "fidelity": [
+      "F1"
+    ],
+    "prerequisites": [],
+    "score": 89.6,
+    "spec": "simulations/S02.md",
+    "inputs": [
+      {
+        "id": "Q",
+        "label": "Volumetric flow Q",
+        "unit": "m³/s",
+        "min": 0.0,
+        "max": 0.003,
+        "default": 0.001,
+        "step": 1e-05,
+        "alternative": "L/min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "D1",
+        "label": "Upstream bore D₁",
+        "unit": "m",
+        "min": 0.01,
+        "max": 0.1,
+        "default": 0.05,
+        "step": 0.001,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "D2",
+        "label": "Downstream bore D₂",
+        "unit": "m",
+        "min": 0.01,
+        "max": 0.1,
+        "default": 0.025,
+        "step": 0.001,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S03",
+    "title": "Hydrostatic pressure and datum",
+    "version": "0.1.0",
+    "category": "B",
+    "fidelity": [
+      "F1"
+    ],
+    "prerequisites": [],
+    "score": 79.2,
+    "spec": "simulations/S03.md",
+    "inputs": [
+      {
+        "id": "rho",
+        "label": "Liquid density ρ",
+        "unit": "kg/m³",
+        "min": 500.0,
+        "max": 1500.0,
+        "default": 1000.0,
+        "step": 1.0,
+        "alternative": "g/L",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "h",
+        "label": "Tap depth h",
+        "unit": "m",
+        "min": 0.0,
+        "max": 5.0,
+        "default": 2.0,
+        "step": 0.01,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "ps",
+        "label": "Absolute surface pressure pₛ",
+        "unit": "Pa",
+        "min": 80000.0,
+        "max": 250000.0,
+        "default": 101325.0,
+        "step": 1.0,
+        "alternative": "kPa",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S04",
+    "title": "Bernoulli and the mechanical energy balance",
+    "version": "0.1.0",
+    "category": "C",
+    "fidelity": [
+      "F2"
+    ],
+    "prerequisites": [
+      "S02",
+      "S03"
+    ],
+    "score": 92.2,
+    "spec": "simulations/S04.md",
+    "inputs": [
+      {
+        "id": "Q",
+        "label": "Volume flow Q",
+        "unit": "m³/s",
+        "min": 0.0,
+        "max": 0.002,
+        "default": 0.001,
+        "step": 1e-05,
+        "alternative": "L/min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "D1",
+        "label": "Inlet bore D₁",
+        "unit": "m",
+        "min": 0.02,
+        "max": 0.1,
+        "default": 0.05,
+        "step": 0.001,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "D2",
+        "label": "Outlet bore D₂",
+        "unit": "m",
+        "min": 0.015,
+        "max": 0.1,
+        "default": 0.025,
+        "step": 0.001,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "dz",
+        "label": "Outlet elevation z₂",
+        "unit": "m",
+        "min": -2.0,
+        "max": 2.0,
+        "default": 0.0,
+        "step": 0.01,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "p1",
+        "label": "Inlet absolute pressure p₁",
+        "unit": "Pa",
+        "min": 80000.0,
+        "max": 200000.0,
+        "default": 101325.0,
+        "step": 1.0,
+        "alternative": "kPa",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "K",
+        "label": "Loss coefficient K",
+        "unit": "1",
+        "min": 0.0,
+        "max": 10.0,
+        "default": 0.0,
+        "step": 0.1,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "hp",
+        "label": "Added pump head hₚ",
+        "unit": "m",
+        "min": 0.0,
+        "max": 5.0,
+        "default": 0.0,
+        "step": 0.01,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S05",
+    "title": "Laminar pipe velocity and shear",
+    "version": "0.1.0",
+    "category": "B",
+    "fidelity": [
+      "F1"
+    ],
+    "prerequisites": [
+      "S02",
+      "S07"
+    ],
+    "score": 80.4,
+    "spec": "simulations/S05.md",
+    "inputs": [
+      {
+        "id": "Q",
+        "label": "Volume flow Q",
+        "unit": "m³/s",
+        "min": 0.0,
+        "max": 0.0001,
+        "default": 1e-05,
+        "step": 1e-06,
+        "alternative": "L/min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "R",
+        "label": "Tube radius R",
+        "unit": "m",
+        "min": 0.003,
+        "max": 0.025,
+        "default": 0.01,
+        "step": 0.0001,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "mu",
+        "label": "Dynamic viscosity μ",
+        "unit": "Pa·s",
+        "min": 0.001,
+        "max": 0.05,
+        "default": 0.001,
+        "step": 0.0001,
+        "alternative": "mPa·s",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "s",
+        "label": "Radial fraction r/R",
+        "unit": "1",
+        "min": 0.0,
+        "max": 1.0,
+        "default": 0.5,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S06",
+    "title": "Flat-plate momentum and thermal boundary layers",
+    "version": "0.1.0",
+    "category": "B",
+    "fidelity": [
+      "F4",
+      "F2"
+    ],
+    "prerequisites": [
+      "S01",
+      "S07"
+    ],
+    "score": 75.2,
+    "spec": "simulations/S06.md",
+    "inputs": [
+      {
+        "id": "U",
+        "label": "Free-stream speed U",
+        "unit": "m/s",
+        "min": 0.2,
+        "max": 15.0,
+        "default": 2.0,
+        "step": 0.1,
+        "alternative": "cm/s",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "nu",
+        "label": "Kinematic viscosity ν",
+        "unit": "m²/s",
+        "min": 8e-06,
+        "max": 3e-05,
+        "default": 1.5e-05,
+        "step": 1e-06,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "x",
+        "label": "Probe location x",
+        "unit": "m",
+        "min": 0.01,
+        "max": 1.0,
+        "default": 0.3,
+        "step": 0.01,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "L",
+        "label": "Plate length L",
+        "unit": "m",
+        "min": 0.1,
+        "max": 1.0,
+        "default": 0.5,
+        "step": 0.01,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Pr",
+        "label": "Prandtl number Pr",
+        "unit": "1",
+        "min": 0.6,
+        "max": 10.0,
+        "default": 0.7,
+        "step": 0.1,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S07",
+    "title": "Reynolds number and competing scales",
+    "version": "0.1.0",
+    "category": "B",
+    "fidelity": [
+      "F1"
+    ],
+    "prerequisites": [],
+    "score": 89.4,
+    "spec": "simulations/S07.md",
+    "inputs": [
+      {
+        "id": "rho",
+        "label": "Density ρ",
+        "unit": "kg/m³",
+        "min": 500.0,
+        "max": 1500.0,
+        "default": 1000.0,
+        "step": 1.0,
+        "alternative": "g/L",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "v",
+        "label": "Mean speed v",
+        "unit": "m/s",
+        "min": 0.0,
+        "max": 3.0,
+        "default": 0.1,
+        "step": 0.01,
+        "alternative": "cm/s",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "D",
+        "label": "Characteristic length D",
+        "unit": "m",
+        "min": 0.005,
+        "max": 0.1,
+        "default": 0.02,
+        "step": 0.001,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "mu",
+        "label": "Dynamic viscosity μ",
+        "unit": "Pa·s",
+        "min": 0.0005,
+        "max": 0.05,
+        "default": 0.001,
+        "step": 0.0001,
+        "alternative": "mPa·s",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Q",
+        "label": "Flow in fixed-Q mode Q",
+        "unit": "m³/s",
+        "min": 0.0,
+        "max": 0.003,
+        "default": 3.1416e-05,
+        "step": 1e-06,
+        "alternative": "L/min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S08",
+    "title": "Darcy friction and pressure loss",
+    "version": "0.1.0",
+    "category": "C",
+    "fidelity": [
+      "F3",
+      "F4"
+    ],
+    "prerequisites": [
+      "S05",
+      "S07"
+    ],
+    "score": 90.0,
+    "spec": "simulations/S08.md",
+    "inputs": [
+      {
+        "id": "Q",
+        "label": "Flow Q",
+        "unit": "m³/s",
+        "min": 0.0,
+        "max": 0.01,
+        "default": 0.001,
+        "step": 1e-05,
+        "alternative": "L/min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "D",
+        "label": "Inside diameter D",
+        "unit": "m",
+        "min": 0.01,
+        "max": 0.1,
+        "default": 0.05,
+        "step": 0.001,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "L",
+        "label": "Pipe length L",
+        "unit": "m",
+        "min": 1.0,
+        "max": 100.0,
+        "default": 10.0,
+        "step": 0.1,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "eps",
+        "label": "Absolute roughness ε",
+        "unit": "m",
+        "min": 0.0,
+        "max": 0.001,
+        "default": 0.0,
+        "step": 1e-06,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S09",
+    "title": "Pump and system operating point",
+    "version": "0.1.0",
+    "category": "D",
+    "fidelity": [
+      "F2",
+      "F6"
+    ],
+    "prerequisites": [
+      "S02",
+      "S04",
+      "S08"
+    ],
+    "score": 95.2,
+    "spec": "simulations/S09.md",
+    "inputs": [
+      {
+        "id": "H0",
+        "label": "Reference shutoff H₀",
+        "unit": "m",
+        "min": 1.0,
+        "max": 30.0,
+        "default": 10.0,
+        "step": 0.1,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "a",
+        "label": "Pump curvature a",
+        "unit": "s²/m⁵",
+        "min": 100000.0,
+        "max": 10000000.0,
+        "default": 1000000.0,
+        "step": 10000.0,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "b",
+        "label": "System curvature b",
+        "unit": "s²/m⁵",
+        "min": 100000.0,
+        "max": 10000000.0,
+        "default": 1000000.0,
+        "step": 10000.0,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Hz",
+        "label": "Static lift H𝓏",
+        "unit": "m",
+        "min": 0.0,
+        "max": 20.0,
+        "default": 2.0,
+        "step": 0.1,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "s",
+        "label": "Speed ratio s",
+        "unit": "1",
+        "min": 0.4,
+        "max": 1.2,
+        "default": 1.0,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "eta",
+        "label": "Assumed efficiency η",
+        "unit": "1",
+        "min": 0.2,
+        "max": 0.85,
+        "default": 0.6,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S10",
+    "title": "Pipe selection and pump duty",
+    "version": "0.1.0",
+    "category": "E",
+    "fidelity": [
+      "F2",
+      "F3"
+    ],
+    "prerequisites": [
+      "S08",
+      "S09"
+    ],
+    "score": 88.0,
+    "spec": "simulations/S10.md",
+    "inputs": [
+      {
+        "id": "Q",
+        "label": "Required flow Q",
+        "unit": "m³/s",
+        "min": 0.0001,
+        "max": 0.005,
+        "default": 0.001,
+        "step": 0.0001,
+        "alternative": "L/min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "L",
+        "label": "Pipe length L",
+        "unit": "m",
+        "min": 1.0,
+        "max": 150.0,
+        "default": 20.0,
+        "step": 1.0,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "dz",
+        "label": "Static lift Δz",
+        "unit": "m",
+        "min": 0.0,
+        "max": 10.0,
+        "default": 2.0,
+        "step": 0.1,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "f",
+        "label": "Assumed Darcy factor f",
+        "unit": "1",
+        "min": 0.01,
+        "max": 0.06,
+        "default": 0.02,
+        "step": 0.001,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "K",
+        "label": "Minor loss sum ΣK",
+        "unit": "1",
+        "min": 0.0,
+        "max": 20.0,
+        "default": 2.0,
+        "step": 0.1,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "eta",
+        "label": "Pump efficiency η",
+        "unit": "1",
+        "min": 0.3,
+        "max": 0.9,
+        "default": 0.6,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "vmax",
+        "label": "Velocity ceiling vₘ",
+        "unit": "m/s",
+        "min": 0.5,
+        "max": 4.0,
+        "default": 2.0,
+        "step": 0.1,
+        "alternative": "cm/s",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S11",
+    "title": "Fourier conduction through a composite wall",
+    "version": "0.1.0",
+    "category": "C",
+    "fidelity": [
+      "F2"
+    ],
+    "prerequisites": [
+      "S01"
+    ],
+    "score": 88.6,
+    "spec": "simulations/S11.md",
+    "inputs": [
+      {
+        "id": "L1",
+        "label": "Layer one thickness L₁",
+        "unit": "m",
+        "min": 0.005,
+        "max": 0.2,
+        "default": 0.05,
+        "step": 0.001,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "k1",
+        "label": "Layer one conductivity k₁",
+        "unit": "W/(m·K)",
+        "min": 0.05,
+        "max": 10.0,
+        "default": 1.0,
+        "step": 0.05,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "L2",
+        "label": "Layer two thickness L₂",
+        "unit": "m",
+        "min": 0.005,
+        "max": 0.2,
+        "default": 0.05,
+        "step": 0.001,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "k2",
+        "label": "Layer two conductivity k₂",
+        "unit": "W/(m·K)",
+        "min": 0.05,
+        "max": 10.0,
+        "default": 0.5,
+        "step": 0.05,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Rc",
+        "label": "Contact resistance R″c",
+        "unit": "m²·K/W",
+        "min": 0.0,
+        "max": 0.1,
+        "default": 0.0,
+        "step": 0.001,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Th",
+        "label": "Left face temperature Tₕ",
+        "unit": "K",
+        "min": 273.0,
+        "max": 393.0,
+        "default": 333.0,
+        "step": 1.0,
+        "alternative": "°C",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Tc",
+        "label": "Right face temperature T𝒸",
+        "unit": "K",
+        "min": 273.0,
+        "max": 393.0,
+        "default": 303.0,
+        "step": 1.0,
+        "alternative": "°C",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S12",
+    "title": "Cylindrical insulation and critical radius",
+    "version": "0.1.0",
+    "category": "E",
+    "fidelity": [
+      "F2"
+    ],
+    "prerequisites": [
+      "S11"
+    ],
+    "score": 77.4,
+    "spec": "simulations/S12.md",
+    "inputs": [
+      {
+        "id": "ri",
+        "label": "Inner insulation radius rᵢ",
+        "unit": "m",
+        "min": 0.001,
+        "max": 0.03,
+        "default": 0.005,
+        "step": 0.001,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "d",
+        "label": "Insulation thickness d",
+        "unit": "m",
+        "min": 0.0,
+        "max": 0.1,
+        "default": 0.005,
+        "step": 0.001,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "k",
+        "label": "Conductivity k",
+        "unit": "W/(m·K)",
+        "min": 0.02,
+        "max": 0.5,
+        "default": 0.1,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "h",
+        "label": "Outside coefficient h",
+        "unit": "W/(m²·K)",
+        "min": 2.0,
+        "max": 50.0,
+        "default": 10.0,
+        "step": 0.5,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Ti",
+        "label": "Inner surface Tᵢ",
+        "unit": "K",
+        "min": 280.0,
+        "max": 400.0,
+        "default": 350.0,
+        "step": 1.0,
+        "alternative": "°C",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Ta",
+        "label": "Ambient T∞",
+        "unit": "K",
+        "min": 270.0,
+        "max": 330.0,
+        "default": 300.0,
+        "step": 1.0,
+        "alternative": "°C",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S13",
+    "title": "Transient heating and cooling",
+    "version": "0.1.0",
+    "category": "C",
+    "fidelity": [
+      "F1",
+      "F4"
+    ],
+    "prerequisites": [
+      "S01",
+      "S11"
+    ],
+    "score": 84.4,
+    "spec": "simulations/S13.md",
+    "inputs": [
+      {
+        "id": "L",
+        "label": "Half-thickness L",
+        "unit": "m",
+        "min": 0.001,
+        "max": 0.05,
+        "default": 0.005,
+        "step": 0.001,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "h",
+        "label": "Convection coefficient h",
+        "unit": "W/(m²·K)",
+        "min": 5.0,
+        "max": 500.0,
+        "default": 50.0,
+        "step": 1.0,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "k",
+        "label": "Solid conductivity k",
+        "unit": "W/(m·K)",
+        "min": 0.1,
+        "max": 100.0,
+        "default": 10.0,
+        "step": 0.1,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Ti",
+        "label": "Initial temperature Tᵢ",
+        "unit": "K",
+        "min": 273.0,
+        "max": 393.0,
+        "default": 350.0,
+        "step": 1.0,
+        "alternative": "°C",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Ta",
+        "label": "Bath temperature T∞",
+        "unit": "K",
+        "min": 273.0,
+        "max": 393.0,
+        "default": 300.0,
+        "step": 1.0,
+        "alternative": "°C",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "t",
+        "label": "Elapsed time t",
+        "unit": "s",
+        "min": 0.0,
+        "max": 2000.0,
+        "default": 200.0,
+        "step": 1.0,
+        "alternative": "min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S14",
+    "title": "Convection from a plate and the Nusselt number",
+    "version": "0.1.0",
+    "category": "C",
+    "fidelity": [
+      "F2"
+    ],
+    "prerequisites": [
+      "S06",
+      "S07",
+      "S11"
+    ],
+    "score": 85.6,
+    "spec": "simulations/S14.md",
+    "inputs": [
+      {
+        "id": "U",
+        "label": "Free-stream velocity U",
+        "unit": "m/s",
+        "min": 0.2,
+        "max": 15.0,
+        "default": 2.0,
+        "step": 0.1,
+        "alternative": "cm/s",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "L",
+        "label": "Heated plate length L",
+        "unit": "m",
+        "min": 0.05,
+        "max": 1.0,
+        "default": 0.3,
+        "step": 0.01,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Pr",
+        "label": "Teaching-fluid Pr",
+        "unit": "1",
+        "min": 0.6,
+        "max": 10.0,
+        "default": 0.7,
+        "step": 0.1,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Tw",
+        "label": "Plate temperature Tw",
+        "unit": "K",
+        "min": 280.0,
+        "max": 350.0,
+        "default": 310.0,
+        "step": 1.0,
+        "alternative": "°C",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Ta",
+        "label": "Free stream T∞",
+        "unit": "K",
+        "min": 280.0,
+        "max": 350.0,
+        "default": 300.0,
+        "step": 1.0,
+        "alternative": "°C",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S15",
+    "title": "Heat exchanger performance and flow arrangement",
+    "version": "0.1.0",
+    "category": "D",
+    "fidelity": [
+      "F2"
+    ],
+    "prerequisites": [
+      "S11",
+      "S14"
+    ],
+    "score": 90.0,
+    "spec": "simulations/S15.md",
+    "inputs": [
+      {
+        "id": "Ch",
+        "label": "Hot capacity rate Cₕ",
+        "unit": "W/K",
+        "min": 100.0,
+        "max": 5000.0,
+        "default": 1000.0,
+        "step": 10.0,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Cc",
+        "label": "Cold capacity rate C𝒸",
+        "unit": "W/K",
+        "min": 100.0,
+        "max": 5000.0,
+        "default": 1000.0,
+        "step": 10.0,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "U",
+        "label": "Overall coefficient U",
+        "unit": "W/(m²·K)",
+        "min": 50.0,
+        "max": 2000.0,
+        "default": 500.0,
+        "step": 10.0,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "A",
+        "label": "Area A",
+        "unit": "m²",
+        "min": 0.1,
+        "max": 20.0,
+        "default": 2.0,
+        "step": 0.1,
+        "alternative": "cm²",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Thi",
+        "label": "Hot inlet Tₕᵢ",
+        "unit": "K",
+        "min": 310.0,
+        "max": 390.0,
+        "default": 350.0,
+        "step": 1.0,
+        "alternative": "°C",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Tci",
+        "label": "Cold inlet T𝒸ᵢ",
+        "unit": "K",
+        "min": 273.0,
+        "max": 330.0,
+        "default": 300.0,
+        "step": 1.0,
+        "alternative": "°C",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S16",
+    "title": "Heat exchanger area and feasible duty",
+    "version": "0.1.0",
+    "category": "E",
+    "fidelity": [
+      "F2",
+      "F4"
+    ],
+    "prerequisites": [
+      "S15"
+    ],
+    "score": 85.8,
+    "spec": "simulations/S16.md",
+    "inputs": [
+      {
+        "id": "Qd",
+        "label": "Required duty Q̇",
+        "unit": "W",
+        "min": 0.0,
+        "max": 90000.0,
+        "default": 25000.0,
+        "step": 100.0,
+        "alternative": "kW",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Ch",
+        "label": "Hot capacity rate Cₕ",
+        "unit": "W/K",
+        "min": 100.0,
+        "max": 5000.0,
+        "default": 1000.0,
+        "step": 10.0,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Cc",
+        "label": "Cold capacity rate C𝒸",
+        "unit": "W/K",
+        "min": 100.0,
+        "max": 5000.0,
+        "default": 1000.0,
+        "step": 10.0,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "U",
+        "label": "Clean overall U",
+        "unit": "W/(m²·K)",
+        "min": 50.0,
+        "max": 2000.0,
+        "default": 500.0,
+        "step": 10.0,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Rf",
+        "label": "Fouling resistance R″f",
+        "unit": "m²·K/W",
+        "min": 0.0,
+        "max": 0.005,
+        "default": 0.0,
+        "step": 0.0001,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Amax",
+        "label": "Available surface Aₘ",
+        "unit": "m²",
+        "min": 0.1,
+        "max": 50.0,
+        "default": 10.0,
+        "step": 0.1,
+        "alternative": "cm²",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S17",
+    "title": "Diffusive flux and transient concentration",
+    "version": "0.1.0",
+    "category": "B",
+    "fidelity": [
+      "F1",
+      "F2"
+    ],
+    "prerequisites": [
+      "S01",
+      "S11"
+    ],
+    "score": 86.0,
+    "spec": "simulations/S17.md",
+    "inputs": [
+      {
+        "id": "D",
+        "label": "Diffusivity D",
+        "unit": "m²/s",
+        "min": 1e-10,
+        "max": 1e-08,
+        "default": 1e-09,
+        "step": 1e-10,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "L",
+        "label": "Steady slab thickness L",
+        "unit": "m",
+        "min": 0.0001,
+        "max": 0.01,
+        "default": 0.001,
+        "step": 0.0001,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "C1",
+        "label": "Left or surface concentration C₁",
+        "unit": "mol/m³",
+        "min": 0.0,
+        "max": 200.0,
+        "default": 100.0,
+        "step": 1.0,
+        "alternative": "mmol/L",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "C2",
+        "label": "Right or initial concentration C₂",
+        "unit": "mol/m³",
+        "min": 0.0,
+        "max": 200.0,
+        "default": 0.0,
+        "step": 1.0,
+        "alternative": "mmol/L",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "t",
+        "label": "Transient time t",
+        "unit": "s",
+        "min": 0.0,
+        "max": 1000.0,
+        "default": 100.0,
+        "step": 1.0,
+        "alternative": "min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S18",
+    "title": "Dynamic tank mass and level balance",
+    "version": "0.1.0",
+    "category": "D",
+    "fidelity": [
+      "F1",
+      "F4"
+    ],
+    "prerequisites": [
+      "S01",
+      "S02"
+    ],
+    "score": 88.4,
+    "spec": "simulations/S18.md",
+    "inputs": [
+      {
+        "id": "A",
+        "label": "Tank cross section A",
+        "unit": "m²",
+        "min": 0.05,
+        "max": 1.0,
+        "default": 0.2,
+        "step": 0.01,
+        "alternative": "cm²",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "h0",
+        "label": "Initial level h₀",
+        "unit": "m",
+        "min": 0.0,
+        "max": 2.0,
+        "default": 0.5,
+        "step": 0.01,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Qi",
+        "label": "Inlet Qᵢ",
+        "unit": "m³/s",
+        "min": 0.0,
+        "max": 0.005,
+        "default": 0.002,
+        "step": 0.0001,
+        "alternative": "L/min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Qo",
+        "label": "Pumped outlet Qₒ",
+        "unit": "m³/s",
+        "min": 0.0,
+        "max": 0.005,
+        "default": 0.001,
+        "step": 0.0001,
+        "alternative": "L/min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "t",
+        "label": "Run time t",
+        "unit": "s",
+        "min": 0.0,
+        "max": 300.0,
+        "default": 60.0,
+        "step": 1.0,
+        "alternative": "min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S19",
+    "title": "CSTR concentration response",
+    "version": "0.1.0",
+    "category": "D",
+    "fidelity": [
+      "F2"
+    ],
+    "prerequisites": [
+      "S18",
+      "S21"
+    ],
+    "score": 90.0,
+    "spec": "simulations/S19.md",
+    "inputs": [
+      {
+        "id": "V",
+        "label": "Working volume V",
+        "unit": "m³",
+        "min": 0.001,
+        "max": 0.2,
+        "default": 0.01,
+        "step": 0.001,
+        "alternative": "L",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Q",
+        "label": "Equal throughflow Q",
+        "unit": "m³/s",
+        "min": 1e-05,
+        "max": 0.002,
+        "default": 0.0001,
+        "step": 1e-05,
+        "alternative": "L/min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "k",
+        "label": "First-order constant k",
+        "unit": "1/s",
+        "min": 0.0,
+        "max": 0.1,
+        "default": 0.01,
+        "step": 0.001,
+        "alternative": "1/min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Cin",
+        "label": "Feed Cᵢₙ",
+        "unit": "mol/m³",
+        "min": 0.0,
+        "max": 100.0,
+        "default": 100.0,
+        "step": 1.0,
+        "alternative": "mmol/L",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "C0",
+        "label": "Initial C₀",
+        "unit": "mol/m³",
+        "min": 0.0,
+        "max": 100.0,
+        "default": 0.0,
+        "step": 1.0,
+        "alternative": "mmol/L",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "t",
+        "label": "Time t",
+        "unit": "s",
+        "min": 0.0,
+        "max": 1000.0,
+        "default": 50.0,
+        "step": 1.0,
+        "alternative": "min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S20",
+    "title": "CSTR versus PFR performance and sizing",
+    "version": "0.1.0",
+    "category": "E",
+    "fidelity": [
+      "F1"
+    ],
+    "prerequisites": [
+      "S19"
+    ],
+    "score": 88.0,
+    "spec": "simulations/S20.md",
+    "inputs": [
+      {
+        "id": "Q",
+        "label": "Feed flow Q",
+        "unit": "m³/s",
+        "min": 0.0001,
+        "max": 0.01,
+        "default": 0.001,
+        "step": 0.0001,
+        "alternative": "L/min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "k",
+        "label": "Rate constant k",
+        "unit": "1/s",
+        "min": 0.001,
+        "max": 0.1,
+        "default": 0.01,
+        "step": 0.001,
+        "alternative": "1/min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "V",
+        "label": "Performance volume V",
+        "unit": "m³",
+        "min": 0.001,
+        "max": 1.0,
+        "default": 0.1,
+        "step": 0.001,
+        "alternative": "L",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "X",
+        "label": "Design conversion X",
+        "unit": "1",
+        "min": 0.0,
+        "max": 0.999,
+        "default": 0.5,
+        "step": 0.001,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S21",
+    "title": "Arrhenius temperature sensitivity",
+    "version": "0.1.0",
+    "category": "C",
+    "fidelity": [
+      "F1"
+    ],
+    "prerequisites": [
+      "S01"
+    ],
+    "score": 78.2,
+    "spec": "simulations/S21.md",
+    "inputs": [
+      {
+        "id": "kr",
+        "label": "First-order reference kᵣ",
+        "unit": "1/s",
+        "min": 0.001,
+        "max": 0.1,
+        "default": 0.01,
+        "step": 0.001,
+        "alternative": "1/min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Ea",
+        "label": "Activation energy Eₐ",
+        "unit": "J/mol",
+        "min": 10000.0,
+        "max": 100000.0,
+        "default": 50000.0,
+        "step": 1000.0,
+        "alternative": "kJ/mol",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Tr",
+        "label": "Reference temperature Tᵣ",
+        "unit": "K",
+        "min": 280.0,
+        "max": 360.0,
+        "default": 300.0,
+        "step": 1.0,
+        "alternative": "°C",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "T",
+        "label": "Operating temperature T",
+        "unit": "K",
+        "min": 280.0,
+        "max": 360.0,
+        "default": 310.0,
+        "step": 1.0,
+        "alternative": "°C",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S22",
+    "title": "Binary vapour–liquid equilibrium",
+    "version": "0.1.0",
+    "category": "C",
+    "fidelity": [
+      "F1",
+      "F2"
+    ],
+    "prerequisites": [],
+    "score": 83.0,
+    "spec": "simulations/S22.md",
+    "inputs": [
+      {
+        "id": "x",
+        "label": "Liquid A fraction xₐ",
+        "unit": "1",
+        "min": 0.0,
+        "max": 1.0,
+        "default": 0.5,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "y",
+        "label": "Vapour A fraction yₐ",
+        "unit": "1",
+        "min": 0.0,
+        "max": 1.0,
+        "default": 0.5,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S23",
+    "title": "McCabe–Thiele design and reflux",
+    "version": "0.1.0",
+    "category": "E",
+    "fidelity": [
+      "F2",
+      "F4"
+    ],
+    "prerequisites": [
+      "S22"
+    ],
+    "score": 74.6,
+    "spec": "simulations/S23.md",
+    "inputs": [
+      {
+        "id": "alpha",
+        "label": "Relative volatility α",
+        "unit": "1",
+        "min": 1.1,
+        "max": 4.0,
+        "default": 2.0,
+        "step": 0.1,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "xd",
+        "label": "Distillate fraction xD",
+        "unit": "1",
+        "min": 0.55,
+        "max": 0.98,
+        "default": 0.8,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "zf",
+        "label": "Feed fraction zF",
+        "unit": "1",
+        "min": 0.2,
+        "max": 0.8,
+        "default": 0.5,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "xb",
+        "label": "Bottom fraction xB",
+        "unit": "1",
+        "min": 0.02,
+        "max": 0.45,
+        "default": 0.2,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "R",
+        "label": "Reflux ratio R",
+        "unit": "1",
+        "min": 0.1,
+        "max": 15.0,
+        "default": 3.0,
+        "step": 0.1,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S24",
+    "title": "Cake filtration performance and filter area",
+    "version": "0.1.0",
+    "category": "E",
+    "fidelity": [
+      "F2",
+      "F6"
+    ],
+    "prerequisites": [
+      "S01",
+      "S08"
+    ],
+    "score": 87.0,
+    "spec": "simulations/S24.md",
+    "inputs": [
+      {
+        "id": "A",
+        "label": "Filter area A",
+        "unit": "m²",
+        "min": 0.005,
+        "max": 0.5,
+        "default": 0.01,
+        "step": 0.001,
+        "alternative": "cm²",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "dp",
+        "label": "Pressure difference Δp",
+        "unit": "Pa",
+        "min": 10000.0,
+        "max": 200000.0,
+        "default": 100000.0,
+        "step": 1000.0,
+        "alternative": "kPa",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Rm",
+        "label": "Medium resistance Rₘ",
+        "unit": "1/m",
+        "min": 1000000000.0,
+        "max": 1000000000000.0,
+        "default": 10000000000.0,
+        "step": 1000000000.0,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "alpha",
+        "label": "Specific cake resistance α",
+        "unit": "m/kg",
+        "min": 1000000000.0,
+        "max": 1000000000000.0,
+        "default": 10000000000.0,
+        "step": 1000000000.0,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "c",
+        "label": "Cake solids per filtrate c",
+        "unit": "kg/m³",
+        "min": 0.0,
+        "max": 100.0,
+        "default": 10.0,
+        "step": 1.0,
+        "alternative": "g/L",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "t",
+        "label": "Cycle time t",
+        "unit": "s",
+        "min": 0.0,
+        "max": 3600.0,
+        "default": 150.0,
+        "step": 1.0,
+        "alternative": "min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Vtar",
+        "label": "Filtrate target Vₜ",
+        "unit": "m³",
+        "min": 0.001,
+        "max": 0.2,
+        "default": 0.01,
+        "step": 0.001,
+        "alternative": "L",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S25",
+    "title": "PID control, saturation and recovery",
+    "version": "0.1.0",
+    "category": "D",
+    "fidelity": [
+      "F4"
+    ],
+    "prerequisites": [
+      "S18",
+      "S26"
+    ],
+    "score": 89.2,
+    "spec": "simulations/S25.md",
+    "inputs": [
+      {
+        "id": "Kc",
+        "label": "Controller gain K𝒸",
+        "unit": "1",
+        "min": 0.0,
+        "max": 10.0,
+        "default": 2.0,
+        "step": 0.1,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Ti",
+        "label": "Integral time Tᵢ",
+        "unit": "s",
+        "min": 0.5,
+        "max": 50.0,
+        "default": 5.0,
+        "step": 0.1,
+        "alternative": "min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Td",
+        "label": "Derivative time T𝒹",
+        "unit": "s",
+        "min": 0.0,
+        "max": 5.0,
+        "default": 0.0,
+        "step": 0.1,
+        "alternative": "min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "r",
+        "label": "Setpoint r",
+        "unit": "1",
+        "min": 0.0,
+        "max": 1.5,
+        "default": 0.5,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "d",
+        "label": "Load disturbance d",
+        "unit": "1",
+        "min": -0.5,
+        "max": 0.5,
+        "default": 0.0,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S26",
+    "title": "Numerical integration and timestep convergence",
+    "version": "0.1.0",
+    "category": "A",
+    "fidelity": [
+      "F4"
+    ],
+    "prerequisites": [
+      "S01"
+    ],
+    "score": 83.6,
+    "spec": "simulations/S26.md",
+    "inputs": [
+      {
+        "id": "lam",
+        "label": "Decay rate λ",
+        "unit": "1/s",
+        "min": 0.1,
+        "max": 10.0,
+        "default": 1.0,
+        "step": 0.1,
+        "alternative": "1/min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "dt",
+        "label": "Time step Δt",
+        "unit": "s",
+        "min": 0.01,
+        "max": 4.0,
+        "default": 0.5,
+        "step": 0.01,
+        "alternative": "min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "T",
+        "label": "End time T",
+        "unit": "s",
+        "min": 1.0,
+        "max": 20.0,
+        "default": 2.0,
+        "step": 0.1,
+        "alternative": "min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S27",
+    "title": "Fitting an empirical correlation",
+    "version": "0.1.0",
+    "category": "F",
+    "fidelity": [
+      "F4",
+      "F6"
+    ],
+    "prerequisites": [
+      "S01"
+    ],
+    "score": 90.6,
+    "spec": "simulations/S27.md",
+    "inputs": [
+      {
+        "id": "n",
+        "label": "Training points n",
+        "unit": "count",
+        "min": 4.0,
+        "max": 60.0,
+        "default": 8.0,
+        "step": 1.0,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "stepper + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "sig",
+        "label": "Noise standard deviation σ",
+        "unit": "1",
+        "min": 0.0,
+        "max": 0.5,
+        "default": 0.1,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "seed",
+        "label": "Dataset seed s",
+        "unit": "count",
+        "min": 1.0,
+        "max": 9999.0,
+        "default": 17.0,
+        "step": 1.0,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "stepper + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "xp",
+        "label": "Prediction position x*",
+        "unit": "1",
+        "min": -1.0,
+        "max": 2.0,
+        "default": 0.5,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S28",
+    "title": "Uncertainty and sensitivity in flow measurement",
+    "version": "0.1.0",
+    "category": "F",
+    "fidelity": [
+      "F2",
+      "F4"
+    ],
+    "prerequisites": [
+      "S01",
+      "S02"
+    ],
+    "score": 88.6,
+    "spec": "simulations/S28.md",
+    "inputs": [
+      {
+        "id": "D",
+        "label": "Mean diameter D",
+        "unit": "m",
+        "min": 0.01,
+        "max": 0.1,
+        "default": 0.05,
+        "step": 0.001,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "v",
+        "label": "Mean velocity v",
+        "unit": "m/s",
+        "min": 0.1,
+        "max": 2.0,
+        "default": 1.0,
+        "step": 0.01,
+        "alternative": "cm/s",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "uD",
+        "label": "Standard diameter uncertainty uD",
+        "unit": "m",
+        "min": 0.0,
+        "max": 0.005,
+        "default": 0.001,
+        "step": 0.0001,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "uv",
+        "label": "Standard speed uncertainty uv",
+        "unit": "m/s",
+        "min": 0.0,
+        "max": 0.2,
+        "default": 0.02,
+        "step": 0.001,
+        "alternative": "cm/s",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "r",
+        "label": "Correlation coefficient r",
+        "unit": "1",
+        "min": -1.0,
+        "max": 1.0,
+        "default": 0.0,
+        "step": 0.05,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "N",
+        "label": "Monte Carlo draws N",
+        "unit": "count",
+        "min": 1000.0,
+        "max": 50000.0,
+        "default": 10000.0,
+        "step": 1000.0,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "stepper + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S29",
+    "title": "Function shape and dimensional scaling",
+    "version": "0.1.0",
+    "category": "A",
+    "fidelity": [
+      "F1"
+    ],
+    "prerequisites": [
+      "S01"
+    ],
+    "score": 78.0,
+    "spec": "simulations/S29.md",
+    "inputs": [
+      {
+        "id": "x",
+        "label": "Scaled abscissa x",
+        "unit": "1",
+        "min": 0.1,
+        "max": 5.0,
+        "default": 2.0,
+        "step": 0.1,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "n",
+        "label": "Power n",
+        "unit": "1",
+        "min": -3.0,
+        "max": 3.0,
+        "default": 2.0,
+        "step": 0.1,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S30",
+    "title": "Root finding and feasible branches",
+    "version": "0.1.0",
+    "category": "A",
+    "fidelity": [
+      "F4"
+    ],
+    "prerequisites": [
+      "S01"
+    ],
+    "score": 75.0,
+    "spec": "simulations/S30.md",
+    "inputs": [
+      {
+        "id": "s",
+        "label": "Target s",
+        "unit": "1",
+        "min": -1.0,
+        "max": 9.0,
+        "default": 4.0,
+        "step": 0.1,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "x",
+        "label": "Newton starting point x",
+        "unit": "1",
+        "min": -5.0,
+        "max": 5.0,
+        "default": 1.0,
+        "step": 0.1,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S31",
+    "title": "Dimensionless groups and similarity",
+    "version": "0.1.0",
+    "category": "A",
+    "fidelity": [
+      "F4"
+    ],
+    "prerequisites": [
+      "S07"
+    ],
+    "score": 72.6,
+    "spec": "simulations/S31.md",
+    "inputs": [
+      {
+        "id": "D",
+        "label": "Length scale D",
+        "unit": "m",
+        "min": 0.01,
+        "max": 1.0,
+        "default": 0.1,
+        "step": 0.01,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "U",
+        "label": "Speed U",
+        "unit": "m/s",
+        "min": 0.1,
+        "max": 5.0,
+        "default": 1.0,
+        "step": 0.1,
+        "alternative": "cm/s",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S32",
+    "title": "Boundary values, finite differences and mesh refinement",
+    "version": "0.1.0",
+    "category": "A",
+    "fidelity": [
+      "F4"
+    ],
+    "prerequisites": [
+      "S11",
+      "S26"
+    ],
+    "score": 70.2,
+    "spec": "simulations/S32.md",
+    "inputs": [
+      {
+        "id": "qv",
+        "label": "Generation qᵥ",
+        "unit": "W/m³",
+        "min": 0.0,
+        "max": 200.0,
+        "default": 80.0,
+        "step": 1.0,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "N",
+        "label": "Equal mesh intervals N",
+        "unit": "count",
+        "min": 4.0,
+        "max": 100.0,
+        "default": 10.0,
+        "step": 2.0,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "stepper + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S33",
+    "title": "Mixing, dilution and multicomponent balances",
+    "version": "0.1.0",
+    "category": "B",
+    "fidelity": [
+      "F1"
+    ],
+    "prerequisites": [
+      "S02"
+    ],
+    "score": 79.4,
+    "spec": "simulations/S33.md",
+    "inputs": [
+      {
+        "id": "F1",
+        "label": "First mass feed F₁",
+        "unit": "kg/s",
+        "min": 0.0,
+        "max": 5.0,
+        "default": 1.0,
+        "step": 0.1,
+        "alternative": "kg/h",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "F2",
+        "label": "Second mass feed F₂",
+        "unit": "kg/s",
+        "min": 0.0,
+        "max": 5.0,
+        "default": 3.0,
+        "step": 0.1,
+        "alternative": "kg/h",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "x1",
+        "label": "First solute fraction x₁",
+        "unit": "1",
+        "min": 0.0,
+        "max": 1.0,
+        "default": 0.8,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "x2",
+        "label": "Second solute fraction x₂",
+        "unit": "1",
+        "min": 0.0,
+        "max": 1.0,
+        "default": 0.0,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S34",
+    "title": "Recycle, bypass and purge",
+    "version": "0.1.0",
+    "category": "C",
+    "fidelity": [
+      "F2"
+    ],
+    "prerequisites": [
+      "S33"
+    ],
+    "score": 77.0,
+    "spec": "simulations/S34.md",
+    "inputs": [
+      {
+        "id": "p",
+        "label": "Purge fraction p",
+        "unit": "1",
+        "min": 0.0,
+        "max": 1.0,
+        "default": 0.2,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "X",
+        "label": "Single-pass conversion X",
+        "unit": "1",
+        "min": 0.0,
+        "max": 0.95,
+        "default": 0.5,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "b",
+        "label": "Bypass fraction b",
+        "unit": "1",
+        "min": 0.0,
+        "max": 1.0,
+        "default": 0.2,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S35",
+    "title": "Reactive balances, yield and selectivity",
+    "version": "0.1.0",
+    "category": "C",
+    "fidelity": [
+      "F1"
+    ],
+    "prerequisites": [
+      "S33"
+    ],
+    "score": 79.4,
+    "spec": "simulations/S35.md",
+    "inputs": [
+      {
+        "id": "b",
+        "label": "Desired extent rate ξB",
+        "unit": "mol/s",
+        "min": 0.0,
+        "max": 1.0,
+        "default": 0.4,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "c",
+        "label": "Side extent rate ξC",
+        "unit": "mol/s",
+        "min": 0.0,
+        "max": 1.0,
+        "default": 0.1,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S36",
+    "title": "Sensible heating, latent duty and continuous energy balance",
+    "version": "0.1.0",
+    "category": "C",
+    "fidelity": [
+      "F2"
+    ],
+    "prerequisites": [
+      "S01",
+      "S33"
+    ],
+    "score": 79.4,
+    "spec": "simulations/S36.md",
+    "inputs": [
+      {
+        "id": "m",
+        "label": "Batch mass m",
+        "unit": "kg",
+        "min": 0.1,
+        "max": 10.0,
+        "default": 1.0,
+        "step": 0.1,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "E",
+        "label": "Added energy E",
+        "unit": "J",
+        "min": 0.0,
+        "max": 2000000.0,
+        "default": 520000.0,
+        "step": 10000.0,
+        "alternative": "kJ",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S37",
+    "title": "Real gas compressibility and phase roots",
+    "version": "0.1.0",
+    "category": "C",
+    "fidelity": [
+      "F2",
+      "F4"
+    ],
+    "prerequisites": [
+      "S30"
+    ],
+    "score": 75.4,
+    "spec": "simulations/S37.md",
+    "inputs": [
+      {
+        "id": "Tr",
+        "label": "Reduced temperature Tᵣ",
+        "unit": "1",
+        "min": 0.8,
+        "max": 2.0,
+        "default": 1.0,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "vr",
+        "label": "Reduced molar volume vᵣ",
+        "unit": "1",
+        "min": 0.4,
+        "max": 6.0,
+        "default": 1.0,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S38",
+    "title": "Compression paths, work and irreversibility",
+    "version": "0.1.0",
+    "category": "C",
+    "fidelity": [
+      "F2"
+    ],
+    "prerequisites": [
+      "S01",
+      "S37"
+    ],
+    "score": 78.4,
+    "spec": "simulations/S38.md",
+    "inputs": [
+      {
+        "id": "r",
+        "label": "Volume ratio V₂/V₁",
+        "unit": "1",
+        "min": 0.2,
+        "max": 1.0,
+        "default": 0.5,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "n",
+        "label": "Polytropic exponent n",
+        "unit": "1",
+        "min": 1.0,
+        "max": 1.67,
+        "default": 1.4,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S39",
+    "title": "Entropy generation and refrigeration cycles",
+    "version": "0.1.0",
+    "category": "D",
+    "fidelity": [
+      "F2"
+    ],
+    "prerequisites": [
+      "S36",
+      "S38"
+    ],
+    "score": 78.4,
+    "spec": "simulations/S39.md",
+    "inputs": [
+      {
+        "id": "TL",
+        "label": "Cold reservoir Tₗ",
+        "unit": "K",
+        "min": 245.0,
+        "max": 290.0,
+        "default": 270.0,
+        "step": 1.0,
+        "alternative": "°C",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "TH",
+        "label": "Hot reservoir Tₕ",
+        "unit": "K",
+        "min": 295.0,
+        "max": 340.0,
+        "default": 300.0,
+        "step": 1.0,
+        "alternative": "°C",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "W",
+        "label": "Input power W",
+        "unit": "W",
+        "min": 100.0,
+        "max": 2000.0,
+        "default": 200.0,
+        "step": 10.0,
+        "alternative": "kW",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S40",
+    "title": "Chemical equilibrium and extent",
+    "version": "0.1.0",
+    "category": "C",
+    "fidelity": [
+      "F2",
+      "F4"
+    ],
+    "prerequisites": [
+      "S35",
+      "S30"
+    ],
+    "score": 77.8,
+    "spec": "simulations/S40.md",
+    "inputs": [
+      {
+        "id": "K",
+        "label": "Reference equilibrium K",
+        "unit": "1",
+        "min": 0.1,
+        "max": 10.0,
+        "default": 1.0,
+        "step": 0.1,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "T",
+        "label": "Temperature T",
+        "unit": "K",
+        "min": 280.0,
+        "max": 360.0,
+        "default": 300.0,
+        "step": 1.0,
+        "alternative": "°C",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S41",
+    "title": "Nonideal mixtures, phase diagrams and flash",
+    "version": "0.1.0",
+    "category": "D",
+    "fidelity": [
+      "F3",
+      "F4"
+    ],
+    "prerequisites": [
+      "S22",
+      "S30"
+    ],
+    "score": 74.4,
+    "spec": "simulations/S41.md",
+    "inputs": [
+      {
+        "id": "A",
+        "label": "Interaction parameter A",
+        "unit": "1",
+        "min": 0.0,
+        "max": 1.5,
+        "default": 0.5,
+        "step": 0.05,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "x",
+        "label": "Liquid mole fraction x",
+        "unit": "1",
+        "min": 0.0,
+        "max": 1.0,
+        "default": 0.5,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "z",
+        "label": "Flash feed fraction z",
+        "unit": "1",
+        "min": 0.0,
+        "max": 1.0,
+        "default": 0.5,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S42",
+    "title": "Flow metering, orifice and Venturi",
+    "version": "0.1.0",
+    "category": "C",
+    "fidelity": [
+      "F3"
+    ],
+    "prerequisites": [
+      "S04",
+      "S07"
+    ],
+    "score": 76.4,
+    "spec": "simulations/S42.md",
+    "inputs": [
+      {
+        "id": "beta",
+        "label": "Diameter ratio β",
+        "unit": "1",
+        "min": 0.2,
+        "max": 0.8,
+        "default": 0.5,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "dp",
+        "label": "Measured differential Δp",
+        "unit": "Pa",
+        "min": 0.0,
+        "max": 10000.0,
+        "default": 1000.0,
+        "step": 10.0,
+        "alternative": "kPa",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Cd",
+        "label": "Assumed discharge coefficient Cd",
+        "unit": "1",
+        "min": 0.4,
+        "max": 1.0,
+        "default": 0.95,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S43",
+    "title": "Rheology, shear and viscosity",
+    "version": "0.1.0",
+    "category": "B",
+    "fidelity": [
+      "F3"
+    ],
+    "prerequisites": [
+      "S05",
+      "S29"
+    ],
+    "score": 76.4,
+    "spec": "simulations/S43.md",
+    "inputs": [
+      {
+        "id": "n",
+        "label": "Flow index n",
+        "unit": "1",
+        "min": 0.3,
+        "max": 1.5,
+        "default": 1.0,
+        "step": 0.05,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "g",
+        "label": "Shear rate γ̇",
+        "unit": "1/s",
+        "min": 0.1,
+        "max": 100.0,
+        "default": 10.0,
+        "step": 0.1,
+        "alternative": "1/min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S44",
+    "title": "Surface tension and capillary rise",
+    "version": "0.1.0",
+    "category": "B",
+    "fidelity": [
+      "F1"
+    ],
+    "prerequisites": [
+      "S03"
+    ],
+    "score": 79.8,
+    "spec": "simulations/S44.md",
+    "inputs": [
+      {
+        "id": "r",
+        "label": "Capillary radius r",
+        "unit": "m",
+        "min": 0.0001,
+        "max": 0.002,
+        "default": 0.001,
+        "step": 0.0001,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "theta",
+        "label": "Contact angle θ",
+        "unit": "rad",
+        "min": 0.0,
+        "max": 3.14,
+        "default": 0.0,
+        "step": 0.01,
+        "alternative": "degrees",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "sig",
+        "label": "Surface tension σ",
+        "unit": "N/m",
+        "min": 0.02,
+        "max": 0.08,
+        "default": 0.07,
+        "step": 0.001,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S45",
+    "title": "Pipe networks, minor losses and parallel pumps",
+    "version": "0.1.0",
+    "category": "D",
+    "fidelity": [
+      "F2",
+      "F4"
+    ],
+    "prerequisites": [
+      "S08",
+      "S09"
+    ],
+    "score": 79.6,
+    "spec": "simulations/S45.md",
+    "inputs": [
+      {
+        "id": "Q",
+        "label": "Total network flow Q",
+        "unit": "m³/s",
+        "min": 0.0,
+        "max": 0.01,
+        "default": 0.002,
+        "step": 0.0001,
+        "alternative": "L/min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "ratio",
+        "label": "Resistance ratio K₂/K₁",
+        "unit": "1",
+        "min": 0.25,
+        "max": 9.0,
+        "default": 1.0,
+        "step": 0.25,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S46",
+    "title": "Suction head and cavitation margin",
+    "version": "0.1.0",
+    "category": "C",
+    "fidelity": [
+      "F2",
+      "F6"
+    ],
+    "prerequisites": [
+      "S03",
+      "S09"
+    ],
+    "score": 77.4,
+    "spec": "simulations/S46.md",
+    "inputs": [
+      {
+        "id": "ps",
+        "label": "Surface absolute pressure pₛ",
+        "unit": "Pa",
+        "min": 80000.0,
+        "max": 150000.0,
+        "default": 101325.0,
+        "step": 1.0,
+        "alternative": "kPa",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "pv",
+        "label": "Vapour pressure pᵥ",
+        "unit": "Pa",
+        "min": 1000.0,
+        "max": 30000.0,
+        "default": 3000.0,
+        "step": 100.0,
+        "alternative": "kPa",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "dz",
+        "label": "Surface minus pump elevation Δz",
+        "unit": "m",
+        "min": -5.0,
+        "max": 5.0,
+        "default": 0.0,
+        "step": 0.1,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "hf",
+        "label": "Suction loss hƒ",
+        "unit": "m",
+        "min": 0.0,
+        "max": 8.0,
+        "default": 1.0,
+        "step": 0.1,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S47",
+    "title": "Valve travel, installed characteristics and sizing",
+    "version": "0.1.0",
+    "category": "E",
+    "fidelity": [
+      "F3"
+    ],
+    "prerequisites": [
+      "S08",
+      "S09"
+    ],
+    "score": 84.6,
+    "spec": "simulations/S47.md",
+    "inputs": [
+      {
+        "id": "x",
+        "label": "Travel x",
+        "unit": "1",
+        "min": 0.0,
+        "max": 1.0,
+        "default": 0.5,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "R",
+        "label": "Rangeability R",
+        "unit": "1",
+        "min": 10.0,
+        "max": 100.0,
+        "default": 25.0,
+        "step": 1.0,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "b",
+        "label": "Line coefficient b",
+        "unit": "Pa·s²/m⁶",
+        "min": 0.0,
+        "max": 10000000000.0,
+        "default": 1000000000.0,
+        "step": 100000000.0,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S48",
+    "title": "Compressible nozzle and choking",
+    "version": "0.1.0",
+    "category": "C",
+    "fidelity": [
+      "F2"
+    ],
+    "prerequisites": [
+      "S37",
+      "S38"
+    ],
+    "score": 77.4,
+    "spec": "simulations/S48.md",
+    "inputs": [
+      {
+        "id": "r",
+        "label": "Back pressure ratio pᵦ/p₀",
+        "unit": "1",
+        "min": 0.1,
+        "max": 1.0,
+        "default": 0.7,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "A",
+        "label": "Throat area A",
+        "unit": "m²",
+        "min": 0.0001,
+        "max": 0.002,
+        "default": 0.001,
+        "step": 0.0001,
+        "alternative": "cm²",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S49",
+    "title": "Particle drag, settling and classification",
+    "version": "0.1.0",
+    "category": "D",
+    "fidelity": [
+      "F2"
+    ],
+    "prerequisites": [
+      "S07"
+    ],
+    "score": 70.6,
+    "spec": "simulations/S49.md",
+    "inputs": [
+      {
+        "id": "d",
+        "label": "Particle diameter d",
+        "unit": "m",
+        "min": 1e-06,
+        "max": 0.0005,
+        "default": 1e-05,
+        "step": 1e-06,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "H",
+        "label": "Settling distance H",
+        "unit": "m",
+        "min": 0.01,
+        "max": 1.0,
+        "default": 0.1,
+        "step": 0.01,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S50",
+    "title": "Porous beds, pressure drop and fluidisation",
+    "version": "0.1.0",
+    "category": "D",
+    "fidelity": [
+      "F3"
+    ],
+    "prerequisites": [
+      "S07",
+      "S08",
+      "S49"
+    ],
+    "score": 74.0,
+    "spec": "simulations/S50.md",
+    "inputs": [
+      {
+        "id": "void",
+        "label": "Void fraction ε",
+        "unit": "1",
+        "min": 0.3,
+        "max": 0.6,
+        "default": 0.4,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "U",
+        "label": "Superficial velocity U",
+        "unit": "m/s",
+        "min": 0.0,
+        "max": 0.15,
+        "default": 0.01,
+        "step": 0.001,
+        "alternative": "cm/s",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "dp",
+        "label": "Sphere diameter dₚ",
+        "unit": "m",
+        "min": 0.0005,
+        "max": 0.005,
+        "default": 0.002,
+        "step": 0.0001,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S51",
+    "title": "Sphere conduction, fins and effective conductivity",
+    "version": "0.1.0",
+    "category": "C",
+    "fidelity": [
+      "F2"
+    ],
+    "prerequisites": [
+      "S11",
+      "S12"
+    ],
+    "score": 75.0,
+    "spec": "simulations/S51.md",
+    "inputs": [
+      {
+        "id": "ri",
+        "label": "Sphere core radius rᵢ",
+        "unit": "m",
+        "min": 0.005,
+        "max": 0.05,
+        "default": 0.01,
+        "step": 0.001,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "ro",
+        "label": "Outer radius rₒ",
+        "unit": "m",
+        "min": 0.01,
+        "max": 0.1,
+        "default": 0.02,
+        "step": 0.001,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "phi",
+        "label": "Material fraction φ",
+        "unit": "1",
+        "min": 0.0,
+        "max": 1.0,
+        "default": 0.5,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "ml",
+        "label": "Fin parameter mL",
+        "unit": "1",
+        "min": 0.01,
+        "max": 5.0,
+        "default": 1.0,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S52",
+    "title": "Radiation and natural convection",
+    "version": "0.1.0",
+    "category": "B",
+    "fidelity": [
+      "F2"
+    ],
+    "prerequisites": [
+      "S11",
+      "S30"
+    ],
+    "score": 75.0,
+    "spec": "simulations/S52.md",
+    "inputs": [
+      {
+        "id": "Ts",
+        "label": "Surface Tₛ",
+        "unit": "K",
+        "min": 280.0,
+        "max": 500.0,
+        "default": 330.0,
+        "step": 1.0,
+        "alternative": "°C",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "eps",
+        "label": "Emissivity ε",
+        "unit": "1",
+        "min": 0.0,
+        "max": 1.0,
+        "default": 0.8,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "h",
+        "label": "Effective convection h",
+        "unit": "W/(m²·K)",
+        "min": 0.0,
+        "max": 30.0,
+        "default": 5.0,
+        "step": 0.5,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S53",
+    "title": "Boiling, condensation and utility load",
+    "version": "0.1.0",
+    "category": "D",
+    "fidelity": [
+      "F2"
+    ],
+    "prerequisites": [
+      "S15",
+      "S36"
+    ],
+    "score": 75.0,
+    "spec": "simulations/S53.md",
+    "inputs": [
+      {
+        "id": "UA",
+        "label": "Overall conductance UA",
+        "unit": "W/K",
+        "min": 50.0,
+        "max": 2000.0,
+        "default": 500.0,
+        "step": 10.0,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "C",
+        "label": "Cold capacity rate C",
+        "unit": "W/K",
+        "min": 100.0,
+        "max": 2000.0,
+        "default": 500.0,
+        "step": 10.0,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S54",
+    "title": "Mass transfer films, boundary layers and absorption",
+    "version": "0.1.0",
+    "category": "C",
+    "fidelity": [
+      "F2"
+    ],
+    "prerequisites": [
+      "S14",
+      "S17"
+    ],
+    "score": 74.6,
+    "spec": "simulations/S54.md",
+    "inputs": [
+      {
+        "id": "kg",
+        "label": "Gas coefficient k𝓰",
+        "unit": "m/s",
+        "min": 0.001,
+        "max": 0.1,
+        "default": 0.02,
+        "step": 0.001,
+        "alternative": "cm/s",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "kl",
+        "label": "Liquid coefficient kₗ",
+        "unit": "m/s",
+        "min": 0.001,
+        "max": 0.1,
+        "default": 0.01,
+        "step": 0.001,
+        "alternative": "cm/s",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "m",
+        "label": "Equilibrium slope m",
+        "unit": "1",
+        "min": 0.1,
+        "max": 5.0,
+        "default": 2.0,
+        "step": 0.1,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S55",
+    "title": "Humidification and drying",
+    "version": "0.1.0",
+    "category": "D",
+    "fidelity": [
+      "F2"
+    ],
+    "prerequisites": [
+      "S36",
+      "S54"
+    ],
+    "score": 72.6,
+    "spec": "simulations/S55.md",
+    "inputs": [
+      {
+        "id": "rh",
+        "label": "Relative humidity RH",
+        "unit": "1",
+        "min": 0.0,
+        "max": 1.0,
+        "default": 0.5,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "X",
+        "label": "Target dry-basis moisture X",
+        "unit": "kg/kg",
+        "min": 0.02,
+        "max": 0.5,
+        "default": 0.1,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S56",
+    "title": "Batch kinetics, selectivity and yield",
+    "version": "0.1.0",
+    "category": "D",
+    "fidelity": [
+      "F2",
+      "F4"
+    ],
+    "prerequisites": [
+      "S21",
+      "S35",
+      "S26"
+    ],
+    "score": 75.8,
+    "spec": "simulations/S56.md",
+    "inputs": [
+      {
+        "id": "k1",
+        "label": "First rate k₁",
+        "unit": "1/s",
+        "min": 0.001,
+        "max": 0.1,
+        "default": 0.01,
+        "step": 0.001,
+        "alternative": "1/min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "k2",
+        "label": "Second rate k₂",
+        "unit": "1/s",
+        "min": 0.001,
+        "max": 0.1,
+        "default": 0.01,
+        "step": 0.001,
+        "alternative": "1/min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "t",
+        "label": "Batch time t",
+        "unit": "s",
+        "min": 0.0,
+        "max": 500.0,
+        "default": 100.0,
+        "step": 1.0,
+        "alternative": "min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S57",
+    "title": "Tracer residence time and nonideal mixing",
+    "version": "0.1.0",
+    "category": "F",
+    "fidelity": [
+      "F2",
+      "F6"
+    ],
+    "prerequisites": [
+      "S18",
+      "S19"
+    ],
+    "score": 76.0,
+    "spec": "simulations/S57.md",
+    "inputs": [
+      {
+        "id": "N",
+        "label": "Tank count N",
+        "unit": "count",
+        "min": 1.0,
+        "max": 10.0,
+        "default": 2.0,
+        "step": 1.0,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "stepper + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "tau",
+        "label": "Mean time τ",
+        "unit": "s",
+        "min": 5.0,
+        "max": 200.0,
+        "default": 50.0,
+        "step": 1.0,
+        "alternative": "min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S58",
+    "title": "Nonisothermal reactors and multiple steady states",
+    "version": "0.1.0",
+    "category": "F",
+    "fidelity": [
+      "F4"
+    ],
+    "prerequisites": [
+      "S19",
+      "S21",
+      "S30"
+    ],
+    "score": 68.2,
+    "spec": "simulations/S58.md",
+    "inputs": [
+      {
+        "id": "Da",
+        "label": "Reference Damköhler Da",
+        "unit": "1",
+        "min": 0.01,
+        "max": 2.0,
+        "default": 0.1,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "B",
+        "label": "Heat release group B",
+        "unit": "1",
+        "min": 0.0,
+        "max": 12.0,
+        "default": 5.0,
+        "step": 0.1,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "H",
+        "label": "Heat removal group H",
+        "unit": "1",
+        "min": 0.1,
+        "max": 4.0,
+        "default": 1.0,
+        "step": 0.1,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S59",
+    "title": "Catalyst effectiveness and diffusion resistance",
+    "version": "0.1.0",
+    "category": "C",
+    "fidelity": [
+      "F2"
+    ],
+    "prerequisites": [
+      "S17",
+      "S20"
+    ],
+    "score": 74.0,
+    "spec": "simulations/S59.md",
+    "inputs": [
+      {
+        "id": "phi",
+        "label": "Thiele modulus φ",
+        "unit": "1",
+        "min": 0.01,
+        "max": 20.0,
+        "default": 1.0,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S60",
+    "title": "Packed absorber height and diameter",
+    "version": "0.1.0",
+    "category": "E",
+    "fidelity": [
+      "F3",
+      "F4"
+    ],
+    "prerequisites": [
+      "S50",
+      "S54"
+    ],
+    "score": 75.8,
+    "spec": "simulations/S60.md",
+    "inputs": [
+      {
+        "id": "yin",
+        "label": "Inlet mole fraction yᵢ",
+        "unit": "1",
+        "min": 0.002,
+        "max": 0.05,
+        "default": 0.02,
+        "step": 0.001,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "yout",
+        "label": "Outlet mole fraction yₒ",
+        "unit": "1",
+        "min": 0.001,
+        "max": 0.02,
+        "default": 0.005,
+        "step": 0.001,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "u",
+        "label": "Design superficial speed u",
+        "unit": "m/s",
+        "min": 0.2,
+        "max": 2.0,
+        "default": 1.0,
+        "step": 0.1,
+        "alternative": "cm/s",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S61",
+    "title": "Liquid–liquid extraction stages",
+    "version": "0.1.0",
+    "category": "D",
+    "fidelity": [
+      "F2"
+    ],
+    "prerequisites": [
+      "S33",
+      "S40"
+    ],
+    "score": 70.6,
+    "spec": "simulations/S61.md",
+    "inputs": [
+      {
+        "id": "K",
+        "label": "Partition coefficient K",
+        "unit": "1",
+        "min": 0.2,
+        "max": 10.0,
+        "default": 2.0,
+        "step": 0.1,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "S",
+        "label": "Total solvent flow S",
+        "unit": "kg/s",
+        "min": 0.1,
+        "max": 5.0,
+        "default": 1.0,
+        "step": 0.1,
+        "alternative": "kg/h",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "N",
+        "label": "Stages N",
+        "unit": "count",
+        "min": 1.0,
+        "max": 8.0,
+        "default": 2.0,
+        "step": 1.0,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "stepper + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S62",
+    "title": "Adsorption equilibrium and breakthrough",
+    "version": "0.1.0",
+    "category": "D",
+    "fidelity": [
+      "F3"
+    ],
+    "prerequisites": [
+      "S17",
+      "S54"
+    ],
+    "score": 67.2,
+    "spec": "simulations/S62.md",
+    "inputs": [
+      {
+        "id": "b",
+        "label": "Affinity b",
+        "unit": "m³/mol",
+        "min": 0.1,
+        "max": 10.0,
+        "default": 1.0,
+        "step": 0.1,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Cin",
+        "label": "Inlet Cᵢ",
+        "unit": "mol/m³",
+        "min": 0.1,
+        "max": 10.0,
+        "default": 1.0,
+        "step": 0.1,
+        "alternative": "mmol/L",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "M",
+        "label": "Sorbent mass M",
+        "unit": "kg",
+        "min": 0.1,
+        "max": 5.0,
+        "default": 1.0,
+        "step": 0.1,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S63",
+    "title": "Membrane flux, polarisation and TFF sizing",
+    "version": "0.1.0",
+    "category": "E",
+    "fidelity": [
+      "F2",
+      "F3"
+    ],
+    "prerequisites": [
+      "S17",
+      "S24",
+      "S54"
+    ],
+    "score": 78.4,
+    "spec": "simulations/S63.md",
+    "inputs": [
+      {
+        "id": "tmp",
+        "label": "Transmembrane pressure TMP",
+        "unit": "Pa",
+        "min": 10000.0,
+        "max": 200000.0,
+        "default": 100000.0,
+        "step": 1000.0,
+        "alternative": "kPa",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "rf",
+        "label": "Fouling resistance Rƒ",
+        "unit": "1/m",
+        "min": 0.0,
+        "max": 2000000000000.0,
+        "default": 1000000000000.0,
+        "step": 10000000000.0,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Q",
+        "label": "Permeate demand Qₚ",
+        "unit": "m³/s",
+        "min": 1e-06,
+        "max": 0.0001,
+        "default": 1e-05,
+        "step": 1e-06,
+        "alternative": "L/min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S64",
+    "title": "Evaporation and crystallisation balances",
+    "version": "0.1.0",
+    "category": "D",
+    "fidelity": [
+      "F2"
+    ],
+    "prerequisites": [
+      "S33",
+      "S36"
+    ],
+    "score": 70.6,
+    "spec": "simulations/S64.md",
+    "inputs": [
+      {
+        "id": "F",
+        "label": "Feed F",
+        "unit": "kg/s",
+        "min": 0.1,
+        "max": 5.0,
+        "default": 1.0,
+        "step": 0.1,
+        "alternative": "kg/h",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "E",
+        "label": "Evaporation E",
+        "unit": "kg/s",
+        "min": 0.0,
+        "max": 0.8,
+        "default": 0.5,
+        "step": 0.01,
+        "alternative": "kg/h",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "xf",
+        "label": "Feed fraction xƒ",
+        "unit": "1",
+        "min": 0.05,
+        "max": 0.5,
+        "default": 0.2,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "xs",
+        "label": "Mother liquor saturation xₛ",
+        "unit": "1",
+        "min": 0.1,
+        "max": 0.6,
+        "default": 0.3,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S65",
+    "title": "Centrifuge capacity and biomass clarification",
+    "version": "0.1.0",
+    "category": "E",
+    "fidelity": [
+      "F2",
+      "F6"
+    ],
+    "prerequisites": [
+      "S49"
+    ],
+    "score": 81.8,
+    "spec": "simulations/S65.md",
+    "inputs": [
+      {
+        "id": "vg",
+        "label": "Settling speed v𝗀",
+        "unit": "m/s",
+        "min": 1e-06,
+        "max": 0.001,
+        "default": 0.0001,
+        "step": 1e-06,
+        "alternative": "cm/s",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Sigma",
+        "label": "Equivalent settling area Σ",
+        "unit": "m²",
+        "min": 1.0,
+        "max": 100.0,
+        "default": 10.0,
+        "step": 1.0,
+        "alternative": "cm²",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S66",
+    "title": "Dynamic response and frequency domain",
+    "version": "0.1.0",
+    "category": "C",
+    "fidelity": [
+      "F2",
+      "F4"
+    ],
+    "prerequisites": [
+      "S26"
+    ],
+    "score": 81.4,
+    "spec": "simulations/S66.md",
+    "inputs": [
+      {
+        "id": "tau",
+        "label": "Time constant τ",
+        "unit": "s",
+        "min": 1.0,
+        "max": 50.0,
+        "default": 10.0,
+        "step": 1.0,
+        "alternative": "min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "delay",
+        "label": "Dead time θ",
+        "unit": "s",
+        "min": 0.0,
+        "max": 20.0,
+        "default": 2.0,
+        "step": 0.1,
+        "alternative": "min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "zeta",
+        "label": "Damping ζ",
+        "unit": "1",
+        "min": 0.1,
+        "max": 2.0,
+        "default": 0.5,
+        "step": 0.1,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "omega",
+        "label": "Angular frequency ω",
+        "unit": "rad/s",
+        "min": 0.01,
+        "max": 10.0,
+        "default": 0.1,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S67",
+    "title": "Control structures and disturbance rejection",
+    "version": "0.1.0",
+    "category": "D",
+    "fidelity": [
+      "F4"
+    ],
+    "prerequisites": [
+      "S25",
+      "S66"
+    ],
+    "score": 80.2,
+    "spec": "simulations/S67.md",
+    "inputs": [
+      {
+        "id": "r",
+        "label": "Flow ratio r",
+        "unit": "1",
+        "min": 0.0,
+        "max": 3.0,
+        "default": 1.0,
+        "step": 0.1,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "F1",
+        "label": "Wild-stream flow F₁",
+        "unit": "kg/s",
+        "min": 0.1,
+        "max": 3.0,
+        "default": 1.0,
+        "step": 0.1,
+        "alternative": "kg/h",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "sp",
+        "label": "Blend setpoint ysp",
+        "unit": "1",
+        "min": 0.05,
+        "max": 0.95,
+        "default": 0.5,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S68",
+    "title": "Predictive control with constraints",
+    "version": "0.1.0",
+    "category": "F",
+    "fidelity": [
+      "F4"
+    ],
+    "prerequisites": [
+      "S25",
+      "S66"
+    ],
+    "score": 75.0,
+    "spec": "simulations/S68.md",
+    "inputs": [
+      {
+        "id": "a",
+        "label": "Plant memory a",
+        "unit": "1",
+        "min": 0.1,
+        "max": 0.99,
+        "default": 0.8,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "N",
+        "label": "Prediction horizon N",
+        "unit": "count",
+        "min": 1.0,
+        "max": 5.0,
+        "default": 3.0,
+        "step": 1.0,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "stepper + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "lam",
+        "label": "Move penalty λ",
+        "unit": "1",
+        "min": 0.0,
+        "max": 2.0,
+        "default": 0.1,
+        "step": 0.1,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S69",
+    "title": "Sensor lag, actuator dynamics and fault diagnosis",
+    "version": "0.1.0",
+    "category": "F",
+    "fidelity": [
+      "F4"
+    ],
+    "prerequisites": [
+      "S25",
+      "S66"
+    ],
+    "score": 86.4,
+    "spec": "simulations/S69.md",
+    "inputs": [
+      {
+        "id": "ts",
+        "label": "Sensor lag τₛ",
+        "unit": "s",
+        "min": 0.1,
+        "max": 10.0,
+        "default": 1.0,
+        "step": 0.1,
+        "alternative": "min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "ta",
+        "label": "Actuator lag τₐ",
+        "unit": "s",
+        "min": 0.1,
+        "max": 10.0,
+        "default": 2.0,
+        "step": 0.1,
+        "alternative": "min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "b",
+        "label": "Sensor bias b",
+        "unit": "1",
+        "min": -0.3,
+        "max": 0.3,
+        "default": 0.0,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S70",
+    "title": "Growth, substrate and fermentation balances",
+    "version": "0.1.0",
+    "category": "D",
+    "fidelity": [
+      "F4"
+    ],
+    "prerequisites": [
+      "S19",
+      "S26",
+      "S35"
+    ],
+    "score": 64.0,
+    "spec": "simulations/S70.md",
+    "inputs": [
+      {
+        "id": "s",
+        "label": "Initial scaled substrate S/Ks",
+        "unit": "1",
+        "min": 0.1,
+        "max": 10.0,
+        "default": 1.0,
+        "step": 0.1,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "x",
+        "label": "Initial scaled biomass X/(YKs)",
+        "unit": "1",
+        "min": 0.05,
+        "max": 1.0,
+        "default": 0.1,
+        "step": 0.05,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S71",
+    "title": "Chemostat and washout",
+    "version": "0.1.0",
+    "category": "D",
+    "fidelity": [
+      "F2"
+    ],
+    "prerequisites": [
+      "S70"
+    ],
+    "score": 67.0,
+    "spec": "simulations/S71.md",
+    "inputs": [
+      {
+        "id": "d",
+        "label": "Scaled dilution D/μmax",
+        "unit": "1",
+        "min": 0.0,
+        "max": 1.2,
+        "default": 0.25,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "s",
+        "label": "Feed Sᵢ/Ks",
+        "unit": "1",
+        "min": 0.1,
+        "max": 10.0,
+        "default": 2.0,
+        "step": 0.1,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S72",
+    "title": "Dissolved oxygen and competing oxygen demand",
+    "version": "0.1.0",
+    "category": "C",
+    "fidelity": [
+      "F2"
+    ],
+    "prerequisites": [
+      "S54",
+      "S70"
+    ],
+    "score": 67.0,
+    "spec": "simulations/S72.md",
+    "inputs": [
+      {
+        "id": "k",
+        "label": "Transfer kLa",
+        "unit": "1/s",
+        "min": 0.001,
+        "max": 0.1,
+        "default": 0.01,
+        "step": 0.001,
+        "alternative": "1/min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "r",
+        "label": "Demand OUR",
+        "unit": "mol/(m³·s)",
+        "min": 0.0,
+        "max": 0.005,
+        "default": 0.001,
+        "step": 0.0001,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S73",
+    "title": "Enzyme kinetics and saturation",
+    "version": "0.1.0",
+    "category": "C",
+    "fidelity": [
+      "F1",
+      "F6"
+    ],
+    "prerequisites": [
+      "S27"
+    ],
+    "score": 69.4,
+    "spec": "simulations/S73.md",
+    "inputs": [
+      {
+        "id": "s",
+        "label": "Scaled substrate S/Km",
+        "unit": "1",
+        "min": 0.0,
+        "max": 10.0,
+        "default": 1.0,
+        "step": 0.1,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "V",
+        "label": "Maximum rate Vmax",
+        "unit": "mol/(m³·s)",
+        "min": 0.1,
+        "max": 2.0,
+        "default": 1.0,
+        "step": 0.1,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S74",
+    "title": "Chromatographic peak shape and resolution",
+    "version": "0.1.0",
+    "category": "D",
+    "fidelity": [
+      "F2"
+    ],
+    "prerequisites": [
+      "S27",
+      "S57"
+    ],
+    "score": 67.0,
+    "spec": "simulations/S74.md",
+    "inputs": [
+      {
+        "id": "t1",
+        "label": "First retention time t₁",
+        "unit": "s",
+        "min": 5.0,
+        "max": 50.0,
+        "default": 20.0,
+        "step": 1.0,
+        "alternative": "min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "t2",
+        "label": "Second retention time t₂",
+        "unit": "s",
+        "min": 5.0,
+        "max": 60.0,
+        "default": 28.0,
+        "step": 1.0,
+        "alternative": "min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "sig",
+        "label": "Common peak width σ",
+        "unit": "s",
+        "min": 0.5,
+        "max": 8.0,
+        "default": 2.0,
+        "step": 0.1,
+        "alternative": "min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S75",
+    "title": "Mixing vessel, agitation power and scale-up",
+    "version": "0.1.0",
+    "category": "E",
+    "fidelity": [
+      "F3"
+    ],
+    "prerequisites": [
+      "S07",
+      "S31"
+    ],
+    "score": 78.4,
+    "spec": "simulations/S75.md",
+    "inputs": [
+      {
+        "id": "D",
+        "label": "Impeller diameter D",
+        "unit": "m",
+        "min": 0.02,
+        "max": 0.5,
+        "default": 0.1,
+        "step": 0.01,
+        "alternative": "mm",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "N",
+        "label": "Rotation rate N",
+        "unit": "1/s",
+        "min": 1.0,
+        "max": 20.0,
+        "default": 5.0,
+        "step": 0.5,
+        "alternative": "1/min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "scale",
+        "label": "Linear scale factor s",
+        "unit": "1",
+        "min": 1.0,
+        "max": 10.0,
+        "default": 2.0,
+        "step": 0.5,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S76",
+    "title": "Utility capacity, operating cost and resource trade-offs",
+    "version": "0.1.0",
+    "category": "E",
+    "fidelity": [
+      "F2"
+    ],
+    "prerequisites": [
+      "S10",
+      "S16",
+      "S36"
+    ],
+    "score": 81.8,
+    "spec": "simulations/S76.md",
+    "inputs": [
+      {
+        "id": "duty",
+        "label": "Thermal duty Q̇",
+        "unit": "W",
+        "min": 1000.0,
+        "max": 100000.0,
+        "default": 10000.0,
+        "step": 1000.0,
+        "alternative": "kW",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "dT",
+        "label": "Water rise ΔT",
+        "unit": "K",
+        "min": 1.0,
+        "max": 20.0,
+        "default": 5.0,
+        "step": 1.0,
+        "alternative": "°C",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "hours",
+        "label": "Annual operating time t",
+        "unit": "s",
+        "min": 360000.0,
+        "max": 28800000.0,
+        "default": 3600000.0,
+        "step": 360000.0,
+        "alternative": "h",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S77",
+    "title": "Transport discretisation, CFD and finite elements",
+    "version": "0.1.0",
+    "category": "F",
+    "fidelity": [
+      "F4",
+      "F5"
+    ],
+    "prerequisites": [
+      "S32",
+      "S06"
+    ],
+    "score": 66.4,
+    "spec": "simulations/S77.md",
+    "inputs": [
+      {
+        "id": "N",
+        "label": "Uniform cells N",
+        "unit": "count",
+        "min": 10.0,
+        "max": 200.0,
+        "default": 50.0,
+        "step": 10.0,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "stepper + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "C",
+        "label": "Courant number C",
+        "unit": "1",
+        "min": 0.1,
+        "max": 1.5,
+        "default": 0.8,
+        "step": 0.1,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S78",
+    "title": "Depth filtration and throughput qualification",
+    "version": "0.1.0",
+    "category": "D",
+    "fidelity": [
+      "F3",
+      "F6"
+    ],
+    "prerequisites": [
+      "S24",
+      "S27"
+    ],
+    "score": 66.0,
+    "spec": "simulations/S78.md",
+    "inputs": [
+      {
+        "id": "q",
+        "label": "Initial normalised flux J₀",
+        "unit": "m/s",
+        "min": 1e-05,
+        "max": 0.001,
+        "default": 0.0001,
+        "step": 1e-05,
+        "alternative": "cm/s",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "cap",
+        "label": "Specific capacity vₘ",
+        "unit": "m³/m²",
+        "min": 0.01,
+        "max": 1.0,
+        "default": 0.1,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "t",
+        "label": "Processing time t",
+        "unit": "s",
+        "min": 0.0,
+        "max": 5000.0,
+        "default": 1000.0,
+        "step": 10.0,
+        "alternative": "min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S79",
+    "title": "Shell-and-tube configuration and fouling",
+    "version": "0.1.0",
+    "category": "E",
+    "fidelity": [
+      "F2",
+      "F3"
+    ],
+    "prerequisites": [
+      "S15",
+      "S16"
+    ],
+    "score": 78.4,
+    "spec": "simulations/S79.md",
+    "inputs": [
+      {
+        "id": "N",
+        "label": "Clean NTU N",
+        "unit": "1",
+        "min": 0.0,
+        "max": 5.0,
+        "default": 1.0,
+        "step": 0.05,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Cr",
+        "label": "Capacity ratio Cᵣ",
+        "unit": "1",
+        "min": 0.1,
+        "max": 1.0,
+        "default": 0.5,
+        "step": 0.05,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "beta",
+        "label": "Fouling product Uclean Rf″",
+        "unit": "1",
+        "min": 0.0,
+        "max": 2.0,
+        "default": 0.0,
+        "step": 0.05,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S80",
+    "title": "Second-law limits and phase boundaries",
+    "version": "0.1.0",
+    "category": "B",
+    "fidelity": [
+      "F2"
+    ],
+    "prerequisites": [
+      "S36",
+      "S38",
+      "S40"
+    ],
+    "score": 78.4,
+    "spec": "simulations/S80.md",
+    "inputs": [
+      {
+        "id": "T",
+        "label": "Comparison temperature T₂",
+        "unit": "K",
+        "min": 330.0,
+        "max": 370.0,
+        "default": 350.0,
+        "step": 1.0,
+        "alternative": "°C",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S81",
+    "title": "Turbulent velocity profiles and wall stress",
+    "version": "0.1.0",
+    "category": "F",
+    "fidelity": [
+      "F3"
+    ],
+    "prerequisites": [
+      "S05",
+      "S08"
+    ],
+    "score": 76.4,
+    "spec": "simulations/S81.md",
+    "inputs": [
+      {
+        "id": "n",
+        "label": "Profile exponent n",
+        "unit": "1",
+        "min": 5.0,
+        "max": 10.0,
+        "default": 7.0,
+        "step": 1.0,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "s",
+        "label": "Radius fraction r/R",
+        "unit": "1",
+        "min": 0.0,
+        "max": 1.0,
+        "default": 0.5,
+        "step": 0.01,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "dp",
+        "label": "Measured drop Δp",
+        "unit": "Pa",
+        "min": 0.0,
+        "max": 20000.0,
+        "default": 1000.0,
+        "step": 10.0,
+        "alternative": "kPa",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S82",
+    "title": "Constant-rate filtration and terminal pressure",
+    "version": "0.1.0",
+    "category": "E",
+    "fidelity": [
+      "F2"
+    ],
+    "prerequisites": [
+      "S24"
+    ],
+    "score": 81.8,
+    "spec": "simulations/S82.md",
+    "inputs": [
+      {
+        "id": "J",
+        "label": "Specified flux J",
+        "unit": "m/s",
+        "min": 1e-05,
+        "max": 0.001,
+        "default": 0.0001,
+        "step": 1e-05,
+        "alternative": "cm/s",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "lim",
+        "label": "Pressure ceiling Δpₘ",
+        "unit": "Pa",
+        "min": 1000.0,
+        "max": 100000.0,
+        "default": 10000.0,
+        "step": 1000.0,
+        "alternative": "kPa",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S83",
+    "title": "Sphere drops and convective analogies",
+    "version": "0.1.0",
+    "category": "C",
+    "fidelity": [
+      "F3"
+    ],
+    "prerequisites": [
+      "S54",
+      "S49"
+    ],
+    "score": 69.2,
+    "spec": "simulations/S83.md",
+    "inputs": [
+      {
+        "id": "Re",
+        "label": "Particle Reynolds number Re",
+        "unit": "1",
+        "min": 0.0,
+        "max": 200.0,
+        "default": 100.0,
+        "step": 1.0,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "Sc",
+        "label": "Schmidt number Sc",
+        "unit": "1",
+        "min": 0.6,
+        "max": 2.0,
+        "default": 1.0,
+        "step": 0.1,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  },
+  {
+    "id": "S84",
+    "title": "Mixing time, heat production and scale evidence",
+    "version": "0.1.0",
+    "category": "F",
+    "fidelity": [
+      "F2",
+      "F6"
+    ],
+    "prerequisites": [
+      "S57",
+      "S72",
+      "S75"
+    ],
+    "score": 64.6,
+    "spec": "simulations/S84.md",
+    "inputs": [
+      {
+        "id": "tau",
+        "label": "Tracer decay time τₘ",
+        "unit": "s",
+        "min": 1.0,
+        "max": 100.0,
+        "default": 10.0,
+        "step": 1.0,
+        "alternative": "min",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "q",
+        "label": "Heat generation Q𝗀",
+        "unit": "W",
+        "min": 0.0,
+        "max": 500.0,
+        "default": 100.0,
+        "step": 1.0,
+        "alternative": "kW",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      },
+      {
+        "id": "UA",
+        "label": "Cooling conductance UA",
+        "unit": "W/K",
+        "min": 5.0,
+        "max": 100.0,
+        "default": 20.0,
+        "step": 1.0,
+        "alternative": "same",
+        "scale": "linear",
+        "widget": "slider + numeric",
+        "role": "editable in active mode"
+      }
+    ]
+  }
+]

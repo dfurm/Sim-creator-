@@ -1,0 +1,83 @@
+{
+  "id": "S77",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Transport discretisation, CFD and finite elements",
+    "subject": "Mathematics",
+    "objectives": [
+      "Separate time, mesh and closure-model errors before proposing a 3D CFD study."
+    ],
+    "fidelity": [
+      "F4",
+      "F5"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S77.starter",
+  "inputs": [
+    {
+      "id": "N",
+      "label": "Uniform cells N",
+      "unit": "count",
+      "min": 10.0,
+      "max": 200.0,
+      "default": 50.0,
+      "step": 10.0,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "stepper + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "C",
+      "label": "Courant number C",
+      "unit": "1",
+      "min": 0.1,
+      "max": 1.5,
+      "default": 0.8,
+      "step": 0.1,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "mass_residual",
+      "unit": "1"
+    },
+    {
+      "id": "L2_error",
+      "unit": "1"
+    },
+    {
+      "id": "Courant",
+      "unit": "1"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S77",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S77.investigate",
+    "activity.S77.challenge"
+  ],
+  "applicabilityRules": [
+    "S77.assumptions.section-I"
+  ],
+  "references": [
+    "FNC",
+    "HEAT"
+  ],
+  "verification": [
+    "S77.fixtures.section-M"
+  ]
+}

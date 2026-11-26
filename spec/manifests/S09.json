@@ -1,0 +1,144 @@
+{
+  "id": "S09",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Pump and system operating point",
+    "subject": "Fluids",
+    "objectives": [
+      "Choose speed and restriction for a required flow, then compare input power; hydraulic throttling trades off against delivered head. Compare EXP01 pump data and EXP02 resistance."
+    ],
+    "fidelity": [
+      "F2",
+      "F6"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S09.starter",
+  "inputs": [
+    {
+      "id": "H0",
+      "label": "Reference shutoff H₀",
+      "unit": "m",
+      "min": 1.0,
+      "max": 30.0,
+      "default": 10.0,
+      "step": 0.1,
+      "alternative": "mm",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "a",
+      "label": "Pump curvature a",
+      "unit": "s²/m⁵",
+      "min": 100000.0,
+      "max": 10000000.0,
+      "default": 1000000.0,
+      "step": 10000.0,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "b",
+      "label": "System curvature b",
+      "unit": "s²/m⁵",
+      "min": 100000.0,
+      "max": 10000000.0,
+      "default": 1000000.0,
+      "step": 10000.0,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "Hz",
+      "label": "Static lift H𝓏",
+      "unit": "m",
+      "min": 0.0,
+      "max": 20.0,
+      "default": 2.0,
+      "step": 0.1,
+      "alternative": "mm",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "s",
+      "label": "Speed ratio s",
+      "unit": "1",
+      "min": 0.4,
+      "max": 1.2,
+      "default": 1.0,
+      "step": 0.01,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "eta",
+      "label": "Assumed efficiency η",
+      "unit": "1",
+      "min": 0.2,
+      "max": 0.85,
+      "default": 0.6,
+      "step": 0.01,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "flow",
+      "unit": "m³/s"
+    },
+    {
+      "id": "head",
+      "unit": "m"
+    },
+    {
+      "id": "hydraulic_power",
+      "unit": "W"
+    },
+    {
+      "id": "shaft_power",
+      "unit": "W"
+    },
+    {
+      "id": "root_status",
+      "unit": "text"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S09",
+    "anchors": [
+      "pump_operating_point",
+      "pump_curve",
+      "system_curve"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S09.investigate",
+    "activity.S09.challenge"
+  ],
+  "applicabilityRules": [
+    "S09.assumptions.section-I"
+  ],
+  "references": [
+    "DOE",
+    "PUMP"
+  ],
+  "verification": [
+    "S09.fixtures.section-M"
+  ]
+}

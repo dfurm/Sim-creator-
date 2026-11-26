@@ -1,0 +1,103 @@
+{
+  "id": "S02",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Continuity through a contraction",
+    "subject": "Fluids",
+    "objectives": [
+      "Choose a bore to meet a velocity ceiling at fixed delivery; report feasible available bores. Explain why shrinking a real nozzle on a fixed pump may change Q."
+    ],
+    "fidelity": [
+      "F1"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S02.starter",
+  "inputs": [
+    {
+      "id": "Q",
+      "label": "Volumetric flow Q",
+      "unit": "m³/s",
+      "min": 0.0,
+      "max": 0.003,
+      "default": 0.001,
+      "step": 1e-05,
+      "alternative": "L/min",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "D1",
+      "label": "Upstream bore D₁",
+      "unit": "m",
+      "min": 0.01,
+      "max": 0.1,
+      "default": 0.05,
+      "step": 0.001,
+      "alternative": "mm",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "D2",
+      "label": "Downstream bore D₂",
+      "unit": "m",
+      "min": 0.01,
+      "max": 0.1,
+      "default": 0.025,
+      "step": 0.001,
+      "alternative": "mm",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "area1",
+      "unit": "m²"
+    },
+    {
+      "id": "area2",
+      "unit": "m²"
+    },
+    {
+      "id": "v1",
+      "unit": "m/s"
+    },
+    {
+      "id": "v2",
+      "unit": "m/s"
+    },
+    {
+      "id": "mdot",
+      "unit": "kg/s"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S02",
+    "anchors": [
+      "throat_area",
+      "inlet_section",
+      "outlet_velocity"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S02.investigate",
+    "activity.S02.challenge"
+  ],
+  "applicabilityRules": [
+    "S02.assumptions.section-I"
+  ],
+  "references": [
+    "DOE"
+  ],
+  "verification": [
+    "S02.fixtures.section-M"
+  ]
+}

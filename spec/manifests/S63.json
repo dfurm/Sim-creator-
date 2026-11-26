@@ -1,0 +1,96 @@
+{
+  "id": "S63",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Membrane flux, polarisation and TFF sizing",
+    "subject": "Equipment design",
+    "objectives": [
+      "Size membrane area across measured flux decline; request feed-specific vendor and pilot data."
+    ],
+    "fidelity": [
+      "F2",
+      "F3"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S63.starter",
+  "inputs": [
+    {
+      "id": "tmp",
+      "label": "Transmembrane pressure TMP",
+      "unit": "Pa",
+      "min": 10000.0,
+      "max": 200000.0,
+      "default": 100000.0,
+      "step": 1000.0,
+      "alternative": "kPa",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "rf",
+      "label": "Fouling resistance Rƒ",
+      "unit": "1/m",
+      "min": 0.0,
+      "max": 2000000000000.0,
+      "default": 1000000000000.0,
+      "step": 10000000000.0,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "Q",
+      "label": "Permeate demand Qₚ",
+      "unit": "m³/s",
+      "min": 1e-06,
+      "max": 0.0001,
+      "default": 1e-05,
+      "step": 1e-06,
+      "alternative": "L/min",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "flux",
+      "unit": "m/s"
+    },
+    {
+      "id": "required_area",
+      "unit": "m²"
+    },
+    {
+      "id": "net_pressure",
+      "unit": "Pa"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S63",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S63.investigate",
+    "activity.S63.challenge"
+  ],
+  "applicabilityRules": [
+    "S63.assumptions.section-I"
+  ],
+  "references": [
+    "PERRY",
+    "SEP"
+  ],
+  "verification": [
+    "S63.fixtures.section-M"
+  ]
+}

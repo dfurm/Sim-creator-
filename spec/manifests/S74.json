@@ -1,0 +1,95 @@
+{
+  "id": "S74",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Chromatographic peak shape and resolution",
+    "subject": "Bioprocess",
+    "objectives": [
+      "Separate loss of resolution due to retention shift from band broadening."
+    ],
+    "fidelity": [
+      "F2"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S74.starter",
+  "inputs": [
+    {
+      "id": "t1",
+      "label": "First retention time t₁",
+      "unit": "s",
+      "min": 5.0,
+      "max": 50.0,
+      "default": 20.0,
+      "step": 1.0,
+      "alternative": "min",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "t2",
+      "label": "Second retention time t₂",
+      "unit": "s",
+      "min": 5.0,
+      "max": 60.0,
+      "default": 28.0,
+      "step": 1.0,
+      "alternative": "min",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "sig",
+      "label": "Common peak width σ",
+      "unit": "s",
+      "min": 0.5,
+      "max": 8.0,
+      "default": 2.0,
+      "step": 0.1,
+      "alternative": "min",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "resolution",
+      "unit": "1"
+    },
+    {
+      "id": "peak_area",
+      "unit": "1"
+    },
+    {
+      "id": "plate_count",
+      "unit": "1"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S74",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S74.investigate",
+    "activity.S74.challenge"
+  ],
+  "applicabilityRules": [
+    "S74.assumptions.section-I"
+  ],
+  "references": [
+    "PERRY",
+    "BIO"
+  ],
+  "verification": [
+    "S74.fixtures.section-M"
+  ]
+}

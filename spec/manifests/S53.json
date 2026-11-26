@@ -1,0 +1,81 @@
+{
+  "id": "S53",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Boiling, condensation and utility load",
+    "subject": "Heat transfer",
+    "objectives": [
+      "Size steam supply for target load; flag approach temperature and condensate handling."
+    ],
+    "fidelity": [
+      "F2"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S53.starter",
+  "inputs": [
+    {
+      "id": "UA",
+      "label": "Overall conductance UA",
+      "unit": "W/K",
+      "min": 50.0,
+      "max": 2000.0,
+      "default": 500.0,
+      "step": 10.0,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "C",
+      "label": "Cold capacity rate C",
+      "unit": "W/K",
+      "min": 100.0,
+      "max": 2000.0,
+      "default": 500.0,
+      "step": 10.0,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "duty",
+      "unit": "W"
+    },
+    {
+      "id": "condensate_flow",
+      "unit": "kg/s"
+    },
+    {
+      "id": "cold_outlet",
+      "unit": "K"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S53",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S53.investigate",
+    "activity.S53.challenge"
+  ],
+  "applicabilityRules": [
+    "S53.assumptions.section-I"
+  ],
+  "references": [
+    "HEAT"
+  ],
+  "verification": [
+    "S53.fixtures.section-M"
+  ]
+}

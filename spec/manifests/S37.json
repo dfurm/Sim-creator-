@@ -1,0 +1,82 @@
+{
+  "id": "S37",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Real gas compressibility and phase roots",
+    "subject": "Thermodynamics",
+    "objectives": [
+      "Identify volume root multiplicity and reject mechanically unstable branches."
+    ],
+    "fidelity": [
+      "F2",
+      "F4"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S37.starter",
+  "inputs": [
+    {
+      "id": "Tr",
+      "label": "Reduced temperature Tᵣ",
+      "unit": "1",
+      "min": 0.8,
+      "max": 2.0,
+      "default": 1.0,
+      "step": 0.01,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "vr",
+      "label": "Reduced molar volume vᵣ",
+      "unit": "1",
+      "min": 0.4,
+      "max": 6.0,
+      "default": 1.0,
+      "step": 0.01,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "pressure_ratio",
+      "unit": "1"
+    },
+    {
+      "id": "Z",
+      "unit": "1"
+    },
+    {
+      "id": "stable_root",
+      "unit": "text"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S37",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S37.investigate",
+    "activity.S37.challenge"
+  ],
+  "applicabilityRules": [
+    "S37.assumptions.section-I"
+  ],
+  "references": [
+    "THERMO"
+  ],
+  "verification": [
+    "S37.fixtures.section-M"
+  ]
+}

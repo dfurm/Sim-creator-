@@ -1,0 +1,82 @@
+{
+  "id": "S48",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Compressible nozzle and choking",
+    "subject": "Fluids",
+    "objectives": [
+      "Find lowest pressure drop that reaches target flow; explain plateau."
+    ],
+    "fidelity": [
+      "F2"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S48.starter",
+  "inputs": [
+    {
+      "id": "r",
+      "label": "Back pressure ratio pᵦ/p₀",
+      "unit": "1",
+      "min": 0.1,
+      "max": 1.0,
+      "default": 0.7,
+      "step": 0.01,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "A",
+      "label": "Throat area A",
+      "unit": "m²",
+      "min": 0.0001,
+      "max": 0.002,
+      "default": 0.001,
+      "step": 0.0001,
+      "alternative": "cm²",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "mass_flux",
+      "unit": "kg/(m² s)"
+    },
+    {
+      "id": "total_flow",
+      "unit": "kg/s"
+    },
+    {
+      "id": "critical_ratio",
+      "unit": "1"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S48",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S48.investigate",
+    "activity.S48.challenge"
+  ],
+  "applicabilityRules": [
+    "S48.assumptions.section-I"
+  ],
+  "references": [
+    "DOE",
+    "PERRY"
+  ],
+  "verification": [
+    "S48.fixtures.section-M"
+  ]
+}

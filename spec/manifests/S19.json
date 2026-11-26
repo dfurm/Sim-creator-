@@ -1,0 +1,144 @@
+{
+  "id": "S19",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "CSTR concentration response",
+    "subject": "Reaction engineering",
+    "objectives": [
+      "Estimate k from a trace only after V/Q and sensor dynamics are constrained. Use a benign salt tracer for physical mixing comparison; tracer response alone cannot validate reaction kinetics."
+    ],
+    "fidelity": [
+      "F2"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S19.starter",
+  "inputs": [
+    {
+      "id": "V",
+      "label": "Working volume V",
+      "unit": "m³",
+      "min": 0.001,
+      "max": 0.2,
+      "default": 0.01,
+      "step": 0.001,
+      "alternative": "L",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "Q",
+      "label": "Equal throughflow Q",
+      "unit": "m³/s",
+      "min": 1e-05,
+      "max": 0.002,
+      "default": 0.0001,
+      "step": 1e-05,
+      "alternative": "L/min",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "k",
+      "label": "First-order constant k",
+      "unit": "1/s",
+      "min": 0.0,
+      "max": 0.1,
+      "default": 0.01,
+      "step": 0.001,
+      "alternative": "1/min",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "Cin",
+      "label": "Feed Cᵢₙ",
+      "unit": "mol/m³",
+      "min": 0.0,
+      "max": 100.0,
+      "default": 100.0,
+      "step": 1.0,
+      "alternative": "mmol/L",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "C0",
+      "label": "Initial C₀",
+      "unit": "mol/m³",
+      "min": 0.0,
+      "max": 100.0,
+      "default": 0.0,
+      "step": 1.0,
+      "alternative": "mmol/L",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "t",
+      "label": "Time t",
+      "unit": "s",
+      "min": 0.0,
+      "max": 1000.0,
+      "default": 50.0,
+      "step": 1.0,
+      "alternative": "min",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "steady_concentration",
+      "unit": "mol/m³"
+    },
+    {
+      "id": "hydraulic_tau",
+      "unit": "s"
+    },
+    {
+      "id": "response_tau",
+      "unit": "s"
+    },
+    {
+      "id": "concentration",
+      "unit": "mol/m³"
+    },
+    {
+      "id": "reaction_rate",
+      "unit": "mol/s"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S19",
+    "anchors": [
+      "mixed_bulk",
+      "feed_step",
+      "steady_line"
+    ]
+  },
+  "initialState": {
+    "concentration": 0
+  },
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S19.investigate",
+    "activity.S19.challenge"
+  ],
+  "applicabilityRules": [
+    "S19.assumptions.section-I"
+  ],
+  "references": [
+    "FOG"
+  ],
+  "verification": [
+    "S19.fixtures.section-M"
+  ]
+}

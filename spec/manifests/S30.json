@@ -1,0 +1,81 @@
+{
+  "id": "S30",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Root finding and feasible branches",
+    "subject": "Mathematics",
+    "objectives": [
+      "Explain why initialisation changes branch in a design problem."
+    ],
+    "fidelity": [
+      "F4"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S30.starter",
+  "inputs": [
+    {
+      "id": "s",
+      "label": "Target s",
+      "unit": "1",
+      "min": -1.0,
+      "max": 9.0,
+      "default": 4.0,
+      "step": 0.1,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "x",
+      "label": "Newton starting point x",
+      "unit": "1",
+      "min": -5.0,
+      "max": 5.0,
+      "default": 1.0,
+      "step": 0.1,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "root",
+      "unit": "1"
+    },
+    {
+      "id": "residual",
+      "unit": "1"
+    },
+    {
+      "id": "iterations",
+      "unit": "count"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S30",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S30.investigate",
+    "activity.S30.challenge"
+  ],
+  "applicabilityRules": [
+    "S30.assumptions.section-I"
+  ],
+  "references": [
+    "FNC"
+  ],
+  "verification": [
+    "S30.fixtures.section-M"
+  ]
+}

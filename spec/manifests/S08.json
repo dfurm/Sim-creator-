@@ -1,0 +1,119 @@
+{
+  "id": "S08",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Darcy friction and pressure loss",
+    "subject": "Fluids",
+    "objectives": [
+      "Solve required head for each available bore; compare fixed-f assumption and roughness sensitivity. Use bisection on s=1/√f over [1,30], residual <10⁻¹⁰."
+    ],
+    "fidelity": [
+      "F3",
+      "F4"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S08.starter",
+  "inputs": [
+    {
+      "id": "Q",
+      "label": "Flow Q",
+      "unit": "m³/s",
+      "min": 0.0,
+      "max": 0.01,
+      "default": 0.001,
+      "step": 1e-05,
+      "alternative": "L/min",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "D",
+      "label": "Inside diameter D",
+      "unit": "m",
+      "min": 0.01,
+      "max": 0.1,
+      "default": 0.05,
+      "step": 0.001,
+      "alternative": "mm",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "L",
+      "label": "Pipe length L",
+      "unit": "m",
+      "min": 1.0,
+      "max": 100.0,
+      "default": 10.0,
+      "step": 0.1,
+      "alternative": "mm",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "eps",
+      "label": "Absolute roughness ε",
+      "unit": "m",
+      "min": 0.0,
+      "max": 0.001,
+      "default": 0.0,
+      "step": 1e-06,
+      "alternative": "mm",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "Re",
+      "unit": "1"
+    },
+    {
+      "id": "relative_roughness",
+      "unit": "1"
+    },
+    {
+      "id": "darcy_factor",
+      "unit": "1"
+    },
+    {
+      "id": "delta_p",
+      "unit": "Pa"
+    },
+    {
+      "id": "head_loss",
+      "unit": "m"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S08",
+    "anchors": [
+      "friction_point",
+      "pressure_taps",
+      "roughness_ratio"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S08.investigate",
+    "activity.S08.challenge"
+  ],
+  "applicabilityRules": [
+    "S08.assumptions.section-I"
+  ],
+  "references": [
+    "COLE",
+    "DOE",
+    "ROUGH"
+  ],
+  "verification": [
+    "S08.fixtures.section-M"
+  ]
+}

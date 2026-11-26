@@ -1,0 +1,223 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^S[0-9]{2,}$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subject": {
+          "type": "string",
+          "minLength": 1
+        },
+        "objectives": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "fidelity": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "subject",
+        "objectives",
+        "fidelity"
+      ]
+    },
+    "variant": {
+      "type": "string",
+      "minLength": 1
+    },
+    "model": {
+      "type": "string",
+      "minLength": 1
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "unit": {
+            "type": "string",
+            "minLength": 1
+          },
+          "min": {
+            "type": "number"
+          },
+          "max": {
+            "type": "number"
+          },
+          "default": {
+            "type": "number"
+          },
+          "step": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "alternative": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scale": {
+            "enum": [
+              "linear",
+              "log"
+            ]
+          },
+          "widget": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "label",
+          "unit",
+          "min",
+          "max",
+          "default",
+          "step",
+          "alternative",
+          "scale",
+          "widget",
+          "role"
+        ]
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "unit": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "unit"
+        ]
+      }
+    },
+    "unitSystem": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rendering": {
+      "type": "object",
+      "properties": {
+        "scene": {
+          "type": "string",
+          "minLength": 1
+        },
+        "anchors": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "scene",
+        "anchors"
+      ]
+    },
+    "initialState": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number"
+      }
+    },
+    "scenario": {
+      "type": "string",
+      "minLength": 1
+    },
+    "activities": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "applicabilityRules": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "verification": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "version",
+    "metadata",
+    "variant",
+    "model",
+    "inputs",
+    "outputs",
+    "unitSystem",
+    "rendering",
+    "initialState",
+    "scenario",
+    "activities",
+    "applicabilityRules",
+    "references",
+    "verification"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

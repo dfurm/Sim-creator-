@@ -1,0 +1,83 @@
+{
+  "id": "S45",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Pipe networks, minor losses and parallel pumps",
+    "subject": "Fluids",
+    "objectives": [
+      "Select arrangement for two duties and test against EXP03 data."
+    ],
+    "fidelity": [
+      "F2",
+      "F4"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S45.starter",
+  "inputs": [
+    {
+      "id": "Q",
+      "label": "Total network flow Q",
+      "unit": "m³/s",
+      "min": 0.0,
+      "max": 0.01,
+      "default": 0.002,
+      "step": 0.0001,
+      "alternative": "L/min",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "ratio",
+      "label": "Resistance ratio K₂/K₁",
+      "unit": "1",
+      "min": 0.25,
+      "max": 9.0,
+      "default": 1.0,
+      "step": 0.25,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "branch_flow_1",
+      "unit": "m³/s"
+    },
+    {
+      "id": "branch_flow_2",
+      "unit": "m³/s"
+    },
+    {
+      "id": "composite_head",
+      "unit": "m"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S45",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S45.investigate",
+    "activity.S45.challenge"
+  ],
+  "applicabilityRules": [
+    "S45.assumptions.section-I"
+  ],
+  "references": [
+    "DOE",
+    "PUMP"
+  ],
+  "verification": [
+    "S45.fixtures.section-M"
+  ]
+}

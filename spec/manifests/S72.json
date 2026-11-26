@@ -1,0 +1,83 @@
+{
+  "id": "S72",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Dissolved oxygen and competing oxygen demand",
+    "subject": "Bioprocess",
+    "objectives": [
+      "Infer kLa from an abiotic reoxygenation trace and assess sensor lag."
+    ],
+    "fidelity": [
+      "F2"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S72.starter",
+  "inputs": [
+    {
+      "id": "k",
+      "label": "Transfer kLa",
+      "unit": "1/s",
+      "min": 0.001,
+      "max": 0.1,
+      "default": 0.01,
+      "step": 0.001,
+      "alternative": "1/min",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "r",
+      "label": "Demand OUR",
+      "unit": "mol/(m³·s)",
+      "min": 0.0,
+      "max": 0.005,
+      "default": 0.001,
+      "step": 0.0001,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "steady_DO",
+      "unit": "mol/m³"
+    },
+    {
+      "id": "OTR",
+      "unit": "mol/(m³ s)"
+    },
+    {
+      "id": "OUR",
+      "unit": "mol/(m³ s)"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S72",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {
+    "C": 0.25
+  },
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S72.investigate",
+    "activity.S72.challenge"
+  ],
+  "applicabilityRules": [
+    "S72.assumptions.section-I"
+  ],
+  "references": [
+    "BIO"
+  ],
+  "verification": [
+    "S72.fixtures.section-M"
+  ]
+}

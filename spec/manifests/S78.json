@@ -1,0 +1,97 @@
+{
+  "id": "S78",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Depth filtration and throughput qualification",
+    "subject": "Bioprocess",
+    "objectives": [
+      "Size area for a throughput deadline and explain why capacity alone cannot establish product quality."
+    ],
+    "fidelity": [
+      "F3",
+      "F6"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S78.starter",
+  "inputs": [
+    {
+      "id": "q",
+      "label": "Initial normalised flux J₀",
+      "unit": "m/s",
+      "min": 1e-05,
+      "max": 0.001,
+      "default": 0.0001,
+      "step": 1e-05,
+      "alternative": "cm/s",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "cap",
+      "label": "Specific capacity vₘ",
+      "unit": "m³/m²",
+      "min": 0.01,
+      "max": 1.0,
+      "default": 0.1,
+      "step": 0.01,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "t",
+      "label": "Processing time t",
+      "unit": "s",
+      "min": 0.0,
+      "max": 5000.0,
+      "default": 1000.0,
+      "step": 10.0,
+      "alternative": "min",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "specific_volume",
+      "unit": "m³/m²"
+    },
+    {
+      "id": "instantaneous_flux",
+      "unit": "m/s"
+    },
+    {
+      "id": "capacity_limit",
+      "unit": "m³/m²"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S78",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S78.investigate",
+    "activity.S78.challenge"
+  ],
+  "applicabilityRules": [
+    "S78.assumptions.section-I"
+  ],
+  "references": [
+    "PERRY",
+    "BIO",
+    "VMAX"
+  ],
+  "verification": [
+    "S78.fixtures.section-M"
+  ]
+}

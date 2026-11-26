@@ -1,0 +1,95 @@
+{
+  "id": "S03",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Hydrostatic pressure and datum",
+    "subject": "Fluids",
+    "objectives": [
+      "Infer depth from gauge reading allowing nonatmospheric surface pressure; unknown surface pressure makes the inverse nonunique."
+    ],
+    "fidelity": [
+      "F1"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S03.starter",
+  "inputs": [
+    {
+      "id": "rho",
+      "label": "Liquid density ρ",
+      "unit": "kg/m³",
+      "min": 500.0,
+      "max": 1500.0,
+      "default": 1000.0,
+      "step": 1.0,
+      "alternative": "g/L",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "h",
+      "label": "Tap depth h",
+      "unit": "m",
+      "min": 0.0,
+      "max": 5.0,
+      "default": 2.0,
+      "step": 0.01,
+      "alternative": "mm",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "ps",
+      "label": "Absolute surface pressure pₛ",
+      "unit": "Pa",
+      "min": 80000.0,
+      "max": 250000.0,
+      "default": 101325.0,
+      "step": 1.0,
+      "alternative": "kPa",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "gauge",
+      "unit": "Pa"
+    },
+    {
+      "id": "absolute",
+      "unit": "Pa"
+    },
+    {
+      "id": "head",
+      "unit": "m"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S03",
+    "anchors": [
+      "pressure_tap",
+      "free_surface",
+      "depth_datum"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S03.investigate",
+    "activity.S03.challenge"
+  ],
+  "applicabilityRules": [
+    "S03.assumptions.section-I"
+  ],
+  "references": [
+    "DOE"
+  ],
+  "verification": [
+    "S03.fixtures.section-M"
+  ]
+}

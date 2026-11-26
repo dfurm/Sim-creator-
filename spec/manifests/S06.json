@@ -1,0 +1,142 @@
+{
+  "id": "S06",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Flat-plate momentum and thermal boundary layers",
+    "subject": "Fluids",
+    "objectives": [
+      "Choose x for a target layer thickness and test sensitivity to U. Higher fidelity requires pressure gradient, disturbance and transition data; turbulent comparison can use a separately reviewed correlation. Distinguish δ₉₉ from displacement thickness."
+    ],
+    "fidelity": [
+      "F4",
+      "F2"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S06.starter",
+  "inputs": [
+    {
+      "id": "U",
+      "label": "Free-stream speed U",
+      "unit": "m/s",
+      "min": 0.2,
+      "max": 15.0,
+      "default": 2.0,
+      "step": 0.1,
+      "alternative": "cm/s",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "nu",
+      "label": "Kinematic viscosity ν",
+      "unit": "m²/s",
+      "min": 8e-06,
+      "max": 3e-05,
+      "default": 1.5e-05,
+      "step": 1e-06,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "x",
+      "label": "Probe location x",
+      "unit": "m",
+      "min": 0.01,
+      "max": 1.0,
+      "default": 0.3,
+      "step": 0.01,
+      "alternative": "mm",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "L",
+      "label": "Plate length L",
+      "unit": "m",
+      "min": 0.1,
+      "max": 1.0,
+      "default": 0.5,
+      "step": 0.01,
+      "alternative": "mm",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "Pr",
+      "label": "Prandtl number Pr",
+      "unit": "1",
+      "min": 0.6,
+      "max": 10.0,
+      "default": 0.7,
+      "step": 0.1,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "Rex",
+      "unit": "1"
+    },
+    {
+      "id": "ReL",
+      "unit": "1"
+    },
+    {
+      "id": "delta99",
+      "unit": "m"
+    },
+    {
+      "id": "tau_local",
+      "unit": "Pa"
+    },
+    {
+      "id": "Cf_local",
+      "unit": "1"
+    },
+    {
+      "id": "Cf_mean",
+      "unit": "1"
+    },
+    {
+      "id": "thermal_delta99",
+      "unit": "m"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S06",
+    "anchors": [
+      "boundary_layer_profile",
+      "leading_edge",
+      "wall_tangent",
+      "thermal_edge"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S06.investigate",
+    "activity.S06.challenge"
+  ],
+  "applicabilityRules": [
+    "S06.assumptions.section-I"
+  ],
+  "references": [
+    "BLASIUS",
+    "BL",
+    "HEAT",
+    "POHL"
+  ],
+  "verification": [
+    "S06.fixtures.section-M"
+  ]
+}

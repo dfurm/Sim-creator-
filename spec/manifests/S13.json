@@ -1,0 +1,149 @@
+{
+  "id": "S13",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Transient heating and cooling",
+    "subject": "Heat transfer",
+    "objectives": [
+      "Solve elapsed time to a target strictly between initial and ambient. Reach equilibrium asymptotically; do not return a finite time at exactly ambient."
+    ],
+    "fidelity": [
+      "F1",
+      "F4"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S13.starter",
+  "inputs": [
+    {
+      "id": "L",
+      "label": "Half-thickness L",
+      "unit": "m",
+      "min": 0.001,
+      "max": 0.05,
+      "default": 0.005,
+      "step": 0.001,
+      "alternative": "mm",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "h",
+      "label": "Convection coefficient h",
+      "unit": "W/(m²·K)",
+      "min": 5.0,
+      "max": 500.0,
+      "default": 50.0,
+      "step": 1.0,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "k",
+      "label": "Solid conductivity k",
+      "unit": "W/(m·K)",
+      "min": 0.1,
+      "max": 100.0,
+      "default": 10.0,
+      "step": 0.1,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "Ti",
+      "label": "Initial temperature Tᵢ",
+      "unit": "K",
+      "min": 273.0,
+      "max": 393.0,
+      "default": 350.0,
+      "step": 1.0,
+      "alternative": "°C",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "Ta",
+      "label": "Bath temperature T∞",
+      "unit": "K",
+      "min": 273.0,
+      "max": 393.0,
+      "default": 300.0,
+      "step": 1.0,
+      "alternative": "°C",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "t",
+      "label": "Elapsed time t",
+      "unit": "s",
+      "min": 0.0,
+      "max": 2000.0,
+      "default": 200.0,
+      "step": 1.0,
+      "alternative": "min",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "Bi",
+      "unit": "1"
+    },
+    {
+      "id": "Fo",
+      "unit": "1"
+    },
+    {
+      "id": "tau",
+      "unit": "s"
+    },
+    {
+      "id": "lumped_temperature",
+      "unit": "K"
+    },
+    {
+      "id": "surface_temperature",
+      "unit": "K"
+    },
+    {
+      "id": "centre_temperature",
+      "unit": "K"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S13",
+    "anchors": [
+      "slab_centre",
+      "slab_surface",
+      "biot_indicator"
+    ]
+  },
+  "initialState": {
+    "temperature": 350
+  },
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S13.investigate",
+    "activity.S13.challenge"
+  ],
+  "applicabilityRules": [
+    "S13.assumptions.section-I"
+  ],
+  "references": [
+    "HEAT"
+  ],
+  "verification": [
+    "S13.fixtures.section-M"
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "id": "S54",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Mass transfer films, boundary layers and absorption",
+    "subject": "Mass transfer",
+    "objectives": [
+      "Determine which film limits absorption and which experimental change would test it."
+    ],
+    "fidelity": [
+      "F2"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S54.starter",
+  "inputs": [
+    {
+      "id": "kg",
+      "label": "Gas coefficient k𝓰",
+      "unit": "m/s",
+      "min": 0.001,
+      "max": 0.1,
+      "default": 0.02,
+      "step": 0.001,
+      "alternative": "cm/s",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "kl",
+      "label": "Liquid coefficient kₗ",
+      "unit": "m/s",
+      "min": 0.001,
+      "max": 0.1,
+      "default": 0.01,
+      "step": 0.001,
+      "alternative": "cm/s",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "m",
+      "label": "Equilibrium slope m",
+      "unit": "1",
+      "min": 0.1,
+      "max": 5.0,
+      "default": 2.0,
+      "step": 0.1,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "overall_gas_coefficient",
+      "unit": "m/s"
+    },
+    {
+      "id": "flux",
+      "unit": "mol/(m² s)"
+    },
+    {
+      "id": "film_resistance_fraction",
+      "unit": "1"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S54",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S54.investigate",
+    "activity.S54.challenge"
+  ],
+  "applicabilityRules": [
+    "S54.assumptions.section-I"
+  ],
+  "references": [
+    "MIT",
+    "PERRY"
+  ],
+  "verification": [
+    "S54.fixtures.section-M"
+  ]
+}

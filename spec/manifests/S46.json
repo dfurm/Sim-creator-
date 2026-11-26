@@ -1,0 +1,105 @@
+{
+  "id": "S46",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Suction head and cavitation margin",
+    "subject": "Fluids",
+    "objectives": [
+      "Identify which suction-side change has greatest recoverable margin."
+    ],
+    "fidelity": [
+      "F2",
+      "F6"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S46.starter",
+  "inputs": [
+    {
+      "id": "ps",
+      "label": "Surface absolute pressure pₛ",
+      "unit": "Pa",
+      "min": 80000.0,
+      "max": 150000.0,
+      "default": 101325.0,
+      "step": 1.0,
+      "alternative": "kPa",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "pv",
+      "label": "Vapour pressure pᵥ",
+      "unit": "Pa",
+      "min": 1000.0,
+      "max": 30000.0,
+      "default": 3000.0,
+      "step": 100.0,
+      "alternative": "kPa",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "dz",
+      "label": "Surface minus pump elevation Δz",
+      "unit": "m",
+      "min": -5.0,
+      "max": 5.0,
+      "default": 0.0,
+      "step": 0.1,
+      "alternative": "mm",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "hf",
+      "label": "Suction loss hƒ",
+      "unit": "m",
+      "min": 0.0,
+      "max": 8.0,
+      "default": 1.0,
+      "step": 0.1,
+      "alternative": "mm",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "NPSHa",
+      "unit": "m"
+    },
+    {
+      "id": "margin",
+      "unit": "m"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S46",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S46.investigate",
+    "activity.S46.challenge"
+  ],
+  "applicabilityRules": [
+    "S46.assumptions.section-I"
+  ],
+  "references": [
+    "PUMP",
+    "DOE"
+  ],
+  "verification": [
+    "S46.fixtures.section-M"
+  ]
+}

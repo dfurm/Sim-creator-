@@ -1,0 +1,95 @@
+{
+  "id": "S76",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Utility capacity, operating cost and resource trade-offs",
+    "subject": "Equipment design",
+    "objectives": [
+      "Compare two utilities with same duty and different water and electrical costs; distinguish consumption from recirculation."
+    ],
+    "fidelity": [
+      "F2"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S76.starter",
+  "inputs": [
+    {
+      "id": "duty",
+      "label": "Thermal duty Q̇",
+      "unit": "W",
+      "min": 1000.0,
+      "max": 100000.0,
+      "default": 10000.0,
+      "step": 1000.0,
+      "alternative": "kW",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "dT",
+      "label": "Water rise ΔT",
+      "unit": "K",
+      "min": 1.0,
+      "max": 20.0,
+      "default": 5.0,
+      "step": 1.0,
+      "alternative": "°C",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "hours",
+      "label": "Annual operating time t",
+      "unit": "s",
+      "min": 360000.0,
+      "max": 28800000.0,
+      "default": 3600000.0,
+      "step": 360000.0,
+      "alternative": "h",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "cooling_flow",
+      "unit": "kg/s"
+    },
+    {
+      "id": "annual_electricity",
+      "unit": "kWh"
+    },
+    {
+      "id": "working_volume",
+      "unit": "m³"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S76",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S76.investigate",
+    "activity.S76.challenge"
+  ],
+  "applicabilityRules": [
+    "S76.assumptions.section-I"
+  ],
+  "references": [
+    "PUMP",
+    "HEAT"
+  ],
+  "verification": [
+    "S76.fixtures.section-M"
+  ]
+}

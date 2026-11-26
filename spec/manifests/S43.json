@@ -1,0 +1,77 @@
+{
+  "id": "S43",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Rheology, shear and viscosity",
+    "subject": "Fluids",
+    "objectives": [
+      "Choose fluid model from curve shape and explain why extrapolating to zero shear fails."
+    ],
+    "fidelity": [
+      "F3"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S43.starter",
+  "inputs": [
+    {
+      "id": "n",
+      "label": "Flow index n",
+      "unit": "1",
+      "min": 0.3,
+      "max": 1.5,
+      "default": 1.0,
+      "step": 0.05,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "g",
+      "label": "Shear rate γ̇",
+      "unit": "1/s",
+      "min": 0.1,
+      "max": 100.0,
+      "default": 10.0,
+      "step": 0.1,
+      "alternative": "1/min",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "shear_stress",
+      "unit": "Pa"
+    },
+    {
+      "id": "apparent_viscosity",
+      "unit": "Pa·s"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S43",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S43.investigate",
+    "activity.S43.challenge"
+  ],
+  "applicabilityRules": [
+    "S43.assumptions.section-I"
+  ],
+  "references": [
+    "PERRY"
+  ],
+  "verification": [
+    "S43.fixtures.section-M"
+  ]
+}

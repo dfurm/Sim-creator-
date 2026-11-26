@@ -1,0 +1,82 @@
+{
+  "id": "S49",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Particle drag, settling and classification",
+    "subject": "Separations",
+    "objectives": [
+      "Determine cut size and check whether it remains in creeping flow."
+    ],
+    "fidelity": [
+      "F2"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S49.starter",
+  "inputs": [
+    {
+      "id": "d",
+      "label": "Particle diameter d",
+      "unit": "m",
+      "min": 1e-06,
+      "max": 0.0005,
+      "default": 1e-05,
+      "step": 1e-06,
+      "alternative": "mm",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "H",
+      "label": "Settling distance H",
+      "unit": "m",
+      "min": 0.01,
+      "max": 1.0,
+      "default": 0.1,
+      "step": 0.01,
+      "alternative": "mm",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "terminal_speed",
+      "unit": "m/s"
+    },
+    {
+      "id": "particle_Re",
+      "unit": "1"
+    },
+    {
+      "id": "crossing_time",
+      "unit": "s"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S49",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S49.investigate",
+    "activity.S49.challenge"
+  ],
+  "applicabilityRules": [
+    "S49.assumptions.section-I"
+  ],
+  "references": [
+    "PERRY",
+    "SEP"
+  ],
+  "verification": [
+    "S49.fixtures.section-M"
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "id": "S62",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Adsorption equilibrium and breakthrough",
+    "subject": "Separations",
+    "objectives": [
+      "Estimate minimum bed mass for ideal duty, compare to measured time at a stated outlet criterion."
+    ],
+    "fidelity": [
+      "F3"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S62.starter",
+  "inputs": [
+    {
+      "id": "b",
+      "label": "Affinity b",
+      "unit": "m³/mol",
+      "min": 0.1,
+      "max": 10.0,
+      "default": 1.0,
+      "step": 0.1,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "Cin",
+      "label": "Inlet Cᵢ",
+      "unit": "mol/m³",
+      "min": 0.1,
+      "max": 10.0,
+      "default": 1.0,
+      "step": 0.1,
+      "alternative": "mmol/L",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "M",
+      "label": "Sorbent mass M",
+      "unit": "kg",
+      "min": 0.1,
+      "max": 5.0,
+      "default": 1.0,
+      "step": 0.1,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "loading",
+      "unit": "mol/kg"
+    },
+    {
+      "id": "service_time",
+      "unit": "s"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S62",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S62.investigate",
+    "activity.S62.challenge"
+  ],
+  "applicabilityRules": [
+    "S62.assumptions.section-I"
+  ],
+  "references": [
+    "SEP",
+    "PERRY",
+    "LANG"
+  ],
+  "verification": [
+    "S62.fixtures.section-M"
+  ]
+}

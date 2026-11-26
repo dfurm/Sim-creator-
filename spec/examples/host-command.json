@@ -1,0 +1,13 @@
+{
+  "protocol": "furmtech.sim/1",
+  "session": "example-session",
+  "instanceId": "block-1",
+  "requestId": "request-2",
+  "modelVersion": "0.1.0",
+  "revision": 1,
+  "kind": "command",
+  "name": "setInputParameters",
+  "payload": {
+    "L1": 0.1
+  }
+}

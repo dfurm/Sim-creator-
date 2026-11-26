@@ -1,0 +1,116 @@
+{
+  "id": "S20",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "CSTR versus PFR performance and sizing",
+    "subject": "Reaction engineering",
+    "objectives": [
+      "Given a volume budget choose reactor type or tanks in series; report infeasible targets or multiple viable configurations. Higher-order kinetics requires experimental rates."
+    ],
+    "fidelity": [
+      "F1"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S20.starter",
+  "inputs": [
+    {
+      "id": "Q",
+      "label": "Feed flow Q",
+      "unit": "m³/s",
+      "min": 0.0001,
+      "max": 0.01,
+      "default": 0.001,
+      "step": 0.0001,
+      "alternative": "L/min",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "k",
+      "label": "Rate constant k",
+      "unit": "1/s",
+      "min": 0.001,
+      "max": 0.1,
+      "default": 0.01,
+      "step": 0.001,
+      "alternative": "1/min",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "V",
+      "label": "Performance volume V",
+      "unit": "m³",
+      "min": 0.001,
+      "max": 1.0,
+      "default": 0.1,
+      "step": 0.001,
+      "alternative": "L",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "X",
+      "label": "Design conversion X",
+      "unit": "1",
+      "min": 0.0,
+      "max": 0.999,
+      "default": 0.5,
+      "step": 0.001,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "conversion_CSTR",
+      "unit": "1"
+    },
+    {
+      "id": "conversion_PFR",
+      "unit": "1"
+    },
+    {
+      "id": "volume_CSTR",
+      "unit": "m³"
+    },
+    {
+      "id": "volume_PFR",
+      "unit": "m³"
+    },
+    {
+      "id": "space_time",
+      "unit": "s"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S20",
+    "anchors": [
+      "levenspiel_area",
+      "cstr_rectangle",
+      "pfr_integral"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S20.investigate",
+    "activity.S20.challenge"
+  ],
+  "applicabilityRules": [
+    "S20.assumptions.section-I"
+  ],
+  "references": [
+    "FOG"
+  ],
+  "verification": [
+    "S20.fixtures.section-M"
+  ]
+}

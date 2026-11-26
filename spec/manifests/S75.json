@@ -1,0 +1,99 @@
+{
+  "id": "S75",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Mixing vessel, agitation power and scale-up",
+    "subject": "Equipment design",
+    "objectives": [
+      "Choose a scale rule and explain the competing speed, power and mixing-time consequences."
+    ],
+    "fidelity": [
+      "F3"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S75.starter",
+  "inputs": [
+    {
+      "id": "D",
+      "label": "Impeller diameter D",
+      "unit": "m",
+      "min": 0.02,
+      "max": 0.5,
+      "default": 0.1,
+      "step": 0.01,
+      "alternative": "mm",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "N",
+      "label": "Rotation rate N",
+      "unit": "1/s",
+      "min": 1.0,
+      "max": 20.0,
+      "default": 5.0,
+      "step": 0.5,
+      "alternative": "1/min",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "scale",
+      "label": "Linear scale factor s",
+      "unit": "1",
+      "min": 1.0,
+      "max": 10.0,
+      "default": 2.0,
+      "step": 0.5,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "power",
+      "unit": "W"
+    },
+    {
+      "id": "tip_speed",
+      "unit": "m/s"
+    },
+    {
+      "id": "power_density",
+      "unit": "W/m³"
+    },
+    {
+      "id": "impeller_Re",
+      "unit": "1"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S75",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S75.investigate",
+    "activity.S75.challenge"
+  ],
+  "applicabilityRules": [
+    "S75.assumptions.section-I"
+  ],
+  "references": [
+    "PERRY",
+    "BIO"
+  ],
+  "verification": [
+    "S75.fixtures.section-M"
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "id": "S73",
+  "version": "0.1.0",
+  "metadata": {
+    "title": "Enzyme kinetics and saturation",
+    "subject": "Bioprocess",
+    "objectives": [
+      "Select a range of observations that separates Km from Vmax."
+    ],
+    "fidelity": [
+      "F1",
+      "F6"
+    ]
+  },
+  "variant": "starter",
+  "model": "model.S73.starter",
+  "inputs": [
+    {
+      "id": "s",
+      "label": "Scaled substrate S/Km",
+      "unit": "1",
+      "min": 0.0,
+      "max": 10.0,
+      "default": 1.0,
+      "step": 0.1,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    },
+    {
+      "id": "V",
+      "label": "Maximum rate Vmax",
+      "unit": "mol/(m³·s)",
+      "min": 0.1,
+      "max": 2.0,
+      "default": 1.0,
+      "step": 0.1,
+      "alternative": "same",
+      "scale": "linear",
+      "widget": "slider + numeric",
+      "role": "editable in active mode"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "specific_rate",
+      "unit": "1"
+    },
+    {
+      "id": "elasticity",
+      "unit": "1"
+    }
+  ],
+  "unitSystem": "SI",
+  "rendering": {
+    "scene": "scene.S73",
+    "anchors": [
+      "equipment_view",
+      "operating_point"
+    ]
+  },
+  "initialState": {},
+  "scenario": "builtin.defaults",
+  "activities": [
+    "activity.S73.investigate",
+    "activity.S73.challenge"
+  ],
+  "applicabilityRules": [
+    "S73.assumptions.section-I"
+  ],
+  "references": [
+    "BIO",
+    "MM"
+  ],
+  "verification": [
+    "S73.fixtures.section-M"
+  ]
+}
