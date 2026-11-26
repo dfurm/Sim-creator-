@@ -292,6 +292,12 @@ export class AlgebraicBlock implements EducationalBlock {
   }
   getLearning(): Readonly<Record<string, unknown>> { return this.learning; }
 
+  /** Host-neutral completion event (SIMULATION_BLOCK_INTERFACE: activity.completed). */
+  reportActivityCompleted(activityId: string, version: string, criteria: readonly string[], evidenceRefs: readonly string[]): void {
+    this.assertReady();
+    this.emit('activity.completed', { activity: activityId, version, criteria: [...criteria], evidence: [...evidenceRefs], timestamp: new Date().toISOString() });
+  }
+
   // ---------- export ----------
   async exportData(format: 'csv' | 'json'): Promise<Blob> {
     const r = this.getOutputs();

@@ -15,7 +15,9 @@ const executablePath = chromiumPath();
 export default defineConfig({
   testDir: './e2e',
   reporter: [['list']],
-  use: { headless: true, trace: 'off' },
+  use: { headless: true, trace: 'off', baseURL: 'http://localhost:4173/' },
+  // Serves the production build (dist/app); `npm run test:e2e` builds it first.
+  webServer: { command: 'npm run serve', url: 'http://localhost:4173/', reuseExistingServer: false, timeout: 60_000 },
   projects: [
     {
       name: 'chromium',

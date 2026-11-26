@@ -61,3 +61,20 @@ describe('semantic anchors', () => {
     expect(() => new AnchorRegistry('S02', [{ id: 'S11/a', ...s }])).toThrow();
   });
 });
+
+import { evaluateCriteria } from '../src/core/criteria';
+describe('criteria', () => {
+  const result = { revision: 1, timeSI: 0, checks: [], outputs: {
+    v2: { value: 2.0372, unit: 'm/s', status: 'within' as const, rules: [], origin: 'calculated' as const },
+    v1: { value: 9, unit: 'm/s', status: 'outside' as const, rules: [], origin: 'calculated' as const },
+  } };
+  it('evaluates enumerated operations', () => {
+    const r = evaluateCriteria([
+      { op: 'predictionRecorded', prompt: 'p' },
+      { op: 'outputWithin', output: 'v2', min: 2.03, max: 2.04, unit: 'm/s' },
+      { op: 'outputWithin', output: 'v1', min: 0, max: 10, unit: 'm/s' },
+      { op: 'outputWithin', output: 'v2', min: 2.03, max: 2.04, unit: 'mm/s' },
+    ], result, { p: 1 });
+    expect(r.map((x) => x.met)).toEqual([true, true, false, false]);
+  });
+});
