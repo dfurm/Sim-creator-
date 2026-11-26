@@ -44,7 +44,7 @@ Reference checks (from repo root):
 If `.venv` is missing: `python3 -m venv .venv && .venv/bin/pip install -r app/reports/python-requirements.lock.txt`.
 
 ## Project notes
-- Pages: `?` library home, `?sim=S02[&scenario=investigate]`, `?sim=pipe&task=explore|a|b|c`.
+- Pages are chosen by in-app state (`app/src/ui/router.tsx`), never by query strings. Links use `<Link to=…>`; the route is mirrored to `#/S02/default|investigate`, `#/pipe/explore|a|b|c` when allowed. Legacy `?sim=…` is read at start-up only.
 - Composite pipe lesson is defined in `app/docs/COMPOSITE_PIPE_SPEC.md`; scientific open questions go in `app/OPEN_QUESTIONS.md`.
 - Spec defects go in `app/SPEC_ISSUES.md`; updated copies of STATE/DEVELOPMENT_LOG/QUALITY_GATE live in `app/docs/`.
 - Models (`app/src/core`, `app/src/sims`) must stay free of DOM and React; renderers (`app/src/views`) free of React. `tests/purity.test.ts` enforces this.
