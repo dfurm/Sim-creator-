@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "1.0.0",
+  "scenarioId": "S02.builtin.defaults",
+  "scenarioVersion": "0.2.0",
+  "simulationId": "S02",
+  "modelVersion": "0.2.0",
+  "variant": "starter",
+  "initialInputs": { "mode": "fixedThroughput", "Q": 0.001, "D1": 0.05, "D2": 0.025, "vmax": 2 },
+  "visibleInputs": ["mode", "Q", "D1", "D2", "vmax"],
+  "lockedInputs": [],
+  "restrictedRanges": {},
+  "visibleOutputs": ["area1", "area2", "v1", "v2", "mdot"],
+  "hiddenUntil": {},
+  "objectives": [
+    "Predict which cross-section has the greater mean velocity and whether mass flow changes.",
+    "Choose a bore that meets a velocity ceiling at fixed delivery."
+  ],
+  "overlays": [
+    { "anchor": "throat_area", "text": "Change this bore while the flow Q stays fixed." }
+  ],
+  "predictions": ["predict-halve-D2"],
+  "tasks": [
+    "Record a prediction, then halve the downstream diameter.",
+    "In bore-design mode, report the feasible bores for a 2 m/s cap."
+  ],
+  "criteria": [
+    { "op": "predictionRecorded", "prompt": "predict-halve-D2" },
+    { "op": "explanationRecorded", "prompt": "explain-halve-D2" }
+  ],
+  "capture": ["prediction", "inputs", "outputs", "validity", "explanation"]
+}

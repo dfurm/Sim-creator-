@@ -1,25 +1,36 @@
 {
   "name": "furmtech-simulation-library",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.2.0-proto",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "serve": "vite preview --port 4173 --strictPort",
-    "build": "tsc --noEmit && vite build",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "test:watch": "vitest",
-    "test:e2e": "npm run build:file && playwright test --trace off",
+    "test:fixtures": "vitest run tests/fixtures",
+    "fixtures:generate": "cd .. && .venv/bin/python -I app/fixtures/generate_s02_fixtures.py",
+    "build": "tsc --noEmit && vite build",
+    "build:file": "tsc --noEmit && vite build --mode file",
+    "serve": "vite preview --port 4173 --strictPort",
+    "test:e2e": "npm run build && npm run build:file && playwright test --trace off",
     "test:all": "npm run typecheck && npm run test && npm run test:e2e",
-    "build:file": "tsc --noEmit && vite build --mode file"
+    "test:watch": "vitest"
   },
   "devDependencies": {
     "@playwright/test": "^1.65.1",
     "@types/node": "^26.6.11",
+    "@types/react": "^19.3.3",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.3.0",
     "typescript": "^7.0.2",
     "vite": "^8.4.0",
     "vite-plugin-singlefile": "^2.3.4",
     "vitest": "^5.1.2"
+  },
+  "dependencies": {
+    "ajv": "^8.20.0",
+    "katex": "^0.19.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
   }
 }

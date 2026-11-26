@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "1.0.0",
+  "scenarioId": "S02.investigate.halve-D2",
+  "scenarioVersion": "0.2.0",
+  "simulationId": "S02",
+  "modelVersion": "0.2.0",
+  "variant": "starter",
+  "initialInputs": { "mode": "fixedThroughput", "Q": 0.001, "D1": 0.05, "D2": 0.05, "vmax": 2 },
+  "visibleInputs": ["Q", "D1", "D2"],
+  "lockedInputs": ["mode", "Q", "D1", "vmax"],
+  "restrictedRanges": {},
+  "visibleOutputs": ["area1", "area2", "v1", "v2", "mdot"],
+  "hiddenUntil": { "v2": "predict-halve-D2" },
+  "objectives": ["Predict the change in mean velocity when the downstream diameter is halved."],
+  "overlays": [
+    { "anchor": "throat_area", "text": "Halve this diameter after recording your prediction." }
+  ],
+  "predictions": ["predict-halve-D2"],
+  "tasks": ["Record a prediction of v₂/v₁ after halving D₂.", "Halve D₂ (50 mm → 25 mm).", "Explain the factor you observe."],
+  "criteria": [
+    { "op": "predictionRecorded", "prompt": "predict-halve-D2" },
+    { "op": "outputWithin", "output": "v2", "min": 2.03, "max": 2.04, "unit": "m/s" },
+    { "op": "explanationRecorded", "prompt": "explain-halve-D2" }
+  ],
+  "capture": ["prediction", "inputs", "outputs", "validity", "explanation"]
+}
