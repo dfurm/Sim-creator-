@@ -9,10 +9,11 @@ import type { StationHeads } from '../sims/pipe/model';
 import { full, sig } from '../views/format';
 import { renderBudget, renderGradeLines, renderPipeScene, describePipe, type PipeViewData } from '../views/pipeViews';
 import { NumberControl } from './NumberControl';
+import { HOME, Link, type PipeTask } from './router';
 import { EquationPanel, LiveRegion, OutputsTable, StatusBanner, type EquationLine, type OutputRow } from './Panels';
 
 const STORAGE_KEY = 'furmtech.sim.pipe.snapshot.v1';
-type TaskKey = 'explore' | 'a' | 'b' | 'c';
+type TaskKey = PipeTask;
 const TASK_INDEX: Record<string, number> = { a: 0, b: 1, c: 2 };
 
 const LABELS: Record<string, { label: string; anchor?: string }> = {
@@ -32,13 +33,6 @@ const DISPLAY: Record<UnitSystem, Record<string, string>> = {
   SI: { Q: 'm³/s', D1: 'm', D2: 'm', dz: 'm', L: 'm', eps: 'm', rho: 'kg/m³', mu: 'Pa·s', p1: 'Pa', K: '1' },
 };
 
-function taskKey(): TaskKey {
-  try {
-    const t = new URLSearchParams(window.location.search).get('task');
-    return t === 'a' || t === 'b' || t === 'c' ? t : 'explore';
-  } catch { return 'explore'; }
-}
-
 function download(name: string, blob: Blob) {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
@@ -54,8 +48,7 @@ function SvgView({ render, testId, deps }: { render: (svg: SVGSVGElement) => voi
   return <svg ref={ref} data-testid={testId} />;
 }
 
-export function PipeLesson() {
-  const [task] = useState<TaskKey>(taskKey);
+export function PipeLesson({ task }: { task: TaskKey }) {
   const scenario: Scenario = PIPE_SCENARIOS[task]!;
   const meta = task === 'explore' ? null : metadata.tasks[TASK_INDEX[task]!]!;
   const blockRef = useRef<AlgebraicBlock | null>(null);
@@ -224,9 +217,9 @@ export function PipeLesson() {
         <h1>Pipe lesson · contraction and straight run</h1>
         <p className="objective">{scenario.objectives[0]}</p>
         <nav aria-label="Lesson tasks" className="scenario-nav">
-          <a href="?">Library home</a>
+          <Link to={HOME}>Library home</Link>
           {(['explore', 'a', 'b', 'c'] as const).map((k) => (
-            <a key={k} href={`?sim=pipe&task=${k}`} aria-current={task === k ? 'page' : undefined}>{k === 'explore' ? 'Explore' : `Task (${k})`}</a>
+            <Link key={k} to={{ page: 'pipe', task: k }} current={task === k}>{k === 'explore' ? 'Explore' : `Task (${k})`}</Link>
           ))}
         </nav>
       </header>

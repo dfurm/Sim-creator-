@@ -5,15 +5,16 @@ import './ui/styles.css';
 import { App } from './ui/App';
 import { Home } from './ui/Home';
 import { PipeLesson } from './ui/PipeLesson';
-
-function route(): 'S02' | 'pipe' | 'home' {
-  try {
-    const s = new URLSearchParams(window.location.search).get('sim');
-    return s === 'S02' ? 'S02' : s === 'pipe' ? 'pipe' : 'home';
-  } catch { return 'home'; }
-}
+import { RouterProvider, routeToHash } from './ui/router';
 
 const root = document.getElementById('app');
 if (!root) throw new Error('#app missing');
-const page = route();
-createRoot(root).render(<StrictMode>{page === 'S02' ? <App /> : page === 'pipe' ? <PipeLesson /> : <Home />}</StrictMode>);
+createRoot(root).render(
+  <StrictMode>
+    <RouterProvider>
+      {(route) => route.page === 'S02' ? <App key={routeToHash(route)} scenarioKey={route.scenario} />
+        : route.page === 'pipe' ? <PipeLesson key={routeToHash(route)} task={route.task} />
+        : <Home />}
+    </RouterProvider>
+  </StrictMode>,
+);

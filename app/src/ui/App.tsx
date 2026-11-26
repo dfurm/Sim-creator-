@@ -9,6 +9,7 @@ import { full, sig } from '../views/format';
 import { NumberControl } from './NumberControl';
 import { EquationPanel, LiveRegion, OutputsTable, StatusBanner, type EquationLine, type OutputRow } from './Panels';
 import { PlotsView, SceneView } from './Views';
+import { HOME, Link, type S02Scenario } from './router';
 
 const STORAGE_KEY = 'furmtech.sim.S02.snapshot.v1';
 const APP_VERSION = '0.2.0-proto';
@@ -27,13 +28,6 @@ const DISPLAY_UNIT: Record<UnitSystem, Record<string, string>> = {
   engineering: { Q: 'L/min', D1: 'mm', D2: 'mm', vmax: 'm/s' },
 };
 
-function scenarioKey(): string {
-  try {
-    const q = new URLSearchParams(window.location.search).get('scenario');
-    return q && q in S02_SCENARIOS ? q : 'default';
-  } catch { return 'default'; }
-}
-
 function download(name: string, blob: Blob) {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
@@ -42,9 +36,8 @@ function download(name: string, blob: Blob) {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
-export function App() {
+export function App({ scenarioKey: scKey }: { scenarioKey: S02Scenario }) {
   const blockRef = useRef<AlgebraicBlock | null>(null);
-  const [scKey] = useState(scenarioKey);
   const scenario: Scenario = S02_SCENARIOS[scKey]!;
   const [result, setResult] = useState<BlockResult | null>(null);
   const [inputs, setInputs] = useState<Record<string, number | string | boolean>>({});
@@ -193,9 +186,9 @@ export function App() {
         <h1>S02 · Continuity through a contraction</h1>
         <p className="objective">{scenario.objectives[0]}</p>
         <nav aria-label="Scenarios" className="scenario-nav">
-          <a href="?">Library home</a>
-          <a href="?sim=S02&amp;scenario=default" aria-current={scKey === 'default' ? 'page' : undefined}>Explore and design</a>
-          <a href="?sim=S02&amp;scenario=investigate" aria-current={scKey === 'investigate' ? 'page' : undefined}>Guided investigation: halve D₂</a>
+          <Link to={HOME}>Library home</Link>
+          <Link to={{ page: 'S02', scenario: 'default' }} current={scKey === 'default'}>Explore and design</Link>
+          <Link to={{ page: 'S02', scenario: 'investigate' }} current={scKey === 'investigate'}>Guided investigation: halve D₂</Link>
         </nav>
       </header>
       <LiveRegion message={live} />
