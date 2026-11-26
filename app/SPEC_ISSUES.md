@@ -1,4 +1,4 @@
-# Spec issues log: v0.1.0 baseline, found in Run 2A
+# Spec issues log: v0.1.0 baseline, found in Runs 2A and 2B
 
 The spec in `./spec/` was **not edited**. Each item gives the file, the issue and how 0.2.0-proto works around it. Severity: **H** blocks a correct implementation, **M** needs a decision by the spec owner, **L** is cosmetic or a consistency point.
 
@@ -19,10 +19,17 @@ The spec in `./spec/` was **not edited**. Each item gives the file, the issue an
 | SI-13 | L | `verification/reference_results.json` S27 "OLS SSE" | The rerun with NumPy 2.5.5 gives `1.7999999999999998`; the recorded value is `1.8000000000000003`. The 4.4e-16 difference is within the 1e-12 tolerance, but the file is not byte-reproducible. | Reported only; the check passes (30/30). |
 | SI-14 | L | `verification/reference_results.json` | Only one S02 quantity (v₂) has a recorded check. v₁, ṁ and D_min appear only as rounded text in §M/§D. | Added independent mpmath fixtures: 40 forward cases, 5 design cases (`app/fixtures/generate_s02_fixtures.py`). |
 | SI-15 | L | `contracts/scenario.schema.json`, `examples/wall.scenario.json` | `explanationRecorded` prompts (e.g. `explain-series`) are not declared anywhere. There is a `predictions` list but no list of explanation prompts. | Explanation prompt IDs are used as learning-record keys. Consider adding an `explanations` array to the schema. |
+| SI-16 | M | `simulations/S07.md` §I vs `simulations/S08.md` §I | At exactly Re = 4000, S07's screen says "> 4000 commonly turbulent" (so 4000 is transitional), while S08 says "turbulent ≥ 4000". | The friction model follows S08 (4000 = turbulent, approaching band). S07's own screen label keeps its wording. OPEN_QUESTIONS OQ-02. *(Run 2B)* |
+| SI-17 | M | `contracts/scenario.schema.json`, `snapshot.schema.json` (`simulationId` pattern `^S[0-9]{2,}$`) | There is no ID scheme for a composite lesson that calls several blocks. | The composite lesson is registered as `S04`, variant `composite.contraction-run`. AnchorRegistry accepts member-block prefixes (S07/, S08/). OQ-14. *(2B)* |
+| SI-18 | L | S07 §D mode `plate`; S08 §D modes `inverseLoss` and the head-cap sizing; S04 §D design target | These are specified but not needed for the 2B lesson. | Not implemented. S04 provides `hpRequired` for a target p₂ as an extra output. The S07 block has fixedSpeed and fixedFlow; the S08 block has automaticRegime and fixedDarcy. *(2B)* |
+| SI-19 | M | S04 §I, §N; `registers/PROPERTY_DATA_REGISTER.md` | S04 refers to an "optional teaching-water vapour-pressure input from a named property record", but no such record exists (TEACH-WATER has only ρ and μ). | The cavitation margin is reported as indeterminate. Only absolute p ≤ 0 is suppressed. OQ-07. *(2B)* |
+| SI-20 | M | `registers/CORRELATION_REGISTER.md` | There is no contraction-loss (K) correlation or table, although S04 uses a lumped K. | K is a user input referenced to v₂, default 0. Task (b) uses an illustrative K = 0.3, flagged. OQ-04, OQ-05. *(2B)* |
+| SI-21 | L | S04 §C fixes ρ = 1000 kg/m³; S08 §C fixes ρ = 1000, μ = 0.001; S07 makes ρ and μ editable (500–1500, 0.0005–0.05) | Property handling is inconsistent across the blocks the lesson composes. | The composite uses S07's editable ranges, as the Run 2B brief requires. The standalone S04 and S08 blocks keep their fixed values. OQ-10. *(2B)* |
+| SI-22 | L | S08 §D `L` minimum 1 m | Zero-loss recovery (L = 0) cannot be shown within the S08 range. | The composite extends L down to 0 and enforces \|z₃\| ≤ L. OQ-09. *(2B)* |
 
 ## What the spec lacks for this run
 
-1. **NCSE 2026 entry-to-practice (ETP-) identifiers.** These are not in the spec. `engineersaustralia.org.au` does not resolve from the build container (`getaddrinfo ENOTFOUND`). The mappings are left empty with `needs-SME-review`; nothing was guessed. The 2012 EA Stage 1 element codes (1.1–3.6) are mapped as **proposed**.
+1. *(2A; resolved for 2B by the product owner supplying codes)* **NCSE 2026 entry-to-practice (ETP-) identifiers.** These are not in the spec. `engineersaustralia.org.au` does not resolve from the build container (`getaddrinfo ENOTFOUND`). The mappings are left empty with `needs-SME-review`; nothing was guessed. The 2012 EA Stage 1 element codes (1.1–3.6) are mapped as **proposed**.
 2. **Numeric S02 applicability thresholds and their sources** (SI-05).
 3. **A real bore catalogue** (SI-06 / R11).
 4. **Handshake and nonce wire format** for the host protocol (SI-09).
