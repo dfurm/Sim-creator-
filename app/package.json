@@ -1,0 +1,25 @@
+{
+  "name": "furmtech-simulation-library",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "serve": "vite preview --port 4173 --strictPort",
+    "build": "tsc --noEmit && vite build",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "npm run build:file && playwright test --trace off",
+    "test:all": "npm run typecheck && npm run test && npm run test:e2e",
+    "build:file": "tsc --noEmit && vite build --mode file"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.1",
+    "@types/node": "^26.6.11",
+    "typescript": "^7.0.2",
+    "vite": "^8.4.0",
+    "vite-plugin-singlefile": "^2.3.4",
+    "vitest": "^5.1.2"
+  }
+}

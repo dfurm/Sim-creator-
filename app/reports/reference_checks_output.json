@@ -1,0 +1,272 @@
+[
+  {
+    "sim": "S01",
+    "quantity": "Accumulation [m3]",
+    "value": 0.12499999999999999,
+    "expected": 0.125,
+    "absolute_tolerance": 1e-10,
+    "method": "Quadrature of flow",
+    "passed": true
+  },
+  {
+    "sim": "S02",
+    "quantity": "Throat velocity [m/s]",
+    "value": 2.0371832715762603,
+    "expected": 2.03718,
+    "absolute_tolerance": 5e-06,
+    "method": "Q / circle area",
+    "passed": true
+  },
+  {
+    "sim": "S03",
+    "quantity": "Gauge pressure [Pa]",
+    "value": 19613.299999999996,
+    "expected": 19613.3,
+    "absolute_tolerance": 1e-07,
+    "method": "Integrate pressure gradient",
+    "passed": true
+  },
+  {
+    "sim": "S04",
+    "quantity": "Pressure change [Pa]",
+    "value": -1945.3667259328854,
+    "expected": -1945.37,
+    "absolute_tolerance": 0.01,
+    "method": "Kinetic energy difference",
+    "passed": true
+  },
+  {
+    "sim": "S05",
+    "quantity": "Integrated flow [m3/s]",
+    "value": 1.0000000000000003e-05,
+    "expected": 1e-05,
+    "absolute_tolerance": 1e-12,
+    "method": "Annular integral",
+    "passed": true
+  },
+  {
+    "sim": "S06",
+    "quantity": "Wall curvature",
+    "value": 0.3320573362343058,
+    "expected": 0.332057,
+    "absolute_tolerance": 2e-05,
+    "method": "Collocation BVP independent of prescribed shooting",
+    "passed": true
+  },
+  {
+    "sim": "S06",
+    "quantity": "99% thickness [m]",
+    "value": 0.007364984268784687,
+    "expected": 0.007365,
+    "absolute_tolerance": 2e-05,
+    "method": "Interpolate BVP solution",
+    "passed": true
+  },
+  {
+    "sim": "S07",
+    "quantity": "Pipe Reynolds",
+    "value": 2000.0,
+    "expected": 2000,
+    "absolute_tolerance": 1e-09,
+    "method": "Inertial/viscous scale ratio",
+    "passed": true
+  },
+  {
+    "sim": "S08",
+    "quantity": "Smooth Darcy f at Re=100000",
+    "value": 0.017989773084306555,
+    "expected": 0.0179898,
+    "absolute_tolerance": 1e-07,
+    "method": "Root in f instead of in 1/sqrt(f)",
+    "passed": true
+  },
+  {
+    "sim": "S09",
+    "quantity": "Operating flow [m3/s]",
+    "value": 0.0019999999999989367,
+    "expected": 0.002,
+    "absolute_tolerance": 1e-10,
+    "method": "Bracket intersection independently",
+    "passed": true
+  },
+  {
+    "sim": "S10",
+    "quantity": "Head for fixed f=.02 [m]",
+    "value": 2.1322481327081038,
+    "expected": 2.13225,
+    "absolute_tolerance": 2e-05,
+    "method": "Sum entry/minor and major pressure losses",
+    "passed": true
+  },
+  {
+    "sim": "S11",
+    "quantity": "Composite flux [W/m2]",
+    "value": 200.0,
+    "expected": 200,
+    "absolute_tolerance": 1e-07,
+    "method": "Solve temperature residual",
+    "passed": true
+  },
+  {
+    "sim": "S12",
+    "quantity": "Cylindrical loss [W]",
+    "value": 18.554752295963,
+    "expected": 18.555,
+    "absolute_tolerance": 0.001,
+    "method": "Integrate radial resistance",
+    "passed": true
+  },
+  {
+    "sim": "S13",
+    "quantity": "Lumped T at 200 s [K]",
+    "value": 318.39397206253307,
+    "expected": 318.394,
+    "absolute_tolerance": 0.001,
+    "method": "Integrate ODE",
+    "passed": true
+  },
+  {
+    "sim": "S14",
+    "quantity": "Plate mean Nu",
+    "value": 117.91365143141684,
+    "expected": 117.914,
+    "absolute_tolerance": 0.002,
+    "method": "Integrate local heat transfer over area",
+    "passed": true
+  },
+  {
+    "sim": "S15",
+    "quantity": "Parallel duty [W]",
+    "value": 21616.61791908468,
+    "expected": 21616.6,
+    "absolute_tolerance": 0.1,
+    "method": "Difference-temperature ODE integral",
+    "passed": true
+  },
+  {
+    "sim": "S16",
+    "quantity": "Countercurrent required area [m2]",
+    "value": 1.9999999999999998,
+    "expected": 2,
+    "absolute_tolerance": 1e-10,
+    "method": "Invert forward effectiveness",
+    "passed": true
+  },
+  {
+    "sim": "S17",
+    "quantity": "Semi-infinite concentration at eta=1 [mol/m3]",
+    "value": 15.729920705028515,
+    "expected": 15.7299,
+    "absolute_tolerance": 0.0001,
+    "method": "Complementary error function",
+    "passed": true
+  },
+  {
+    "sim": "S18",
+    "quantity": "Tank level [m]",
+    "value": 0.7999999999999999,
+    "expected": 0.8,
+    "absolute_tolerance": 1e-12,
+    "method": "Inventory balance",
+    "passed": true
+  },
+  {
+    "sim": "S19",
+    "quantity": "CSTR step [mol/m3]",
+    "value": 31.606027941181516,
+    "expected": 31.606,
+    "absolute_tolerance": 0.001,
+    "method": "Integrate balance",
+    "passed": true
+  },
+  {
+    "sim": "S20",
+    "quantity": "PFR design [m3]",
+    "value": 0.06931471805599453,
+    "expected": 0.0693147,
+    "absolute_tolerance": 1e-07,
+    "method": "Levenspiel quadrature",
+    "passed": true
+  },
+  {
+    "sim": "S21",
+    "quantity": "Rate at 310 K [1/s]",
+    "value": 0.01909087854228516,
+    "expected": 0.01909088,
+    "absolute_tolerance": 1e-07,
+    "method": "Integrate logarithmic temperature derivative",
+    "passed": true
+  },
+  {
+    "sim": "S22",
+    "quantity": "Bubble pressure [Pa]",
+    "value": 150000.0,
+    "expected": 150000,
+    "absolute_tolerance": 1e-06,
+    "method": "Normalise vapour mole fractions",
+    "passed": true
+  },
+  {
+    "sim": "S23",
+    "quantity": "Contacts including reboiler",
+    "value": 6.0,
+    "expected": 6,
+    "absolute_tolerance": 0,
+    "method": "Numerical inversion of equilibrium at each step",
+    "passed": true
+  },
+  {
+    "sim": "S24",
+    "quantity": "Normalised filtrate volume [m]",
+    "value": 0.4567764362833335,
+    "expected": 0.456776,
+    "absolute_tolerance": 1e-06,
+    "method": "Implicit cake balance",
+    "passed": true
+  },
+  {
+    "sim": "S25",
+    "quantity": "First delivered sample PV",
+    "value": 0.00995016625083181,
+    "expected": 0.00995017,
+    "absolute_tolerance": 1e-08,
+    "method": "Plant ODE under ZOH",
+    "passed": true
+  },
+  {
+    "sim": "S26",
+    "quantity": "RK4 endpoint",
+    "value": 0.13554977050717967,
+    "expected": 0.13554977,
+    "absolute_tolerance": 1e-08,
+    "method": "Explicit four-stage stepping",
+    "passed": true
+  },
+  {
+    "sim": "S27",
+    "quantity": "OLS slope",
+    "value": 1.7999999999999998,
+    "expected": 1.8,
+    "absolute_tolerance": 1e-12,
+    "method": "Independent polynomial least squares",
+    "passed": true
+  },
+  {
+    "sim": "S27",
+    "quantity": "OLS SSE",
+    "value": 1.7999999999999998,
+    "expected": 1.8,
+    "absolute_tolerance": 1e-12,
+    "method": "Residual norm",
+    "passed": true
+  },
+  {
+    "sim": "S28",
+    "quantity": "Relative combined uncertainty",
+    "value": 0.044721359549995794,
+    "expected": 0.04472136,
+    "absolute_tolerance": 1e-08,
+    "method": "Covariance matrix product",
+    "passed": true
+  }
+]
