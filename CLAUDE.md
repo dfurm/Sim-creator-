@@ -28,7 +28,9 @@ Then read the records the task names (`spec/simulations/Sxx.md`, `spec/briefs/Sx
 | Install dependencies | `npm ci` |
 | Type-check (strict) | `npm run typecheck` |
 | Unit tests (Vitest) | `npm test` |
-| Browser tests (Playwright, headless Chromium; builds the file:// bundle first) | `npm run test:e2e` |
+| Fixture tests only | `npm run test:fixtures` |
+| Regenerate independent fixtures (mpmath) | `npm run fixtures:generate` |
+| Browser tests (Playwright, headless Chromium; builds both bundles, serves dist/app on :4173) | `npm run test:e2e` |
 | Everything | `npm run test:all` |
 | Dev server | `npm run dev` |
 | Serve production build | `npm run build && npm run serve` (http://localhost:4173) |
@@ -40,6 +42,11 @@ Reference checks (from repo root):
 .venv/bin/python spec/verification/reference_checks.py > app/reports/reference_checks_output.json
 ```
 If `.venv` is missing: `python3 -m venv .venv && .venv/bin/pip install -r app/reports/python-requirements.lock.txt`.
+
+## Project notes
+- Spec defects go in `app/SPEC_ISSUES.md`; updated copies of STATE/DEVELOPMENT_LOG/QUALITY_GATE live in `app/docs/`.
+- Models (`app/src/core`, `app/src/sims`) must stay free of DOM and React; renderers (`app/src/views`) free of React. `tests/purity.test.ts` enforces this.
+- Never mark a mapping or status verified/reviewed; mappings are "proposed", statuses "unverified".
 
 ## Environment notes
 See `app/ENVIRONMENT.md`. In the cloud container `npx playwright install` is blocked;

@@ -47,6 +47,7 @@ normally and no fallback is used.
 ## What cannot run here
 - Downloading Playwright browsers (cdn.playwright.dev blocked). Firefox and WebKit are not
   available, so cross-browser checks are pending.
+- engineersaustralia.org.au does not resolve from this container (checked in Run 2A), so NCSE documents cannot be fetched here.
 - General web hosts are blocked, e.g. cdn.jsdelivr.net, nist.gov, drive.google.com
   (direct). Fetching references or CDN assets at runtime is not possible. Bundle KaTeX and
   similar libraries from npm instead, which the architecture requires anyway.
@@ -83,6 +84,8 @@ Keep `spec/**` out of the Edit and Write rules. You can also add
    asks for your approval, and you can compare the checksum.
 3. Nothing is uploaded without your explicit go-ahead in that run. *Not yet tested:* upload of a
    binary zip through the connector and its size limit are unverified.
+
+**Measured in Run 2A:** each connector call is limited to 4.2 MB, which leaves about 3.1 MB for the file. A 3,000,000-byte upload succeeded and read back with an identical SHA-256; a 4 MiB upload was refused. Separately, uploads over 10 MB are refused. Keep release zips under 3 MB, or split them.
 
 **Fallback (if the zip is too large for the connector or the upload fails):** commit the zip
 to a branch, or attach it to a GitHub Release. Download it on your computer and drag it into

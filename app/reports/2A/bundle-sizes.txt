@@ -1,0 +1,4 @@
+app/assets/index-BbdxCRwe.js raw=680463 gzip=204141
+app/assets/index-CF5l_1VA.css raw=34074 gzip=9671
+file/index.html raw=1056518 gzip=472158
+woff2 fonts total=256168

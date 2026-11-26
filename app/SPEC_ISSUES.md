@@ -1,0 +1,30 @@
+# Spec issues log: v0.1.0 baseline, found in Run 2A
+
+The spec in `./spec/` was **not edited**. Each item gives the file, the issue and how 0.2.0-proto works around it. Severity: **H** blocks a correct implementation, **M** needs a decision by the spec owner, **L** is cosmetic or a consistency point.
+
+| ID | Sev | Where | Issue | Handling in 0.2.0-proto |
+|---|---|---|---|---|
+| SI-01 | M | `contracts/block.ts` `Validity`; `standards/MODEL_APPLICABILITY_STANDARD.md` | The fourth status is `"unknown"` in the contract, "cannot establish applicability" in the standard and "indeterminate" in the Phase 2 brief. | The kernel uses `indeterminate` and maps it to `unknown` at the contract boundary (`src/core/applicability.ts`). The spec owner should pick one term. |
+| SI-02 | M | `contracts/manifest.schema.json` | `additionalProperties: false` at every level. There is no extension point for curriculum codes, orthogonal fidelity tags or `verification_status`. | These are held in a sidecar, `src/sims/S02/metadata.json`, next to the manifest. The manifest is read unchanged from `spec/manifests/S02.json`. |
+| SI-03 | M | `simulations/S02.md` §D vs `manifests/S02.json`, `registers/PARAMETER_REGISTER.csv` | The mode selector (fixedThroughput/boreDesign) and the velocity cap (0.25–4 m/s, step 0.05, default 2) appear only in the §D text. They are missing from the manifest `inputs` and the parameter register. | Added as inputs flagged `source: 'app-extension'` (`mode`, `vmax`). |
+| SI-04 | M | `contracts/{scenario,snapshot,envelope}.schema.json` | Version pattern `^\d+\.\d+\.\d+$` rejects pre-release tags such as `0.2.0-proto`. | Model version `0.2.0`, scenario version `0.2.0`; the package version is `0.2.0-proto`. |
+| SI-05 | H | `simulations/S02.md` §I, `manifests/S02.json` `applicabilityRules` | The spec says "apply per-output within/approaching/outside/unknown rules", but S02 has no rule definitions or thresholds. The only rule ID is the placeholder `S02.assumptions.section-I`. | Seven author-defined rules (`S02.A1`–`A4`, `I1`, `G1`, `D1`), all `unverified`. Most are stipulated assumptions. One product guard suppresses outputs when no bore in the teaching grid meets the cap. Needs SME review. |
+| SI-06 | M | `simulations/S02.md` §K, `roadmap/BACKLOG.md` R11 | "Report feasible available bores" needs a bore catalogue, and none is supplied. | Feasible bores come from the teaching control grid (10–100 mm, 1 mm). This is labelled "not a supplier catalogue" in the UI and in the export. |
+| SI-07 | L | `architecture/SIMULATION_BLOCK_INTERFACE.md` vs `contracts/block.ts` `EventName` | The interface says reset "emits reset", but `EventName` has no reset event. | Emits `simulation.stateChanged` with `payload.reset = true`. |
+| SI-08 | L | `contracts/snapshot.schema.json` | `rng.state` is required (minimum 1) even for noise-free models. `history` items and `learning` are untyped objects. | RNG recorded as `xorshift32-v1`, seed 17, marked unused in `assetVersions.rng` (DATA_INTERCHANGE allows this if documented). History is limited to the last 20 results. |
+| SI-09 | M | `integration/WEBSITE_DEPLOYMENT_PLAN.md` vs `contracts/envelope.schema.json` | The plan asks hosts to "match nonce and requestId" and to reject commands before the handshake. The envelope has no nonce field, no handshake command name, and does not say whether `revision` on a command is the expected revision. | Added a `handshake` command and a per-session handshake set. Command `revision` is treated as the expected revision. The retry cache is keyed by session + requestId. No nonce (the schema would reject one). |
+| SI-10 | L | `manifests/S02.json` `"scenario": "builtin.defaults"` | Names a scenario that is not supplied anywhere. | Authored `src/sims/S02/scenario.default.json` (`S02.builtin.defaults`) and `scenario.investigate.json`; both are schema-valid. |
+| SI-11 | L | `SIMULATION_BLOCK_INTERFACE.md` ("namespaced output IDs") vs manifests | The manifests use bare output IDs (`v2`). | Bare IDs within a block. Simulation ID and model version are carried in every export row and envelope. |
+| SI-12 | L | `examples/wall.manifest.json` | The same unit is spelled two ways: `m²·K/W` (input Rc) and `m² K/W` (output resistance_area). | Not used in 2A. A unit registry keyed on strings will need one canonical spelling. |
+| SI-13 | L | `verification/reference_results.json` S27 "OLS SSE" | The rerun with NumPy 2.5.5 gives `1.7999999999999998`; the recorded value is `1.8000000000000003`. The 4.4e-16 difference is within the 1e-12 tolerance, but the file is not byte-reproducible. | Reported only; the check passes (30/30). |
+| SI-14 | L | `verification/reference_results.json` | Only one S02 quantity (v₂) has a recorded check. v₁, ṁ and D_min appear only as rounded text in §M/§D. | Added independent mpmath fixtures: 40 forward cases, 5 design cases (`app/fixtures/generate_s02_fixtures.py`). |
+| SI-15 | L | `contracts/scenario.schema.json`, `examples/wall.scenario.json` | `explanationRecorded` prompts (e.g. `explain-series`) are not declared anywhere. There is a `predictions` list but no list of explanation prompts. | Explanation prompt IDs are used as learning-record keys. Consider adding an `explanations` array to the schema. |
+
+## What the spec lacks for this run
+
+1. **NCSE 2026 entry-to-practice (ETP-) identifiers.** These are not in the spec. `engineersaustralia.org.au` does not resolve from the build container (`getaddrinfo ENOTFOUND`). The mappings are left empty with `needs-SME-review`; nothing was guessed. The 2012 EA Stage 1 element codes (1.1–3.6) are mapped as **proposed**.
+2. **Numeric S02 applicability thresholds and their sources** (SI-05).
+3. **A real bore catalogue** (SI-06 / R11).
+4. **Handshake and nonce wire format** for the host protocol (SI-09).
+5. **An S02 scenario file** (SI-10).
+6. **Named reviewers, the target browser and device list, and a licence decision for the code and content** (BACKLOG R06–R08, DECISION_REGISTER D08). Without these, nothing can be marked reviewed or released.
