@@ -128,3 +128,40 @@ figure.card { margin: 0 0 14px; }
 .equations, .card:has(> table.data), details { overflow-x: auto; }
 .eq-term { max-width: 100%; }
 @media (max-width: 480px) { .page { padding: 10px; } .num { width: 6em; } }
+
+/* Pipe lesson (2B) */
+.table-scroll { overflow-x: auto; }
+.tag { display: inline-block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; padding: 1px 6px; border-radius: 10px; border: 1.5px solid var(--line); margin-right: 4px; }
+.tag-input { border-color: var(--accent); color: var(--accent); }
+.tag-fixed { border-style: dashed; color: var(--muted); }
+.tag-solved { border-style: double; border-width: 3px; color: var(--ink); }
+.tagged-control { border-top: 1px solid var(--line); padding-top: 4px; }
+.tagged-control .control { margin-top: 2px; }
+.fixed-list { padding-left: 1rem; font-size: 0.9rem; }
+.task-steps { padding-left: 1.2rem; }
+.prediction label.pred-field { display: block; margin: 6px 0; }
+.prediction input[type="text"], .item input[type="text"] { font: inherit; width: 9em; padding: 3px 6px; border: 1px solid var(--line); border-radius: 4px; background: var(--card); color: var(--ink); }
+.item { margin: 10px 0; }
+.item legend { font-weight: 600; }
+.feedback { margin: 6px 0 0; padding: 6px 8px; border-left: 4px solid var(--line); }
+.feedback.ok { border-left-color: var(--within); }
+.feedback.no { border-left-color: var(--outside); border-left-style: dashed; }
+.home-list li { margin: 6px 0; }
+.home-list a { color: var(--accent); }
+.plot .gl-egl { fill: none; stroke: var(--accent); stroke-width: 2.5; }
+.plot .gl-egl-pt, .plot .gl-hgl-pt { fill: var(--accent); stroke: var(--ink); }
+.plot .gl-hgl { fill: none; stroke: var(--accent); stroke-width: 1.5; }
+.plot .gl-egl-ideal { fill: none; stroke: var(--ink); stroke-width: 1.5; stroke-dasharray: 6 4; }
+.plot .gl-egl-ideal-pt { fill: var(--card); stroke: var(--ink); stroke-width: 1.5; }
+.plot .gl-z { fill: none; stroke: var(--muted); stroke-width: 1.5; stroke-dasharray: 2 3; }
+.plot .gl-z-pt { fill: var(--muted); }
+.budget .bar-recoverable { fill: var(--parcel-bg); stroke: var(--ink); stroke-width: 1; }
+.budget .bar-dissipated { fill: var(--outside); fill-opacity: 0.35; stroke: var(--outside); stroke-width: 1.5; stroke-dasharray: 4 2; }
+.budget .bar-total { fill: none; stroke: var(--ink); stroke-width: 2; }
+figure { margin: 0; }
+
+.plots-stack { display: grid; gap: 12px; }
+.plots-stack .grade-fig svg { max-width: 460px; width: 100%; height: auto; }
+.plots-stack svg { width: 100%; height: auto; }
+.budget .tick { font-size: 12px; }
+.reason { font-size: 0.85rem; color: var(--muted); }

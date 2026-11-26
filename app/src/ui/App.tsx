@@ -193,8 +193,9 @@ export function App() {
         <h1>S02 · Continuity through a contraction</h1>
         <p className="objective">{scenario.objectives[0]}</p>
         <nav aria-label="Scenarios" className="scenario-nav">
-          <a href="?scenario=default" aria-current={scKey === 'default' ? 'page' : undefined}>Explore and design</a>
-          <a href="?scenario=investigate" aria-current={scKey === 'investigate' ? 'page' : undefined}>Guided investigation: halve D₂</a>
+          <a href="?">Library home</a>
+          <a href="?sim=S02&amp;scenario=default" aria-current={scKey === 'default' ? 'page' : undefined}>Explore and design</a>
+          <a href="?sim=S02&amp;scenario=investigate" aria-current={scKey === 'investigate' ? 'page' : undefined}>Guided investigation: halve D₂</a>
         </nav>
       </header>
       <LiveRegion message={live} />

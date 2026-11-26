@@ -20,7 +20,7 @@ export function StatusBadge({ status }: { status: Applicability }) {
   return <span className={`status status-${status}`}><span className="status-icon" aria-hidden="true">{p.icon}</span> {p.label}</span>;
 }
 
-export function StatusBanner({ overall, rules, revision }: { overall: Applicability; rules: ApplicabilityRule[]; revision: number }) {
+export function StatusBanner({ overall, rules, revision, model }: { overall: Applicability; rules: ApplicabilityRule[]; revision: number; model?: string }) {
   const p = STATUS_PRESENTATION[overall];
   const notModelled = rules.filter((r) => r.affected.length === 0);
   const governing = rules.filter((r) => r.affected.length > 0 && r.status !== 'within');
@@ -33,9 +33,9 @@ export function StatusBanner({ overall, rules, revision }: { overall: Applicabil
       {governing.map((r) => (
         <p key={r.ruleId}><strong>{STATUS_PRESENTATION[r.status].icon} {r.ruleId}:</strong> {r.reason} {r.alternative && <em>Next: {r.alternative}</em>}</p>
       ))}
-      <p>Model: 1-D steady incompressible continuity (F1), using stipulated assumptions. This is a calculated teaching result, not a measurement.</p>
+      <p>{model ?? 'Model: 1-D steady incompressible continuity (F1), using stipulated assumptions.'} This is a calculated teaching result, not a measurement.</p>
       {notModelled.map((r) => (
-        <p key={r.ruleId} className="not-modelled"><span aria-hidden="true">{STATUS_PRESENTATION[r.status].icon}</span> <strong>Not modelled:</strong> {r.reason} {r.alternative && <>See {r.alternative}</>}</p>
+        <p key={r.ruleId} className="not-modelled"><span aria-hidden="true">{STATUS_PRESENTATION[r.status].icon}</span> <strong>Not modelled:</strong> {r.reason} {r.alternative && <>Next: {r.alternative}</>}</p>
       ))}
     </section>
   );
@@ -49,7 +49,7 @@ export function OutputsTable({ rows, revision, active, onActivate }: {
   return (
     <table className="data" data-testid="outputs-table">
       <caption>Calculated outputs (SI), revision {revision}</caption>
-      <thead><tr><th scope="col">Quantity</th><th scope="col">Value (3 s.f.)</th><th scope="col">Unit</th><th scope="col">Full precision</th><th scope="col">Applicability</th><th scope="col">Origin</th></tr></thead>
+      <thead><tr><th scope="col">Quantity</th><th scope="col">Value (≥3 s.f.)</th><th scope="col">Unit</th><th scope="col">Full precision</th><th scope="col">Applicability</th><th scope="col">Origin</th></tr></thead>
       <tbody>
         {rows.map((r) => {
           const v = r.q.value;
@@ -62,7 +62,7 @@ export function OutputsTable({ rows, revision, active, onActivate }: {
               </th>
               <td data-testid={`out-${r.id}`}>{r.hidden ? 'hidden until prediction' : v === null ? '—' : typeof v === 'number' ? sig(v) : v}</td>
               <td>{r.q.unit}</td>
-              <td className="mono">{r.hidden ? '' : v === null ? (r.reason ?? 'suppressed') : typeof v === 'number' ? full(v) : v}</td>
+              <td className={v === null ? 'reason' : 'mono'}>{r.hidden ? '' : v === null ? (r.reason ?? 'suppressed') : typeof v === 'number' ? full(v) : v}</td>
               <td><StatusBadge status={fromContractValidity(r.q.status)} /></td>
               <td>{r.q.origin}</td>
             </tr>

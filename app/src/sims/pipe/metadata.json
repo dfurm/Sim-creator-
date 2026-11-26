@@ -1,0 +1,175 @@
+{
+  "$comment": "Sidecar metadata for the composite pipe lesson (S04 variant composite.contraction-run). Codes and short paraphrased labels only. NCSE 2026 codes supplied by the product owner in Run 2B, not fetched from the standard. Nothing here is verified or reviewed.",
+  "metadataVersion": "0.2.0-proto+2B",
+  "lessonId": "pipe-lesson-1",
+  "simulationId": "S04",
+  "variant": "composite.contraction-run",
+  "lessonSpec": "app/docs/COMPOSITE_PIPE_SPEC.md",
+  "members": ["S02", "S07", "S04", "S08"],
+  "fidelity": {
+    "specFCodes": ["F1 (S07)", "F2 (S04)", "F3 + F4 (S08: Colebrook law with a bisection root finder)"],
+    "modelForm": "algebraic mechanical-energy balance with lumped contraction loss and Darcy–Weisbach friction",
+    "solutionMethod": "closed form, plus bracketed bisection for Colebrook",
+    "dataDependency": "empirical Colebrook law (historical roughened-pipe data); user-supplied K; editable constant fluid properties",
+    "mappingStatus": "proposed"
+  },
+  "tasks": [
+    {
+      "id": "task-a",
+      "title": "Level contraction at fixed flow",
+      "scenario": "pipe.task-a.level-contraction",
+      "bloom": "Apply",
+      "evidenceType": "numeric prediction of v₂ and p₂ − p₁ committed before reveal; comparison with the ideal (Bernoulli) prediction; answers to items A1–A3; short explanation",
+      "eaStage1": [
+        { "code": "1.1", "label": "Science and engineering fundamentals", "mappingStatus": "proposed" },
+        { "code": "1.2", "label": "Mathematics and numerical reasoning", "mappingStatus": "proposed" }
+      ],
+      "ncse2026": [
+        { "code": "ETP-TK1", "label": "Sciences and engineering fundamentals", "mappingStatus": "proposed" },
+        { "code": "ETP-IPS1", "label": "Justify simplifying assumptions; predict performance", "mappingStatus": "proposed" }
+      ],
+      "prediction": {
+        "prompt": "predict-a",
+        "fields": [
+          { "id": "v2", "label": "Your predicted mean velocity just after the contraction, v̄₂", "unit": "m/s" },
+          { "id": "dp", "label": "Your predicted change in static pressure p₂ − p₁ (negative if it falls)", "unit": "Pa" }
+        ]
+      },
+      "items": [
+        { "id": "A1", "type": "choice", "stem": "At fixed Q the bore halves from 50 mm to 25 mm. The ratio v̄₂/v̄₁ is:",
+          "options": [
+            { "id": "a", "text": "2", "correct": false, "feedback": "Velocity scales with 1/area, and area scales with D², so halving D quarters the area." },
+            { "id": "b", "text": "4", "correct": true, "feedback": "Correct. Continuity at fixed Q gives v = Q/A with A = πD²/4, so v₂/v₁ = (D₁/D₂)² = 4." },
+            { "id": "c", "text": "0.25", "correct": false, "feedback": "This inverts the effect. The same volume per second passes through a smaller area, so it must move faster." },
+            { "id": "d", "text": "1", "correct": false, "feedback": "Equal velocities would need equal areas. Only the mass flow ṁ is the same at both stations." }
+          ] },
+        { "id": "A2", "type": "choice", "stem": "In the ideal level contraction, the static pressure at station 2 compared with station 1 is:",
+          "options": [
+            { "id": "a", "text": "Lower", "correct": true, "feedback": "Correct. Total head is conserved in the ideal model; the velocity head rises by (v₂² − v₁²)/2g, so the pressure head must fall by the same amount (z unchanged)." },
+            { "id": "b", "text": "Higher", "correct": false, "feedback": "A common intuition is that squeezing the flow raises pressure. In steady flow the fluid accelerates into the narrow section, and that needs a pressure fall in the flow direction." },
+            { "id": "c", "text": "The same", "correct": false, "feedback": "The pressure would stay the same only if the velocity head did not change, which needs equal areas." }
+          ] },
+        { "id": "A3", "type": "numeric", "stem": "Using the ideal prediction, enter p₁ − p₂ in Pa (within 1%).", "unit": "Pa", "answer": "pressureDropIdeal12", "rtol": 0.01,
+          "feedbackCorrect": "Correct: p₁ − p₂ = ρ(v₂² − v₁²)/2 for a level ideal contraction.",
+          "feedbackIncorrect": "Use p₁ − p₂ = ρ(v₂² − v₁²)/2 with v from continuity. Check that you squared the velocities and used ρ in kg/m³." }
+      ]
+    },
+    {
+      "id": "task-b",
+      "title": "Ideal and lossy predictions for the same pipe",
+      "scenario": "pipe.task-b.ideal-vs-lossy",
+      "bloom": "Analyse",
+      "evidenceType": "numeric prediction of the head difference between ideal and lossy p₃ committed before reveal; head-budget accounting; answers to items B1–B3; short explanation",
+      "eaStage1": [
+        { "code": "1.1", "label": "Science and engineering fundamentals", "mappingStatus": "proposed" },
+        { "code": "1.2", "label": "Mathematics and numerical reasoning", "mappingStatus": "proposed" },
+        { "code": "2.2", "label": "Engineering techniques, tools and resources", "mappingStatus": "proposed" }
+      ],
+      "ncse2026": [
+        { "code": "ETP-TK1", "label": "Sciences and engineering fundamentals", "mappingStatus": "proposed" },
+        { "code": "ETP-TK2", "label": "Mathematics, numerical analysis and computing", "mappingStatus": "proposed" },
+        { "code": "ETP-AN1", "label": "Analysis tools and their limitations", "mappingStatus": "proposed" }
+      ],
+      "prediction": {
+        "prompt": "predict-b",
+        "fields": [
+          { "id": "dh", "label": "Your predicted head difference (p₃ ideal − p₃ lossy)/(ρg)", "unit": "m" },
+          { "id": "larger", "label": "Which loss do you expect to be larger?", "unit": "choice", "options": ["contraction loss h_K", "friction loss h_f", "about equal"] }
+        ]
+      },
+      "illustrativeValues": [
+        { "id": "K", "value": 0.3, "note": "Illustrative teaching value chosen by the author, not from a correlation; needs SME confirmation (OPEN_QUESTIONS OQ-05).", "verification_status": "needs-SME-review" }
+      ],
+      "items": [
+        { "id": "B1", "type": "choice", "stem": "The ideal p₃ exceeds the lossy p₃ by:",
+          "options": [
+            { "id": "a", "text": "ρg(h_K + h_f)", "correct": true, "feedback": "Correct. Both predictions share p₁, v and z; the only difference is the dissipated head h_K + h_f, which appears as pressure at the same elevation and velocity." },
+            { "id": "b", "text": "ρg h_f only", "correct": false, "feedback": "The contraction loss h_K = K v₂²/2g is also dissipated, so it lowers p₂ and therefore p₃." },
+            { "id": "c", "text": "ρ v₂²/2", "correct": false, "feedback": "The velocity head is the same in both predictions (same Q and D₂), so it cannot explain the difference." },
+            { "id": "d", "text": "Nothing: losses only affect the velocity", "correct": false, "feedback": "In steady flow at fixed Q the velocity is set by continuity. Losses reduce pressure, not velocity." }
+          ] },
+        { "id": "B2", "type": "choice", "stem": "Between stations 1 and 3, which change in head could in principle be recovered by changing the downstream geometry?",
+          "options": [
+            { "id": "a", "text": "The rise in velocity head (for example with a diffuser)", "correct": true, "feedback": "Correct. Kinetic energy is a conversion of pressure head and can be partly converted back; dissipated head cannot." },
+            { "id": "b", "text": "The friction loss h_f", "correct": false, "feedback": "Wall friction dissipates mechanical energy as heat; it is not recoverable as pressure." },
+            { "id": "c", "text": "The contraction loss h_K", "correct": false, "feedback": "h_K is a dissipation (eddies and mixing) lumped into K. It is lost, not stored." }
+          ] },
+        { "id": "B3", "type": "numeric", "stem": "Enter the total dissipated head H₁ − H₃ in m (within 2%).", "unit": "m", "answer": "dissipatedHead", "rtol": 0.02,
+          "feedbackCorrect": "Correct: H₁ − H₃ = h_K + h_f, the length of the loss bar.",
+          "feedbackIncorrect": "Add h_K = K v₂²/2g and h_f = f (L/D₂) v₂²/2g, or read the two dissipated segments of the head-budget bar." }
+      ]
+    },
+    {
+      "id": "task-c",
+      "title": "Push the model to an applicability limit",
+      "scenario": "pipe.task-c.applicability-limit",
+      "bloom": "Evaluate",
+      "evidenceType": "numeric prediction of the flow at Re₂ = 4000 committed before exploring; record of the limit reached; answers to items C1–C3; explanation of the extra model, correlation or data needed",
+      "eaStage1": [
+        { "code": "1.2", "label": "Mathematics and numerical reasoning", "mappingStatus": "proposed" },
+        { "code": "1.4", "label": "Limits of current knowledge and models", "mappingStatus": "proposed" },
+        { "code": "2.1", "label": "Established methods for engineering problems", "mappingStatus": "proposed" }
+      ],
+      "ncse2026": [
+        { "code": "ETP-AN1", "label": "Analysis tools and their limitations", "mappingStatus": "proposed" },
+        { "code": "ETP-IPS1", "label": "Justify simplifying assumptions; predict performance", "mappingStatus": "proposed" },
+        { "code": "ETP-ST4", "label": "Bounds of safe and sustainable practice", "mappingStatus": "proposed" }
+      ],
+      "prediction": {
+        "prompt": "predict-c",
+        "fields": [
+          { "id": "Q4000", "label": "Your predicted flow at which Re₂ falls to 4000", "unit": "L/min" }
+        ]
+      },
+      "items": [
+        { "id": "C1", "type": "choice", "stem": "When Re₂ is between 2300 and 4000 the lesson shows Re but no friction factor or friction pressure drop. Why?",
+          "options": [
+            { "id": "a", "text": "No friction model in scope is valid there: the thresholds are conventions, and transition depends on disturbances the model does not know", "correct": true, "feedback": "Correct. Withholding a number is the honest output when no validated model covers the state." },
+            { "id": "b", "text": "The flow stops in the transition band", "correct": false, "feedback": "Q and v are unchanged; the fluid still flows. Only the friction prediction is withdrawn." },
+            { "id": "c", "text": "The Colebrook equation has no solution there", "correct": false, "feedback": "Colebrook can be solved numerically at Re = 3000, but its stated basis is fully turbulent flow; a solution is not the same as validity." },
+            { "id": "d", "text": "The friction factor becomes zero", "correct": false, "feedback": "Friction does not vanish in transition; it is simply not predicted reliably by either branch." }
+          ] },
+        { "id": "C2", "type": "choice", "stem": "What would let you predict the pressure drop for this pipe in the transition band?",
+          "options": [
+            { "id": "a", "text": "Measured Δp against Q on this pipe, with calibration, uncertainty and the flow conditions recorded", "correct": true, "feedback": "Correct. Measured data for the actual geometry and disturbance level is the defensible basis; a transition correlation would need evidence for this geometry too." },
+            { "id": "b", "text": "Keep using 64/Re", "correct": false, "feedback": "64/Re is the laminar, fully developed result; using it above 2300 extrapolates outside its domain." },
+            { "id": "c", "text": "Average the laminar and turbulent friction factors", "correct": false, "feedback": "Interpolating across the transition gap is explicitly prohibited by the applicability standard: it has no physical basis." },
+            { "id": "d", "text": "Reduce the solver tolerance", "correct": false, "feedback": "Numerical accuracy cannot fix model-form uncertainty." }
+          ] },
+        { "id": "C3", "type": "numeric", "stem": "For the current D₂ and fluid, enter the flow at which Re₂ = 4000, in L/min (within 2%).", "unit": "L/min", "answer": "flowAtRe4000Lmin", "rtol": 0.02,
+          "feedbackCorrect": "Correct: Q = Re π D₂ μ /(4ρ).",
+          "feedbackIncorrect": "Rearrange Re₂ = 4ρQ/(π D₂ μ) for Q, then convert m³/s to L/min (× 60 000)." }
+      ]
+    }
+  ],
+  "equations": [
+    { "id": "PIPE.EQ1", "text": "vᵢ = 4Q/(πDᵢ²)", "specRef": "S02 §C, S04 §C", "verification_status": "unverified" },
+    { "id": "PIPE.EQ2", "text": "Re = ρvD/μ", "specRef": "S07 §C", "verification_status": "unverified" },
+    { "id": "PIPE.EQ3", "text": "h_K = K v₂²/(2g)", "specRef": "S04 §C", "verification_status": "unverified" },
+    { "id": "PIPE.EQ4", "text": "f = 64/Re (laminar)", "specRef": "S08 §C", "verification_status": "unverified" },
+    { "id": "PIPE.EQ5", "text": "1/√f = −2 log₁₀[ε/(3.7D) + 2.51/(Re√f)] (turbulent)", "specRef": "S08 §C, CORRELATION_REGISTER", "verification_status": "unverified" },
+    { "id": "PIPE.EQ6", "text": "h_f = f (L/D₂) v₂²/(2g)", "specRef": "S08 §C", "verification_status": "unverified" },
+    { "id": "PIPE.EQ7", "text": "p₂ = p₁ + ρ(v₁² − v₂²)/2 − ρg h_K;  p₃ = p₂ − ρg z₃ − ρg h_f", "specRef": "S04 §C with z₂ = z₁, hₚ = 0", "verification_status": "unverified" }
+  ],
+  "coefficients": [
+    { "id": "g", "value": 9.80665, "unit": "m/s²", "verification_status": "unverified" },
+    { "id": "colebrook-2.51", "value": 2.51, "unit": "1", "verification_status": "unverified" },
+    { "id": "colebrook-3.7", "value": 3.7, "unit": "1", "verification_status": "unverified" },
+    { "id": "laminar-64", "value": 64, "unit": "1", "verification_status": "unverified" },
+    { "id": "Re-thresholds", "value": "2300 / 4000 (conventions); buffers 2000 and 4500; envelope 1e7, ε/D 0.05", "unit": "1", "verification_status": "needs-SME-review" }
+  ],
+  "references": [
+    { "id": "DOE", "specRef": "spec/research/REFERENCES.md", "verification_status": "unverified" },
+    { "id": "COLE", "specRef": "spec/research/REFERENCES.md, CORRELATION_REGISTER", "verification_status": "unverified" },
+    { "id": "ROUGH", "specRef": "spec/research/REFERENCES.md", "verification_status": "unverified" }
+  ],
+  "applicabilityRules": [
+    { "id": "PIPE.A1.steady-incompressible-newtonian", "verification_status": "needs-SME-review" },
+    { "id": "PIPE.A2.alpha-one", "verification_status": "needs-SME-review" },
+    { "id": "PIPE.A3.K-user-supplied", "verification_status": "needs-SME-review" },
+    { "id": "PIPE.A4.developed-flow", "verification_status": "needs-SME-review" },
+    { "id": "PIPE.I1.cavitation-margin-unknown", "verification_status": "needs-SME-review" },
+    { "id": "S08.R1.regime", "verification_status": "needs-SME-review" },
+    { "id": "PIPE.P.*-nonpositive", "verification_status": "unverified" }
+  ]
+}

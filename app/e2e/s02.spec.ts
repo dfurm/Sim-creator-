@@ -6,7 +6,7 @@ const slider = (page: Page, id: string) => page.locator(`[data-input="${id}"] in
 
 test.describe('S02 standalone page', () => {
   test('defaults reproduce the spec fixture; status shown by icon and text', async ({ page }) => {
-    await page.goto('./');
+    await page.goto('./?sim=S02');
     await expect(page.getByTestId('out-v1')).toHaveText('0.509');
     await expect(page.getByTestId('out-v2')).toHaveText('2.04');
     await expect(page.getByTestId('out-mdot')).toHaveText('1.00');
@@ -18,7 +18,7 @@ test.describe('S02 standalone page', () => {
   });
 
   test('keyboard-only: numeric entry, slider arrows and coarse steps', async ({ page }) => {
-    await page.goto('./');
+    await page.goto('./?sim=S02');
     await num(page, 'D2').focus();
     await page.keyboard.press('ControlOrMeta+a');
     await page.keyboard.type('50');
@@ -38,7 +38,7 @@ test.describe('S02 standalone page', () => {
   });
 
   test('invalid entries are rejected with clear messages and the last result kept', async ({ page }) => {
-    await page.goto('./');
+    await page.goto('./?sim=S02');
     await num(page, 'Q').fill('abc');
     await num(page, 'Q').press('Enter');
     await expect(page.locator('[data-input="Q"] .field-error')).toContainText('is not a number');
@@ -56,7 +56,7 @@ test.describe('S02 standalone page', () => {
   });
 
   test('display units switch without changing SI values', async ({ page }) => {
-    await page.goto('./');
+    await page.goto('./?sim=S02');
     await page.getByLabel('SI (m³/s, m)').check();
     await expect(num(page, 'Q')).toHaveValue('0.001');
     await expect(num(page, 'D2')).toHaveValue('0.025');
@@ -66,7 +66,7 @@ test.describe('S02 standalone page', () => {
   });
 
   test('bore design: D_min, feasible bores, forward check and infeasible case', async ({ page }) => {
-    await page.goto('./');
+    await page.goto('./?sim=S02');
     await page.getByLabel(/Bore design/).check();
     await expect(page.getByTestId('dmin')).toHaveText('25.23 mm');
     await expect(page.getByTestId('selected-bore')).toHaveText('26 mm');
@@ -81,7 +81,7 @@ test.describe('S02 standalone page', () => {
   });
 
   test('guided investigation: prediction before reveal, feedback, completion', async ({ page }) => {
-    await page.goto('./?scenario=investigate');
+    await page.goto('./?sim=S02&scenario=investigate');
     await expect(page.getByTestId('out-v2')).toHaveText('hidden until prediction');
     await expect(num(page, 'Q')).toBeDisabled();
     await page.getByLabel(/by what factor/).fill('2');
@@ -97,7 +97,7 @@ test.describe('S02 standalone page', () => {
   });
 
   test('save in browser, change, restore: identical outputs', async ({ page }) => {
-    await page.goto('./');
+    await page.goto('./?sim=S02');
     await num(page, 'D2').fill('17');
     await num(page, 'D2').press('Enter');
     const saved = await page.locator('[data-output="v2"] .mono').textContent();
@@ -112,14 +112,14 @@ test.describe('S02 standalone page', () => {
   });
 
   test('CSV export contains SI values with unit, status, origin and model version', async ({ page }) => {
-    await page.goto('./');
+    await page.goto('./?sim=S02');
     const [dl] = await Promise.all([page.waitForEvent('download'), page.getByRole('button', { name: 'Export CSV' }).click()]);
     const text = await (await import('node:fs')).promises.readFile((await dl.path())!, 'utf8');
     expect(text).toMatch(/output,v2,2\.0371832715762603,m\/s,within,calculated,.*,S02,0\.2\.0,1/);
   });
 
   test('semantic anchors link the diagram to table and equation', async ({ page }) => {
-    await page.goto('./');
+    await page.goto('./?sim=S02');
     await page.locator('[data-anchor="S02/throat_area"]').focus();
     await expect(page.locator('[data-output="area2"]')).toHaveClass(/is-active/);
     await expect(page.locator('[data-eq="A2"]')).toHaveClass(/is-active/);
@@ -128,20 +128,20 @@ test.describe('S02 standalone page', () => {
 
   test('reduced motion: parcel motion starts paused', async ({ page }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' });
-    await page.goto('./');
+    await page.goto('./?sim=S02');
     await expect(page.getByTestId('motion-toggle')).toHaveText(/Play parcel motion/);
     await expect(page.getByTestId('motion-toggle')).toHaveAttribute('aria-pressed', 'false');
   });
 
   test('reflows at 320 px without horizontal page scroll', async ({ page }) => {
     await page.setViewportSize({ width: 320, height: 800 });
-    await page.goto('./');
+    await page.goto('./?sim=S02');
     await expect(page.getByTestId('out-v2')).toHaveText('2.04');
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(320);
   });
 
   test('automated accessibility scan (axe, WCAG 2.x A/AA rules)', async ({ page }) => {
-    await page.goto('./');
+    await page.goto('./?sim=S02');
     await expect(page.getByTestId('out-v2')).toHaveText('2.04');
     const r = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa']).analyze();
     const summary = r.violations.map((v) => `${v.id} (${v.impact}): ${v.nodes.length} node(s)`);
