@@ -1,4 +1,4 @@
-import { useEffect, useId, useState, type KeyboardEvent } from 'react';
+import { useEffect, useId, useRef, useState, type KeyboardEvent } from 'react';
 import type { NumericInputSpec } from '../core/block';
 import { fromSI, toSI } from '../core/units';
 
@@ -32,6 +32,8 @@ export function NumberControl(p: NumberControlProps) {
   const id = useId();
   const [draft, setDraft] = useState(fmtDisplay(fromSI(p.valueSI, p.displayUnit)));
   const [editing, setEditing] = useState(false);
+  /** True only while the field holds text typed since the last commit (prevents a blur re-committing a stale draft). */
+  const dirty = useRef(false);
   useEffect(() => {
     if (!editing) setDraft(fmtDisplay(fromSI(p.valueSI, p.displayUnit)));
   }, [p.valueSI, p.displayUnit, editing]);
@@ -40,6 +42,8 @@ export function NumberControl(p: NumberControlProps) {
   const clamp = (x: number) => Math.min(p.range.max, Math.max(p.range.min, x));
   const commitDraft = () => {
     setEditing(false);
+    if (!dirty.current) return;
+    dirty.current = false;
     const t = draft.trim().replace(',', '.');
     if (t === '') { p.onInvalidEntry(`${p.spec.label}: enter a number.`); return; }
     const n = Number(t);
@@ -77,9 +81,9 @@ export function NumberControl(p: NumberControlProps) {
           disabled={p.locked} aria-invalid={p.error ? true : undefined}
           aria-describedby={`${hintId}${p.error ? ' ' + errId : ''}`}
           onFocus={() => setEditing(true)}
-          onChange={(e) => { setEditing(true); setDraft(e.target.value); }}
+          onChange={(e) => { setEditing(true); dirty.current = true; setDraft(e.target.value); }}
           onBlur={commitDraft}
-          onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); commitDraft(); } if (e.key === 'Escape') { setEditing(false); } }}
+          onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); commitDraft(); } if (e.key === 'Escape') { dirty.current = false; setEditing(false); } }}
         />
       </div>
       <div id={hintId} className="hint">

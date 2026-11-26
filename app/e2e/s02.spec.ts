@@ -55,6 +55,18 @@ test.describe('S02 standalone page', () => {
     await expect(page.locator('[data-input="Q"] input.num')).toHaveAttribute('aria-invalid', 'true');
   });
 
+  test('regression (2B1): Enter then moving straight to another field never reverts the first value', async ({ page }) => {
+    await page.goto('./?sim=S02');
+    await page.getByLabel(/Bore design/).check();
+    for (let i = 0; i < 5; i++) {
+      const v = ['0.25', '3.5', '1.2', '0.5', '2.75'][i]!;
+      await num(page, 'vmax').fill(v);
+      await num(page, 'vmax').press('Enter');
+      await num(page, 'Q').focus();                 // blur immediately, before re-render settles
+      await expect(num(page, 'vmax')).toHaveValue(v);
+    }
+  });
+
   test('display units switch without changing SI values', async ({ page }) => {
     await page.goto('./?sim=S02');
     await page.getByLabel('SI (m³/s, m)').check();
